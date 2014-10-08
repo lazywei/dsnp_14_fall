@@ -1,0 +1,1 @@
+g++ -o p3 -g -Wall p3.main.cpp p3.amgr.cpp

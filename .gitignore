@@ -1,0 +1,5 @@
+.DS_Store
+*.tgz
+cmpr_tmp
+MustExist.txt
+MustRemove.txt

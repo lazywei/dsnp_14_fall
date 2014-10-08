@@ -1,0 +1,17 @@
+1. First make file with debug mode (-ggdb).
+
+2. In shell: `lldb p1.bug`
+
+3. In lldb: `breakpoint set --line 19`, and then `run`
+
+4. Run line by line until stop. It shows `EXC_BAD_ACCESS` with `code=1`.
+
+5. By searching Google: code=1 means releasing released objects or
+accessing un-initialized memory address.
+
+6. Seems like we haven't initialized `*p1` and `*p2`. After adding:
+
+   p1 = new P1a();
+   p2 = new P1a();
+
+It should works.

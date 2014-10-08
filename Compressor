@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+def clean_filename(filename, hw_dir)
+  filename.gsub("_#{hw_dir}", ".").chomp
+end
+
+def read_must_files(filename, hw_dir)
+  results = []
+  File.open(File.join(hw_dir, filename), "r") do |file|
+    while line = file.gets
+      results << clean_filename(line, hw_dir)
+    end
+  end
+
+  return results
+end
+
+SID = ENV['SID'] || "b00201037"
+
+usage = <<-USAGE
+Usage:
+
+  Compress [-h] HW_DIR -- program to compress homework files into valid format
+
+Example:
+
+  ./Compress hw1
+
+Options:
+
+  HW_DIR: Conventoin is hw1, hw2 and so on.
+  -h:     Show this help text
+USAGE
+
+if ARGV[0] == "-h" or ARGV.size == 0 or not File.directory?(ARGV[0])
+  puts usage
+  abort
+end
+
+hw_dir = ARGV[0]
+dest_dir = "#{SID}_#{hw_dir}"
+tmp_root = "cmpr_tmp"
+
+puts "Reading must remove files..."
+must_remove = read_must_files("MustRemove.txt", hw_dir)
+
+puts "Reading must exist files..."
+must_exist = read_must_files("MustExist.txt", hw_dir)
+
+tmp_dir = File.join(tmp_root, dest_dir)
+puts "Creating tmp directory #{tmp_dir}..."
+FileUtils.rm_rf(tmp_dir)
+FileUtils.mkdir_p(tmp_dir)
+
+FileUtils.cp_r(File.join(hw_dir, "."), tmp_dir)
+
+FileUtils.cd(tmp_dir)
+
+must_remove.each do |to_remove|
+  if File.exist? to_remove
+    puts "[MustRemove] Found #{to_remove}, removing..."
+    FileUtils.rm(to_remove)
+  end
+end
+
+must_exist.each do |should_exist|
+  if not File.exist? should_exist
+    puts "[MustExist] Miss #{should_exist}, should we touch it [Y/n]?"
+    answer = STDIN.gets.chomp
+
+    if answer == "Y" or answer.empty?
+      puts "[MustExist] Touching #{should_exist}..."
+      FileUtils.touch should_exist
+    else
+      puts "[MustExist] Ignoring #{should_exist}..."
+    end
+
+  end
+end
+
+puts "Compressing..."
+FileUtils.cd("..")
+%x[tar cvzf #{dest_dir}.tgz #{dest_dir} ]
+
+FileUtils.cd("..")
+puts "Moving self checking files to PWD..."
+FileUtils.cp(File.join(hw_dir, 'MustRemove.txt'), './')
+FileUtils.cp(File.join(hw_dir, 'MustExist.txt'), './')
+FileUtils.mv(File.join(tmp_root, "#{dest_dir}.tgz"), './')
+
+puts %x[./SelfCheck #{dest_dir}.tgz]

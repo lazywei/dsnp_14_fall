@@ -1,0 +1,33 @@
+We have chosen sentences about fictional countries ( featured in the Marx 
+Brothers' 1933 movie Duck Soup ) to emphasize that your ability to reason 
+about these examples does not depend on what is true or false in the 
+actual world. If you know the meaning of the word no, and also know that 
+the capital of a country is a city in that country, then you should be 
+able to conclude that the two sentences in (6) are inconsistent, regardless 
+of where Freedonia is or what the population of its capital is. That is, 
+there's no possible situation in which both sentences could be true. 
+Similarly, if you know that the relation expressed by to the north of is 
+asymmetric, then you should be able to conclude that the two sentences in 
+(7) are inconsistent.
+
+Broadly speaking, logic-based approaches to natural language semantics 
+focus on those aspects of natural language which guide our judgments of 
+consistency and inconsistency. The syntax of a logical language is 
+designed to make these features formally explicit. As a result, 
+determining properties like consistency can often be reduced to symbolic 
+manipulation, that is, to a task that can be carried out by a computer. 
+In order to pursue this approach, we first want to develop a technique 
+for representing a possible situation. We do this in terms of something 
+that logicians call a model.
+
+A model for a set W of sentences is a formal representation of a situation 
+in which all the sentences in W are true. The usual way of representing 
+models involves set theory. The domain D of discourse ( all the entities 
+we currently care about ) is a set of individuals, while relations are 
+treated as sets built up from D. Let's look at a concrete example. Our 
+domain D will consist of three children, Stefan, Klaus and Evi, 
+represented respectively as s, k and e. We write this as D = {s, k, e}. 
+The expression boy denotes the set consisting of Stefan and Klaus, the 
+expression girl denotes the set consisting of Evi, and the expression 
+is running denotes the set consisting of Stefan and Evi. 1.2 is a 
+graphical rendering of the model.
