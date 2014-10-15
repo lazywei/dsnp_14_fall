@@ -32,7 +32,7 @@ cmdReader: main.o cmdReader.o cmdCharDef.o
 
 testAsc: testAsc.o cmdCharDef.o
 	g++ -o $@ $(MAKEFLAGS) testAsc.o cmdCharDef.o
-	strip $@
+#	strip $@
 
 cmdReader-ref: main.o cmdReader.o.ref cmdCharDef.o
 	g++ -o $@ $(MAKEFLAGS) main.o cmdReader.o.ref cmdCharDef.o

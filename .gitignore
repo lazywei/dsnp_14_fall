@@ -3,3 +3,5 @@
 cmpr_tmp
 MustExist.txt
 MustRemove.txt
+
+*.o

@@ -54,8 +54,8 @@ CmdParser::readCmdInt(istream& istr)
                                resetBufAndPrintPrompt(); break;
          case ARROW_UP_KEY   : moveToHistory(_historyIdx - 1); break;
          case ARROW_DOWN_KEY : moveToHistory(_historyIdx + 1); break;
-         case ARROW_RIGHT_KEY: /* TODO */ break;
-         case ARROW_LEFT_KEY : /* TODO */ break;
+         case ARROW_RIGHT_KEY: /* TODO */ moveBufPtr(_readBufPtr + 1); break;
+         case ARROW_LEFT_KEY : /* TODO */ moveBufPtr(_readBufPtr - 1); break;
          case PG_UP_KEY      : moveToHistory(_historyIdx - PG_OFFSET); break;
          case PG_DOWN_KEY    : moveToHistory(_historyIdx + PG_OFFSET); break;
          case TAB_KEY        : /* TODO */ break;
@@ -87,6 +87,17 @@ bool
 CmdParser::moveBufPtr(char* const ptr)
 {
    // TODO...
+   if (greater_equal<char*>()(ptr, _readBuf)
+       && less_equal<char*>()(ptr, _readBufEnd))
+   {
+      cout << (ptrdiff_t)(ptr - _readBufPtr);
+   }
+   else
+   {
+      mybeep();
+      return false;
+   }
+
    return true;
 }
 
@@ -117,24 +128,29 @@ CmdParser::deleteChar()
    return true;
 }
 
-// 1. Insert character 'ch' at _readBufPtr
-// 2. Move the remaining string right for one character
-// 3. The cursor should move right for one position afterwards
+// 1. Insert character 'ch' for "repeat" times at _readBufPtr
+// 2. Move the remaining string right for "repeat" characters
+// 3. The cursor should move right for "repeats" positions afterwards
+// 4. Default value for "repeat" is 1. You should assert that (repeat >= 1).
 //
 // For example,
 //
 // cmd> This is the command
 //              ^                (^ is the cursor position)
 //
-// After calling insertChar('k') ---
+// After calling insertChar('k', 3) ---
 //
-// cmd> This is kthe command
-//               ^
-//
+// cmd> This is kkkthe command
+//                 ^
 void
 CmdParser::insertChar(char ch, int repeat)
 {
    // TODO...
+   assert(repeat >= 1);
+   *_readBufEnd = ch;
+   _readBufEnd++;
+
+   cout << ch;
 }
 
 // 1. Delete the line that is currently shown on the screen
@@ -184,7 +200,7 @@ CmdParser::moveToHistory(int index)
 
 
 // This function adds the string in _readBuf to the _history.
-// The size of _history may or may not change. Depending on whether 
+// The size of _history may or may not change. Depending on whether
 // there is a temp history string.
 //
 // 1. Remove ' ' at the beginning and end of _readBuf
@@ -194,8 +210,6 @@ CmdParser::moveToHistory(int index)
 // 4. Make sure to clean up "temp recorded string" (added earlier by up/pgUp,
 //    and reset _tempCmdStored to false
 // 5. Reset _historyIdx to _history.size() // for future insertion
-// 6. Reset _readBufPtr and _readBufEnd to _readBuf
-// 7. Make sure *_readBufEnd = 0 ==> _readBuf becomes null string
 //
 void
 CmdParser::addHistory()
