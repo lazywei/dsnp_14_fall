@@ -87,10 +87,32 @@ bool
 CmdParser::moveBufPtr(char* const ptr)
 {
    // TODO...
+   int diff;
+   int ptrIncr;
+   string movement;
+
    if (greater_equal<char*>()(ptr, _readBuf)
        && less_equal<char*>()(ptr, _readBufEnd))
    {
-      cout << (ptrdiff_t)(ptr - _readBufPtr);
+      diff = ptrdiff_t(ptr - _readBufPtr);
+
+      if (diff > 0)
+      {
+         movement = "\x1b[1C";
+         ptrIncr = 1;
+      }
+      else if (diff < 0)
+      {
+         movement = "\b";
+         ptrIncr = -1;
+         diff = -diff;
+      }
+
+      for (int i = 0; i < diff; ++i)
+      {
+         cout << movement;
+         _readBufPtr = _readBufPtr + ptrIncr;
+      }
    }
    else
    {
@@ -147,10 +169,32 @@ CmdParser::insertChar(char ch, int repeat)
 {
    // TODO...
    assert(repeat >= 1);
-   *_readBufEnd = ch;
-   _readBufEnd++;
 
-   cout << ch;
+   size_t tail_length = _readBufEnd - _readBufPtr;
+
+   _readBufEnd = _readBufEnd + repeat;
+
+   for (size_t i = 0; i < tail_length; ++i)
+   {
+      *(_readBufEnd - i - 1) = *(_readBufEnd - i - repeat - 1);
+   }
+
+   for (int i = 0; i < repeat; ++i)
+   {
+      *(_readBufPtr + i) = ch;
+   }
+
+   for (size_t i = 0; i < repeat + tail_length; ++i)
+   {
+      cout << *(_readBufPtr + i);
+   }
+
+   for (size_t i = 0; i < tail_length; ++i)
+   {
+      cout << "\b";
+   }
+
+   _readBufPtr = _readBufPtr + repeat;
 }
 
 // 1. Delete the line that is currently shown on the screen
