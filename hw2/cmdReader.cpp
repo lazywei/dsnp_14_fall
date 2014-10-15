@@ -47,7 +47,7 @@ CmdParser::readCmdInt(istream& istr)
          case HOME_KEY       : moveBufPtr(_readBuf); break;
          case LINE_END_KEY   :
          case END_KEY        : moveBufPtr(_readBufEnd); break;
-         case BACK_SPACE_KEY : /* TODO */ break;
+         case BACK_SPACE_KEY : deleteChar();/* TODO */ break;
          case DELETE_KEY     : deleteChar(); break;
          case NEWLINE_KEY    : addHistory();
                                cout << char(NEWLINE_KEY);
@@ -88,7 +88,6 @@ CmdParser::moveBufPtr(char* const ptr)
 {
    // TODO...
    int diff;
-   int ptrIncr;
    string movement;
 
    if (greater_equal<char*>()(ptr, _readBuf)
@@ -99,20 +98,19 @@ CmdParser::moveBufPtr(char* const ptr)
       if (diff > 0)
       {
          movement = "\x1b[1C";
-         ptrIncr = 1;
       }
       else if (diff < 0)
       {
          movement = "\b";
-         ptrIncr = -1;
          diff = -diff;
       }
 
       for (int i = 0; i < diff; ++i)
       {
          cout << movement;
-         _readBufPtr = _readBufPtr + ptrIncr;
       }
+
+      _readBufPtr = ptr;
    }
    else
    {
@@ -147,6 +145,31 @@ bool
 CmdParser::deleteChar()
 {
    // TODO...
+   size_t tail_length = _readBufEnd - _readBufPtr;
+
+   for (size_t i = 0; i < tail_length; ++i)
+   {
+      *(_readBufPtr + i) = *(_readBufPtr + i + 1);
+   }
+
+   // tail_length != 0 means we actually delete something
+   if (tail_length != 0)
+   {
+      _readBufEnd = _readBufEnd - 1;
+
+      for (size_t i = 0; i < tail_length; ++i)
+      {
+         cout << *(_readBufPtr + i);
+      }
+
+      cout << " ";
+
+      for (size_t i = 0; i < tail_length; ++i)
+      {
+         cout << "\b";
+      }
+   }
+
    return true;
 }
 
