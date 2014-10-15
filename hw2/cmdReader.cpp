@@ -47,22 +47,34 @@ CmdParser::readCmdInt(istream& istr)
          case HOME_KEY       : moveBufPtr(_readBuf); break;
          case LINE_END_KEY   :
          case END_KEY        : moveBufPtr(_readBufEnd); break;
-         case BACK_SPACE_KEY : deleteChar();/* TODO */ break;
+         case BACK_SPACE_KEY : 
+                               if (moveBufPtr(_readBufPtr - 1))
+                               {
+                                  deleteChar();
+                               }
+         break;
          case DELETE_KEY     : deleteChar(); break;
          case NEWLINE_KEY    : addHistory();
                                cout << char(NEWLINE_KEY);
                                resetBufAndPrintPrompt(); break;
          case ARROW_UP_KEY   : moveToHistory(_historyIdx - 1); break;
          case ARROW_DOWN_KEY : moveToHistory(_historyIdx + 1); break;
-         case ARROW_RIGHT_KEY: /* TODO */ moveBufPtr(_readBufPtr + 1); break;
-         case ARROW_LEFT_KEY : /* TODO */ moveBufPtr(_readBufPtr - 1); break;
+         case ARROW_RIGHT_KEY: moveBufPtr(_readBufPtr + 1); break;
+         case ARROW_LEFT_KEY : moveBufPtr(_readBufPtr - 1); break;
          case PG_UP_KEY      : moveToHistory(_historyIdx - PG_OFFSET); break;
          case PG_DOWN_KEY    : moveToHistory(_historyIdx + PG_OFFSET); break;
-         case TAB_KEY        : /* TODO */ break;
+         case TAB_KEY        :
+                               size_t spaces_to_tab;
+                               spaces_to_tab = _readBufPtr - _readBuf;
+                               spaces_to_tab %= TAB_POSITION;
+                               spaces_to_tab = TAB_POSITION - spaces_to_tab;
+                               insertChar(' ', spaces_to_tab);
+         break;
          case INSERT_KEY     : // not yet supported; fall through to UNDEFINE
-         case UNDEFINED_KEY:   mybeep(); break;
+         case UNDEFINED_KEY  : mybeep(); break;
          default:  // printable character
-            insertChar(char(pch)); break;
+                               insertChar(char(pch));
+         break;
       }
       #ifdef TA_KB_SETTING
       taTestOnly();
@@ -168,6 +180,11 @@ CmdParser::deleteChar()
       {
          cout << "\b";
       }
+   }
+   else
+   {
+      mybeep();
+      return false;
    }
 
    return true;
