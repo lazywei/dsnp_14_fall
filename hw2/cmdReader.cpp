@@ -47,7 +47,7 @@ CmdParser::readCmdInt(istream& istr)
          case HOME_KEY       : moveBufPtr(_readBuf); break;
          case LINE_END_KEY   :
          case END_KEY        : moveBufPtr(_readBufEnd); break;
-         case BACK_SPACE_KEY : 
+         case BACK_SPACE_KEY :
                                if (moveBufPtr(_readBufPtr - 1))
                                {
                                   deleteChar();
@@ -299,6 +299,37 @@ void
 CmdParser::addHistory()
 {
    // TODO...
+   // Trim leading and trailing whitespaces
+
+   char* nonEmptyStart;
+   char* nonEmptyEnd;
+   nonEmptyStart = nonEmptyEnd = _readBufEnd;
+
+   for (size_t i = 0; i < size_t(_readBufEnd - _readBuf); ++i)
+   {
+      if (*(_readBuf + i) != ' ') {
+         nonEmptyStart = _readBuf + i;
+         break;
+      }
+   }
+
+   for (size_t i = 0; i < size_t(_readBufEnd - nonEmptyStart); ++i)
+   {
+      if (*(_readBufEnd - i - 1) != ' ') {
+         nonEmptyEnd = _readBufEnd - i;
+         break;
+      }
+   }
+
+   // Return if string is empty
+   if (nonEmptyStart == nonEmptyEnd) {
+      return;
+   }
+
+   string str;
+   str.assign(nonEmptyStart, size_t(nonEmptyEnd - nonEmptyStart));
+   _history.push_back(str);
+   _historyIdx = _history.size();
 }
 
 
