@@ -255,6 +255,23 @@ void
 CmdParser::deleteLine()
 {
    // TODO...
+   while(_readBufPtr > _readBuf) {
+      cout << "\b";
+      _readBufPtr--;
+   }
+
+   while(_readBufPtr < _readBufEnd) {
+      cout << " ";
+      _readBufPtr++;
+   }
+
+   while(_readBufPtr > _readBuf) {
+      cout << "\b";
+      _readBufPtr--;
+   }
+
+   _readBufPtr = _readBufEnd = _readBuf;
+   *(_readBufPtr) = 0;
 }
 
 
@@ -280,6 +297,50 @@ void
 CmdParser::moveToHistory(int index)
 {
    // TODO...
+   bool reachEnd = false;
+   if (index == _historyIdx)
+   {
+      return;
+   }
+
+   if (index < _historyIdx)
+   {
+      if (_historyIdx == 0)
+      {
+         mybeep();
+         return;
+      }
+
+      if (_historyIdx == _history.size())
+      {
+         string str;
+         str.assign(_readBuf, size_t(_readBufEnd - _readBuf));
+         _history.push_back(str);
+         _tempCmdStored = true;
+      }
+
+      if (index < 0)
+      {
+         index = 0;
+      }
+   }
+   else
+   {
+      if (_historyIdx == _history.size())
+      {
+         mybeep();
+         return;
+      }
+
+      if (index >= _history.size())
+      {
+         index = _history.size() - 1;
+         reachEnd = true;
+      }
+   }
+
+   _historyIdx = index;
+   retrieveHistory();
 }
 
 
@@ -299,6 +360,14 @@ void
 CmdParser::addHistory()
 {
    // TODO...
+   // Clean tmp recorded string
+
+   if (_tempCmdStored == true)
+   {
+      _tempCmdStored = false;
+      _history.pop_back();
+   }
+
    // Trim leading and trailing whitespaces
 
    char* nonEmptyStart;
@@ -345,4 +414,10 @@ CmdParser::retrieveHistory()
    strcpy(_readBuf, _history[_historyIdx].c_str());
    cout << _readBuf;
    _readBufPtr = _readBufEnd = _readBuf + _history[_historyIdx].size();
+
+   if(_historyIdx == (_history.size()-1) && _tempCmdStored)
+   {
+      _tempCmdStored = false;
+      _history.pop_back();
+   }
 }
