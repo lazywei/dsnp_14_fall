@@ -8,10 +8,15 @@ end
 
 def read_must_files(filename, hw_dir)
   results = []
-  File.open(File.join(hw_dir, filename), "r") do |file|
-    while line = file.gets
-      results << clean_filename(line, hw_dir)
+  target_file = File.join(hw_dir, filename)
+  if File.exist?(target_file)
+    File.open(target_file, "r") do |file|
+      while line = file.gets
+        results << clean_filename(line, hw_dir)
+      end
     end
+  else
+    puts "#{filename} not found, skip it..."
   end
 
   return results
