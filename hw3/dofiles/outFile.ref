@@ -1,0 +1,562 @@
+Missing option!!
+gncalc> do
+
+Error: cannot open file "-a"!!
+gncalc> do -a
+
+gncalc> help do
+Usage: DOfile <(string file)>
+
+Error: cannot open file "12a"!!
+gncalc> do 12a
+
+Error: cannot open file "12"!!
+gncalc> do 12
+
+gncalc> help help
+Usage: HELp [(string cmd)]
+
+Illegal option!! (he)
+gncalc> help he
+
+gncalc> help his
+Usage: HIStory [(int nPrint)]
+
+gncalc> help gnadd
+Usage: GNADD <(string y)> <(string a) | #(int va)> <(string b) | #(int vb)>
+
+Illegal command!! (hep)
+gncalc> hep gncompARE
+
+gncalc> help gnCompAre
+Usage: GNCOMPare <(string var1) | #(int val1)> <(string var2) | #(int val2)>
+
+gncalc> help gnprint
+Usage: GNPrint [(string var)...]
+
+Illegal option!! (a)
+Illegal option!! (b)
+Illegal option!! (c)
+gncalc> gnprint a b c
+
+Illegal option!! (-1111)
+gncalc> gnvar a -1111
+
+gncalc> gnvar a #-333
+a = #-333
+
+gncalc> gnvar b #-3333
+b = #-3333
+
+gncalc> gnvar c #-7777
+c = #-7777
+
+Illegal option!! (-#5555)
+gncalc> gnvar b -#5555
+
+gncalc> gnprint
+a = #-333
+b = #-3333
+c = #-7777
+
+gncalc> gnprint a #b
+a = #-333
+Illegal option!! (#b)
+
+gncalc> gnprint  b c
+b = #-3333
+c = #-7777
+
+gncalc> gnprint  c
+c = #-7777
+
+gncalc> gnset 23
+
+gncalc> gnprint a
+a = #-eb
+
+gncalc> gnprint
+a = #-eb
+b = #-66l
+c = #-eg3
+
+Illegal option!! (#a)
+gncalc> gnset #a
+
+Illegal option!! (a)
+gncalc> gnset a
+
+gncalc> help gnset
+Usage: GNSET <(int base)>
+
+gncalc> help gnmulti
+Usage: GNMULTiply <(string y)> <(string a) | #(int va)> <(string b) | #(int vb)>
+
+Extra option!! ( -1)
+gncalc> gnset a -1
+
+Illegal option!! (-123)
+gncalc> gnset -123
+
+gncalc> gnvar a #-123
+a = #-123
+
+gncalc> gnvar b #-234
+b = #-234
+
+gncalc> gnvar c #-655377
+c = #-655377
+
+gncalc> gnmult d #123 c
+d(#-b9hjfc7) = #123 * #-655377
+
+gncalc> gnadd e #123 #-23
+e(#100) = #123 + #-23
+
+gncalc> gnprint a c d
+a = #-123
+c = #-655377
+d = #-b9hjfc7
+
+gncalc> gnprint
+a = #-123
+b = #-234
+c = #-655377
+d = #-b9hjfc7
+e = #100
+
+gncalc> gnset 2
+
+gncalc> gnprint
+a = #-1001000010
+b = #-10001101011
+c = #-10011000111001000111101101
+d = #-1100100110011110111100100011010
+e = #1000010001
+
+gncalc> gnset 16
+
+gncalc> gnprint
+a = #-242
+b = #-46b
+c = #-26391ed
+d = #-64cf791a
+e = #211
+
+gncalc> gnset 36
+
+gncalc> gnprint
+a = #-g2
+b = #-vf
+c = #-nv1t9
+d = #-ryytqy
+e = #ep
+
+gncalc> gnset 10
+
+gncalc> his
+   0: do
+   1: do -a
+   2: help do
+   3: do 12a
+   4: do 12
+   5: help help
+   6: help he
+   7: help his
+   8: help gnadd
+   9: hep gncompARE
+   10: help gnCompAre
+   11: help gnprint
+   12: gnprint a b c
+   13: gnvar a -1111
+   14: gnvar a #-333
+   15: gnvar b #-3333
+   16: gnvar c #-7777
+   17: gnvar b -#5555
+   18: gnprint
+   19: gnprint a #b
+   20: gnprint  b c
+   21: gnprint  c
+   22: gnset 23
+   23: gnprint a
+   24: gnprint
+   25: gnset #a
+   26: gnset a
+   27: help gnset
+   28: help gnmulti
+   29: gnset a -1
+   30: gnset -123
+   31: gnvar a #-123
+   32: gnvar b #-234
+   33: gnvar c #-655377
+   34: gnmult d #123 c
+   35: gnadd e #123 #-23
+   36: gnprint a c d
+   37: gnprint
+   38: gnset 2
+   39: gnprint
+   40: gnset 16
+   41: gnprint
+   42: gnset 36
+   43: gnprint
+   44: gnset 10
+   45: his
+
+gncalc> help gnvar
+Usage: GNVARiable <(string var)> <(string var) | #(int val)>
+
+Illegal option!! (i)
+gncalc> GNVAR __ i
+
+gncalc> GNVAR __ a
+__ = #-578
+
+gncalc> GNVAR __ __
+__ = #-578
+
+Illegal option!! (#__)
+gncalc> GNVAR __ #__
+
+Illegal option!! (_#_)
+gncalc> GNVAR __ _#_
+
+Illegal option!! (__#)
+gncalc> GNVAR __ __#
+
+gncalc> help q
+Usage: Quit [-Force]
+
+gncalc> help gnComp
+Usage: GNCOMPare <(string var1) | #(int val1)> <(string var2) | #(int val2)>
+
+gncalc> gncomp __ a
+#-578 == #-578
+
+gncalc> gncomp __ b
+#-578 != #-1131
+
+Illegal option!! (-123)
+gncalc> gncomp __ -123
+
+gncalc> gncomp __ #-123
+#-578 != #-123
+
+Illegal option!! (12)
+gncalc> gnvar 12 #123
+
+Illegal option!! (12a)
+gncalc> gnvar 12a #123
+
+Illegal option!! (1a2)
+gncalc> gnvar 1a2 #123
+
+gncalc> gnvar a12 #123
+a12 = #123
+
+Illegal command!! (^)
+gncalc> ^
+
+Illegal option!! ('a')
+gncalc> gnset 'a'
+
+Illegal option!! ('')
+gncalc> gnvar '' #12
+
+Illegal option!! (&)
+gncalc> gnvar & #12
+
+Illegal option!! (a~)
+gncalc> gnvar a~ #12
+
+gncalc> gnprint
+__ = #-578
+a = #-578
+a12 = #123
+b = #-1131
+c = #-40079853
+d = #-1691318554
+e = #529
+
+gncalc> gnvar Q_Q #123
+Q_Q = #123
+
+gncalc> gnvar T_T #345
+T_T = #345
+
+gncalc> gnvar XD #567
+XD = #567
+
+Illegal option!! (1)
+gncalc> gnset 1
+
+Illegal option!! (0)
+gncalc> gnset 0
+
+Illegal command!! (print)
+gncalc> print
+
+gncalc> gnprint
+Q_Q = #123
+T_T = #345
+XD = #567
+__ = #-578
+a = #-578
+a12 = #123
+b = #-1131
+c = #-40079853
+d = #-1691318554
+e = #529
+
+gncalc> gnvar Q_Q #-1
+Q_Q = #-1
+
+gncalc> gnvar Q_Q #-2
+Q_Q = #-2
+
+gncalc> gnvar Q_Q #-3
+Q_Q = #-3
+
+gncalc> gnvar T_T #-3
+T_T = #-3
+
+Illegal option!! (^.<)
+gncalc> gnvar ^.< #-3
+
+Missing option!!
+gncalc> gnvar XD
+
+gncalc> gnvar XD #1
+XD = #1
+
+Illegal command!! (bye)
+gncalc> bye
+
+gncalc> gnprint XD
+XD = #1
+
+gncalc> his
+   0: do
+   1: do -a
+   2: help do
+   3: do 12a
+   4: do 12
+   5: help help
+   6: help he
+   7: help his
+   8: help gnadd
+   9: hep gncompARE
+   10: help gnCompAre
+   11: help gnprint
+   12: gnprint a b c
+   13: gnvar a -1111
+   14: gnvar a #-333
+   15: gnvar b #-3333
+   16: gnvar c #-7777
+   17: gnvar b -#5555
+   18: gnprint
+   19: gnprint a #b
+   20: gnprint  b c
+   21: gnprint  c
+   22: gnset 23
+   23: gnprint a
+   24: gnprint
+   25: gnset #a
+   26: gnset a
+   27: help gnset
+   28: help gnmulti
+   29: gnset a -1
+   30: gnset -123
+   31: gnvar a #-123
+   32: gnvar b #-234
+   33: gnvar c #-655377
+   34: gnmult d #123 c
+   35: gnadd e #123 #-23
+   36: gnprint a c d
+   37: gnprint
+   38: gnset 2
+   39: gnprint
+   40: gnset 16
+   41: gnprint
+   42: gnset 36
+   43: gnprint
+   44: gnset 10
+   45: his
+   46: help gnvar
+   47: GNVAR __ i
+   48: GNVAR __ a
+   49: GNVAR __ __
+   50: GNVAR __ #__
+   51: GNVAR __ _#_
+   52: GNVAR __ __#
+   53: help q
+   54: help gnComp
+   55: gncomp __ a
+   56: gncomp __ b
+   57: gncomp __ -123
+   58: gncomp __ #-123
+   59: gnvar 12 #123
+   60: gnvar 12a #123
+   61: gnvar 1a2 #123
+   62: gnvar a12 #123
+   63: ^
+   64: gnset 'a'
+   65: gnvar '' #12
+   66: gnvar & #12
+   67: gnvar a~ #12
+   68: gnprint
+   69: gnvar Q_Q #123
+   70: gnvar T_T #345
+   71: gnvar XD #567
+   72: gnset 1
+   73: gnset 0
+   74: print
+   75: gnprint
+   76: gnvar Q_Q #-1
+   77: gnvar Q_Q #-2
+   78: gnvar Q_Q #-3
+   79: gnvar T_T #-3
+   80: gnvar ^.< #-3
+   81: gnvar XD
+   82: gnvar XD #1
+   83: bye
+   84: gnprint XD
+   85: his
+
+gncalc> gnset 8
+
+Missing option!!
+gncalc> gnmult __ a
+
+Illegal option!! (#a)
+gncalc> gnmult __ #a #0
+
+Illegal option!! (0)
+gncalc> gnmult __ 0 #0
+
+gncalc> gnmult __ #1 #0
+__(#0) = #1 * #0
+
+gncalc> gnmult __ #12 #0
+__(#0) = #12 * #0
+
+gncalc> gnmult __ #12 __
+__(#0) = #12 * #0
+
+gncalc> gnmult __ __ __
+__(#0) = #0 * #0
+
+gncalc> gnmult a a a
+a(#1214404) = #-1102 * #-1102
+
+gncalc> his
+   0: do
+   1: do -a
+   2: help do
+   3: do 12a
+   4: do 12
+   5: help help
+   6: help he
+   7: help his
+   8: help gnadd
+   9: hep gncompARE
+   10: help gnCompAre
+   11: help gnprint
+   12: gnprint a b c
+   13: gnvar a -1111
+   14: gnvar a #-333
+   15: gnvar b #-3333
+   16: gnvar c #-7777
+   17: gnvar b -#5555
+   18: gnprint
+   19: gnprint a #b
+   20: gnprint  b c
+   21: gnprint  c
+   22: gnset 23
+   23: gnprint a
+   24: gnprint
+   25: gnset #a
+   26: gnset a
+   27: help gnset
+   28: help gnmulti
+   29: gnset a -1
+   30: gnset -123
+   31: gnvar a #-123
+   32: gnvar b #-234
+   33: gnvar c #-655377
+   34: gnmult d #123 c
+   35: gnadd e #123 #-23
+   36: gnprint a c d
+   37: gnprint
+   38: gnset 2
+   39: gnprint
+   40: gnset 16
+   41: gnprint
+   42: gnset 36
+   43: gnprint
+   44: gnset 10
+   45: his
+   46: help gnvar
+   47: GNVAR __ i
+   48: GNVAR __ a
+   49: GNVAR __ __
+   50: GNVAR __ #__
+   51: GNVAR __ _#_
+   52: GNVAR __ __#
+   53: help q
+   54: help gnComp
+   55: gncomp __ a
+   56: gncomp __ b
+   57: gncomp __ -123
+   58: gncomp __ #-123
+   59: gnvar 12 #123
+   60: gnvar 12a #123
+   61: gnvar 1a2 #123
+   62: gnvar a12 #123
+   63: ^
+   64: gnset 'a'
+   65: gnvar '' #12
+   66: gnvar & #12
+   67: gnvar a~ #12
+   68: gnprint
+   69: gnvar Q_Q #123
+   70: gnvar T_T #345
+   71: gnvar XD #567
+   72: gnset 1
+   73: gnset 0
+   74: print
+   75: gnprint
+   76: gnvar Q_Q #-1
+   77: gnvar Q_Q #-2
+   78: gnvar Q_Q #-3
+   79: gnvar T_T #-3
+   80: gnvar ^.< #-3
+   81: gnvar XD
+   82: gnvar XD #1
+   83: bye
+   84: gnprint XD
+   85: his
+   86: gnset 8
+   87: gnmult __ a
+   88: gnmult __ #a #0
+   89: gnmult __ 0 #0
+   90: gnmult __ #1 #0
+   91: gnmult __ #12 #0
+   92: gnmult __ #12 __
+   93: gnmult __ __ __
+   94: gnmult a a a
+   95: his
+
+gncalc> gnprint
+Q_Q = #-3
+T_T = #-3
+XD = #1
+__ = #0
+a = #1214404
+a12 = #173
+b = #-2153
+c = #-230710755
+d = #-14463674432
+e = #1021
+
+gncalc> q -f
+

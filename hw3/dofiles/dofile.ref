@@ -1,0 +1,99 @@
+do
+do -a
+help do
+do 12a
+do 12
+help help
+help he
+help his
+help gnadd
+hep gncompARE
+help gnCompAre
+help gnprint
+gnprint a b c
+gnvar a -1111
+gnvar a #-333
+gnvar b #-3333
+gnvar c #-7777
+gnvar b -#5555
+gnprint
+gnprint a #b
+gnprint  b c
+gnprint  c
+gnset 23
+gnprint a
+gnprint
+gnset #a
+gnset a
+help gnset
+help gnmulti
+gnset a -1
+gnset -123
+gnvar a #-123
+gnvar b #-234
+gnvar c #-655377
+gnmult d #123 c
+gnadd e #123 #-23
+gnprint a c d
+gnprint
+gnset 2
+gnprint
+gnset 16
+gnprint
+gnset 36
+gnprint
+gnset 10
+his
+help gnvar
+GNVAR __ i
+GNVAR __ a
+GNVAR __ __
+GNVAR __ #__
+GNVAR __ _#_
+GNVAR __ __#
+help q
+help gnComp
+gncomp __ a
+gncomp __ b
+gncomp __ -123
+gncomp __ #-123
+gnvar 12 #123
+gnvar 12a #123
+gnvar 1a2 #123
+gnvar a12 #123
+^
+gnset 'a'
+gnvar '' #12
+gnvar & #12
+gnvar a~ #12
+gnprint
+gnvar Q_Q #123
+gnvar T_T #345
+gnvar XD #567
+gnset 1
+gnset 0
+print
+gnprint
+gnvar Q_Q #-1
+gnvar Q_Q #-2
+gnvar Q_Q #-3
+gnvar T_T #-3
+gnvar ^.< #-3
+gnvar XD
+gnvar XD #1
+bye
+gnprint XD
+his
+gnset 8
+gnmult __ a
+gnmult __ #a #0
+gnmult __ 0 #0
+gnmult __ #1 #0
+gnmult __ #12 #0
+gnmult __ #12 __
+gnmult __ __ __
+gnmult a a a
+his
+gnprint
+q -f
+

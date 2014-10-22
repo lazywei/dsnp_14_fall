@@ -1,0 +1,50 @@
+CmdClass	cmd/cmdParser.h	/^#define CmdClass(T)                           \\$/
+CmdMap	cmd/cmdParser.h	/^typedef map<const string, CmdExec*>   CmdMap;$/
+CmdRegPair	cmd/cmdParser.h	/^typedef pair<const string, CmdExec*>  CmdRegPair;$/
+checkOptCmd	cmd/cmdParser.cpp	/^CmdExec::checkOptCmd(const string& check) const$/
+deleteChar	cmd/cmdReader.cpp	/^CmdParser::deleteChar()$/
+deleteLine	cmd/cmdReader.cpp	/^CmdParser::deleteLine()$/
+errorOption	cmd/cmdParser.cpp	/^CmdExec::errorOption(CmdOptionError err, const str/
+exec	cmd/cmdCommon.cpp	/^HelpCmd::exec(const string& option)$/
+execOneCmd	cmd/cmdParser.cpp	/^CmdParser::execOneCmd()$/
+help	cmd/cmdCommon.cpp	/^HelpCmd::help() const$/
+initCommonCmd	cmd/cmdCommon.cpp	/^initCommonCmd()$/
+insertChar	cmd/cmdReader.cpp	/^CmdParser::insertChar(char ch, int rep)$/
+lexOptions	cmd/cmdParser.cpp	/^(const string& option, vector<string>& tokens, siz/
+lexSingleOption	cmd/cmdParser.cpp	/^(const string& option, string& token, bool optiona/
+listCmd	cmd/cmdParser.cpp	/^CmdParser::listCmd(const string& str)$/
+moveToHistory	cmd/cmdReader.cpp	/^CmdParser::moveToHistory(int index)$/
+mybeep	cmd/cmdCharDef.cpp	/^void mybeep()$/
+mygetc	cmd/cmdCharDef.cpp	/^static char mygetc(istream& istr)$/
+openDofile	cmd/cmdParser.cpp	/^CmdParser::openDofile(const string& dof)$/
+popDofile	cmd/cmdParser.cpp	/^CmdParser::popDofile()$/
+printHelps	cmd/cmdParser.cpp	/^CmdParser::printHelps() const$/
+printHistory	cmd/cmdParser.cpp	/^CmdParser::printHistory(int nPrint) const$/
+readCmd	cmd/cmdReader.cpp	/^CmdParser::readCmd(istream& istr)$/
+regCmd	cmd/cmdParser.cpp	/^CmdParser::regCmd(const string& cmd, unsigned nCmp/
+reprintCmd	cmd/cmdReader.cpp	/^CmdParser::reprintCmd()$/
+reset_keypress	cmd/cmdCharDef.cpp	/^static void reset_keypress(void)$/
+set_keypress	cmd/cmdCharDef.cpp	/^static void set_keypress(void)$/
+string	cmd/cmdParser.cpp	/^\/\/ 1. Read the command string (may contain multi/
+tab	cmd/cmdCharDef.h	/^   TAB_KEY          = int('\\t'),  \/\/ tab('\\t')/
+usage	cmd/cmdCommon.cpp	/^HelpCmd::usage(ostream& os) const$/
+CalcMap	calc/calcGNum.h	/^typedef map<string, GNum> CalcMap;$/
+exec	calc/calcCmd.cpp	/^MsetCmd::exec(const string& option)$/
+getStrVal	calc/calcGNum.cpp	/^GNum::getStrVal(const string& s, GNum& n)$/
+help	calc/calcCmd.cpp	/^MsetCmd::help() const$/
+initCalcCmd	calc/calcCmd.cpp	/^initCalcCmd()$/
+usage	calc/calcCmd.cpp	/^MsetCmd::usage(ostream& os) const$/
+isValidVarName	util/myString.cpp	/^isValidVarName(const string& str)$/
+myGetChar	util/myGetChar.cpp	/^char myGetChar(istream& istr)$/
+myStr2Int	util/myString.cpp	/^myStr2Int(const string& str, int& num)$/
+myStrGetTok	util/myString.cpp	/^myStrGetTok(const string& str, string& tok, size_t/
+reset_keypress	util/myGetChar.cpp	/^static void reset_keypress(void)$/
+set_keypress	util/myGetChar.cpp	/^static void set_keypress(void)$/
+strlen	util/myString.cpp	/^\/\/ 1. strlen(s1) must >= n$/
+Mmain.cpp	main/main.cpp	/^main(int argc, char** argv)$/
+myexit	main/main.cpp	/^myexit()$/
+usage	main/main.cpp	/^usage()$/
+Mtest.cpp	test/test.cpp	/^int main(int argc, char **argv)$/
+print	test/test.cpp	/^void print()$/
+reset	test/test.cpp	/^void reset()$/
+run	test/test.cpp	/^void run(int num1, int num2, int num3)$/

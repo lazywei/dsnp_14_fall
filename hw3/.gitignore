@@ -1,0 +1,4 @@
+!/src/cmd/cmdReader-32.o
+!/src/cmd/cmdReader-64.o
+!/src/cmd/cmdReader-mac.o
+!/src/cmd/cmdReader.o
