@@ -42,22 +42,6 @@ CmdParser::closeDofile()
    delete _dofile;
 }
 
-// Removed for TODO's
-// return false if stack overflow
-bool
-CmdParser::pushDofile()
-{
-   #define DOFILE_STACK_LIMIT 1024
-   if (_dofileStack.size() >= DOFILE_STACK_LIMIT) {
-      cerr << "Error: dofile stack overflow (" << DOFILE_STACK_LIMIT
-           << ")" << endl;
-      return false;
-   }
-   _dofileStack.push(_dofile);
-   _dofile = 0;
-   return true;
-}
-
 // Return false if registration fails
 bool
 CmdParser::regCmd(const string& cmd, unsigned nCmp, CmdExec* e)
@@ -234,7 +218,6 @@ CmdParser::listCmd(const string& str)
 // ------------
 // 1. The mandatory part of the command string (stored in _cmdMap) must match
 // 2. The optional part can be partially omitted.
-//    ==> Checked by the CmdExec::checkOptCmd(const string&) function
 // 3. All string comparison are "case-insensitive".
 //
 CmdExec*
@@ -242,7 +225,6 @@ CmdParser::getCmd(string cmd)
 {
    CmdExec* e = 0;
    // TODO...
-   // call CmdExec::checkOptCmd(const string&) if needed...
    return e;
 }
 

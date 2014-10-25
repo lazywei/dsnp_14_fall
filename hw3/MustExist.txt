@@ -4,8 +4,8 @@ _hw3/src/Makefile.lib
 _hw3/src/calc/Makefile
 _hw3/src/calc/calcCmd.cpp
 _hw3/src/calc/calcCmd.h
-_hw3/src/calc/calcModNum.h
-_hw3/src/calc/calcModNum.cpp
+_hw3/src/calc/calcGNum.h
+_hw3/src/calc/calcGNum.cpp
 _hw3/src/cmd/Makefile
 _hw3/src/cmd/cmdCommon.h
 _hw3/src/cmd/cmdCommon.cpp

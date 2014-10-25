@@ -6,7 +6,7 @@ _hw3/ref/modCalc-32
 _hw3/ref/testMC-64
 _hw3/ref/testMC-32
 _hw3/src/calc/calcCmd.o
-_hw3/src/calc/calcModNum.o
+_hw3/src/calc/calcGNum.o
 _hw3/src/cmd/cmdCharDef.o
 _hw3/src/cmd/cmdCommon.o
 _hw3/src/cmd/cmdParser.o
