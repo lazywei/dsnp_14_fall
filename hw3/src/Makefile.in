@@ -23,7 +23,7 @@ CFLAGS = -g -Wall -DTA_KB_SETTING $(PKGFLAG)
 	@$(CXX) $(CFLAGS) -I$(EXTINCDIR) -c -o $@ $<
 
 top: $(EXTLINK) target
-	@echo -n
+	@/bin/echo -n
 
 clean:
 	@rm -f $(COBJS)
@@ -39,10 +39,10 @@ extheader: .extheader.mak
 .extheader.mak: $(EXTHDRS)
 	@echo Linking external header files...
 	@rm -f $@
-	@echo -n "$(EXTLINK): " > $@
+	@/bin/echo -n "$(EXTLINK): " > $@
 	@for hdr in $(EXTHDRS); \
 	do \
-		echo -n "$(EXTINCDIR)/$$hdr " >> $@; \
+		/bin/echo -n "$(EXTINCDIR)/$$hdr " >> $@; \
 		rm -f $(EXTINCDIR)/$$hdr; \
 	done
 	@echo >> $@

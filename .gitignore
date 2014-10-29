@@ -3,5 +3,7 @@
 cmpr_tmp
 /MustExist.txt
 /MustRemove.txt
-
 *.o
+.ropeproject
+*.pyc
+hw3/src/tags
