@@ -94,3 +94,28 @@ isValidVarName(const string& str)
          return false;
    return true;
 }
+
+string
+int2base(int x, int base)
+{
+   int sign = 1;
+   string digs = "0123456789abcdefghijklmnopqrstuvwxyz";
+   string result = "";
+
+   if (x < 0) { sign = -1; }
+   else if (x == 0) { return "0"; }
+   else { sign = 1; }
+
+   x *= sign;
+
+   while(x != 0) {
+      result += digs.at(x % base);
+      x /= base;
+   }
+
+   if (sign < 0) { result += "-"; }
+
+   reverse(result.begin(), result.end());
+
+   return result;
+}

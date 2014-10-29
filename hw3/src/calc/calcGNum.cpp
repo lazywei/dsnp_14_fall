@@ -20,6 +20,6 @@ CalcMap GNum::_varMap;
 
 ostream& operator << (ostream& os, const GNum& n)
 {
-   os << "#" << n._num;
+   os << "#" << int2base(n._num, GNum::_base);
    return os;
 }

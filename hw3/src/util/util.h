@@ -19,6 +19,8 @@ extern size_t myStrGetTok(const string& str, string& tok, size_t pos = 0,
 extern bool myStr2Int(const string& str, int& num);
 extern bool isValidVarName(const string& str);
 
+extern string int2base(int x, int base);
+
 // In myGetChar.cpp
 extern char myGetChar(istream&);
 extern char myGetChar();
