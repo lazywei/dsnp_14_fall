@@ -12,6 +12,8 @@
 #include <vector>
 #include <map>
 
+#include "util.h"
+
 using namespace std;
 
 class GNum;
@@ -23,6 +25,7 @@ class GNum
 public:
    // Default constructor
    // TODO: Implement the default constructor;
+   // DONE
    GNum(int i = 0) : _num(i) {}
    // Get the GNum from the _varMap based on the string "str".
    // If found, copy the value.
@@ -31,16 +34,56 @@ public:
 
    // Operator overload
    // TODO: overload the following operators (+, +=, -, -=, *, *=, ==, !=, =)
+   // DONE
    //
-   GNum operator + (const GNum& n) const { return 0; }
-   GNum& operator += (const GNum& n) { return (*this); }
-   GNum operator - (const GNum& n) const { return 0; }
-   GNum& operator -= (const GNum& n) { return (*this); }
-   GNum operator * (const GNum& n) const { return 0; }
-   GNum& operator *= (const GNum& n) { return (*this); }
-   bool operator == (const GNum& n) const { return true; }
-   bool operator != (const GNum& n) const { return true; }
-   GNum& operator = (const GNum& n) { return (*this); }
+   GNum operator + (const GNum& n) const
+   {
+      return GNum(_num + n._num);
+   }
+
+   GNum& operator += (const GNum& n)
+   {
+      _num += n._num;
+      return (*this);
+   }
+
+   GNum operator - (const GNum& n) const
+   {
+      return GNum(_num - n._num);
+   }
+
+   GNum& operator -= (const GNum& n)
+   {
+      _num -= n._num;
+      return (*this);
+   }
+
+   GNum operator * (const GNum& n) const
+   {
+      return GNum(_num * n._num);
+   }
+
+   GNum& operator *= (const GNum& n)
+   {
+      _num *= n._num;
+      return (*this);
+   }
+
+   bool operator == (const GNum& n) const
+   {
+      return _num == n._num;
+   }
+
+   bool operator != (const GNum& n) const
+   {
+      return _num != n._num;
+   }
+
+   GNum& operator = (const GNum& n)
+   {
+      _num = n._num;
+      return (*this);
+   }
 
    // static methods
    static void setBase(int b) { _base = b; }
@@ -48,16 +91,46 @@ public:
    //
    // [TODO] Set the variable 's' in the _varMap to value 'n',
    // no matter the variable 's' exists in _varMap or not
-   static void setVarVal(const string& s, const GNum& n) { }
+   // DONE
+   static void setVarVal(const string& s, const GNum& n)
+   {
+      _varMap[s] = n;
+   }
+
    //
    // [TODO] Get the value of variable 's'.
    // If 's' can be found, store the value in 'n' and return true.
    // Otherwise ('s' not found), return false.
-   static bool getVarVal(const string& s, GNum& n) { return true; }
+   // DONE
+   static bool getVarVal(const string& s, GNum& n)
+   {
+      if (_varMap.count(s))
+      {
+         n = _varMap[s];
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+   }
+
    //
    // [TODO] If 's' is a valid variable name, return "getVarVal(s, n)";
    // else if 's' is a valid number, convert it to GNum and assign to 'n'
-   static bool getStrVal(const string& s, GNum& n) { return true; }
+   static bool getStrVal(const string& s, GNum& n)
+   {
+      if (isValidVarName(s))
+      {
+         return getVarVal(s, n);
+      }
+      else
+      {
+         // [TODO] How to check if it is a valid number
+         return true;
+      }
+   }
+
    //
    // [TODO] Print out all the variables in _varMap, one variable per line,
    // in the following format (assume _base = 16) ---

@@ -15,8 +15,11 @@
 //       (Note: let default _base = 10)
 // TODO: Define the member functions of class GNum
 
+int GNum::_base = 10;
+CalcMap GNum::_varMap;
+
 ostream& operator << (ostream& os, const GNum& n)
 {
+   os << "#" << n._num;
    return os;
 }
-
