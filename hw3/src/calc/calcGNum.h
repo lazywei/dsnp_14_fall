@@ -137,11 +137,22 @@ public:
    // a = #9
    // b = #1a
    // kkk = #f1c
-   static void printVars() { }
-   static void resetVapMap() { }
+   // DONE
+   static void printVars()
+   {
+      for ( CalcMap::const_iterator iter = _varMap.begin(); iter != _varMap.end(); ++iter )
+      {
+         cout << iter->first << " = " << iter->second << endl;
+      }
+   }
+
+   static void resetVapMap()
+   {
+      _varMap.clear();
+   }
 
    // friend functions
-   friend ostream& operator << (ostream&, const GNum&);  // TODO
+   friend ostream& operator << (ostream&, const GNum&);  // TODO DONE
 
 private:
    // Data members
