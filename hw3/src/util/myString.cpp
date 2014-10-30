@@ -9,6 +9,7 @@
 #include <ctype.h>
 #include <cstring>
 #include <cassert>
+#include <math.h>
 
 using namespace std;
 
@@ -148,4 +149,34 @@ myMandOptCmp(const string& cmd, const string& mand, const string& opt)
    }
 
    return true;
+}
+
+bool
+myBase2Int(string str, int base, int& result)
+{
+   int sign = 1;
+   string digs = "0123456789abcdefghijklmnopqrstuvwxyz";
+   size_t true_dig = 0;
+   result = 0;
+
+   if (str[0] == '-')
+   {
+      sign = -1;
+      str = str.substr(1);
+   }
+
+   reverse(str.begin(), str.end());
+
+   for (unsigned i = 0; i < str.size(); ++i)
+   {
+      true_dig = digs.find_first_of(str[i]);
+      if (true_dig == string::npos)
+      {
+         return 0;
+      }
+      result += pow(base, i) * true_dig;
+   }
+   result *= sign;
+
+   return result;
 }

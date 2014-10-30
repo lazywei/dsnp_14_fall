@@ -15,6 +15,14 @@ bool
 initCalcCmd()
 {
    // TODO...
+   if (!(cmdMgr->regCmd("GNADD", 5, new GNAddCmd) &&
+         cmdMgr->regCmd("GNPrint", 3, new GNPrintCmd)
+         /* cmdMgr->regCmd("HELp", 3, new HelpCmd) && */
+         /* cmdMgr->regCmd("DOfile", 2, new DofileCmd) */
+      )) {
+      cerr << "Registering \"init\" commands fails... exiting" << endl;
+      return false;
+   }
    return true;
 }
 
@@ -102,6 +110,26 @@ CmdExecStatus
 GNAddCmd::exec(const string& option)
 {
    // TODO...
+   // check option
+   vector<string> options;
+   if (!CmdExec::lexOptions(option, options, 3))
+      return CMD_EXEC_ERROR;
+
+   // check option 1
+   if (!isValidVarName(options[0]))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
+
+   // check option 2
+   GNum v1;
+   if (!GNum::getStrVal(options[1], v1))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[1]);
+
+   // check option 3
+   GNum v2;
+   if (!GNum::getStrVal(options[2], v2))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[2]);
+
+   GNum::setVarVal(options[0], v1+v2);
 
    return CMD_EXEC_DONE;
 }

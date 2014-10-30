@@ -120,14 +120,19 @@ public:
    // else if 's' is a valid number, convert it to GNum and assign to 'n'
    static bool getStrVal(const string& s, GNum& n)
    {
+      int val = 0;
       if (isValidVarName(s))
       {
          return getVarVal(s, n);
       }
+      else if (s[0] == '#' && myBase2Int(s.substr(1), _base, val))
+      {
+         n = GNum(val);
+         return true;
+      }
       else
       {
-         // [TODO] How to check if it is a valid number
-         return true;
+         return false;
       }
    }
 

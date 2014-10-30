@@ -253,7 +253,8 @@ CmdParser::getCmd(string cmd)
    // DONE
    for (CmdMap::iterator it = _cmdMap.begin(); it != _cmdMap.end(); ++it)
    {
-      if (myMandOptCmp(cmd, it->first, it->second->getOptCmd()))
+      /* if (myMandOptCmp(cmd, it->first, it->second->getOptCmd())) */
+      if (myStrNCmp(it->first + it->second->getOptCmd(), cmd, it->first.size()) == 0)
       {
          e = it->second;
       }

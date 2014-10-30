@@ -21,6 +21,7 @@ extern bool isValidVarName(const string& str);
 
 extern string int2base(int x, int base);
 extern bool myMandOptCmp(const string& cmd, const string& mand, const string& opt);
+extern bool myBase2Int(string str, int base, int& result);
 
 // In myGetChar.cpp
 extern char myGetChar(istream&);
