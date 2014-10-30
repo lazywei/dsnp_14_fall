@@ -15,10 +15,14 @@ bool
 initCalcCmd()
 {
    // TODO...
+   // DONE
    if (!(cmdMgr->regCmd("GNADD", 5, new GNAddCmd) &&
-         cmdMgr->regCmd("GNPrint", 3, new GNPrintCmd)
-         /* cmdMgr->regCmd("HELp", 3, new HelpCmd) && */
-         /* cmdMgr->regCmd("DOfile", 2, new DofileCmd) */
+         cmdMgr->regCmd("GNCOMPare", 6, new GNCmpCmd) &&
+         cmdMgr->regCmd("GNMULTiply", 6, new GNMultCmd) &&
+         cmdMgr->regCmd("GNPrint", 3, new GNPrintCmd) &&
+         cmdMgr->regCmd("GNSET", 5, new GNSetCmd) &&
+         cmdMgr->regCmd("GNSUBtract", 5, new GNSubCmd) &&
+         cmdMgr->regCmd("GNVARiable", 5, new GNVarCmd)
       )) {
       cerr << "Registering \"init\" commands fails... exiting" << endl;
       return false;
@@ -110,6 +114,8 @@ CmdExecStatus
 GNAddCmd::exec(const string& option)
 {
    // TODO...
+   // DONE
+
    // check option
    vector<string> options;
    if (!CmdExec::lexOptions(option, options, 3))
@@ -157,6 +163,28 @@ CmdExecStatus
 GNSubCmd::exec(const string& option)
 {
    // TODO...
+   // DONE
+
+   // check option
+   vector<string> options;
+   if (!CmdExec::lexOptions(option, options, 3))
+      return CMD_EXEC_ERROR;
+
+   // check option 1
+   if (!isValidVarName(options[0]))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
+
+   // check option 2
+   GNum v1;
+   if (!GNum::getStrVal(options[1], v1))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[1]);
+
+   // check option 3
+   GNum v2;
+   if (!GNum::getStrVal(options[2], v2))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[2]);
+
+   GNum::setVarVal(options[0], v1-v2);
 
    return CMD_EXEC_DONE;
 }
@@ -184,7 +212,29 @@ CmdExecStatus
 GNMultCmd::exec(const string& option)
 {
    // TODO...
-   
+   // DONE
+
+   // check option
+   vector<string> options;
+   if (!CmdExec::lexOptions(option, options, 3))
+      return CMD_EXEC_ERROR;
+
+   // check option 1
+   if (!isValidVarName(options[0]))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
+
+   // check option 2
+   GNum v1;
+   if (!GNum::getStrVal(options[1], v1))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[1]);
+
+   // check option 3
+   GNum v2;
+   if (!GNum::getStrVal(options[2], v2))
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[2]);
+
+   GNum::setVarVal(options[0], v1*v2);
+
    return CMD_EXEC_DONE;
 }
 
@@ -211,6 +261,47 @@ CmdExecStatus
 GNCmpCmd::exec(const string& option)
 {
    // TODO...
+   // DONE
+
+   // check option
+   vector<string> options;
+   if (!CmdExec::lexOptions(option, options, 2))
+      return CMD_EXEC_ERROR;
+
+   // check option 1
+   GNum v0;
+   if (isValidVarName(options[0]))
+   {
+      if(!GNum::getVarVal(options[0], v0))
+         return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
+   }
+   else
+   {
+      if (!GNum::getStrVal(options[0], v0))
+         return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
+   }
+
+   // check option 2
+   GNum v1;
+   if (isValidVarName(options[1]))
+   {
+      if(!GNum::getVarVal(options[1], v1))
+         return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[1]);
+   }
+   else
+   {
+      if (!GNum::getStrVal(options[1], v1))
+         return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[1]);
+   }
+
+   if (v0 == v1)
+   {
+      cout << v0 << " == " << v1 << endl;
+   }
+   else
+   {
+      cout << v0 << " != " << v1 << endl;
+   }
 
    return CMD_EXEC_DONE;
 }
@@ -268,5 +359,3 @@ GNPrintCmd::help() const
         << "print the variables stored in the calculator"
         << endl;
 }
-
-
