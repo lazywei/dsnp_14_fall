@@ -87,7 +87,9 @@ CmdParser::execOneCmd()
       string option;
       CmdExec* e = parseCmd(option);
       if (e != 0)
+      {
          return e->exec(option);
+      }
    }
    return CMD_EXEC_NOP;
 }
@@ -98,6 +100,12 @@ void
 CmdParser::printHelps() const
 {
    // TODO...
+   // DONE
+   for (CmdMap::const_iterator i = _cmdMap.begin(); i != _cmdMap.end(); ++i)
+   {
+      i->second->help();
+   }
+   cout << endl;
 }
 
 void
@@ -137,15 +145,32 @@ CmdParser::parseCmd(string& option)
    assert(_tempCmdStored == false);
    assert(!_history.empty());
    string str = _history.back();
+   string cmd;
+
+   size_t trailingPos = myStrGetTok(str, cmd);
+
+   if (CmdExec* e = getCmd(cmd))
+   {
+      if (trailingPos < str.size())
+      {
+         option = str.substr(trailingPos);
+      }
+      return e;
+   }
+   else
+   {
+      cout << "Illegal command!! (" << cmd << ")" << endl;
+   }
 
    // TODO...
+   // DONE
    assert(str[0] != 0 && str[0] != ' ');
    return NULL;
 }
 
 // This function is called by pressing 'Tab'.
 // It is to list the partially matched commands.
-// "str" is the partial string before current cursor position. It can be 
+// "str" is the partial string before current cursor position. It can be
 // a null string, or begin with ' '. The beginning ' ' will be ignored.
 //
 // Several possibilities after pressing 'Tab'
@@ -225,6 +250,14 @@ CmdParser::getCmd(string cmd)
 {
    CmdExec* e = 0;
    // TODO...
+   // DONE
+   for (CmdMap::iterator it = _cmdMap.begin(); it != _cmdMap.end(); ++it)
+   {
+      if (myMandOptCmp(cmd, it->first, it->second->getOptCmd()))
+      {
+         e = it->second;
+      }
+   }
    return e;
 }
 

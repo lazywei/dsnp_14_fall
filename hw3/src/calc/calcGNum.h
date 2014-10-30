@@ -106,7 +106,7 @@ public:
    {
       if (_varMap.count(s))
       {
-         n = _varMap[s];
+         n = _varMap.at(s);
          return true;
       }
       else

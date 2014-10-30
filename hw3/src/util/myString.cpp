@@ -119,3 +119,33 @@ int2base(int x, int base)
 
    return result;
 }
+
+bool
+myMandOptCmp(const string& cmd, const string& mand, const string& opt)
+{
+   if (cmd.size() < mand.size() ||
+       cmd.size() > mand.size() + opt.size())
+   {
+      return false;
+   }
+
+   // Check must-match part
+   for (unsigned i = 0; i < mand.size(); ++i)
+   {
+      if (tolower(mand[i]) != tolower(cmd[i]))
+      {
+         return false;
+      }
+   }
+
+   // Check optional part
+   for (unsigned i = mand.size(); i < cmd.size(); ++ i)
+   {
+      if (tolower(cmd[i]) != tolower(opt[i - mand.size()]))
+      {
+         return false;
+      }
+   }
+
+   return true;
+}
