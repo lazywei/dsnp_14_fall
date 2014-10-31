@@ -7,3 +7,7 @@ cmpr_tmp
 .ropeproject
 *.pyc
 hw3/src/tags
+hw3/lib/libcalc.a
+hw3/lib/libcmd.a
+hw3/lib/libutil.a
+hw3/bin/gnCalc

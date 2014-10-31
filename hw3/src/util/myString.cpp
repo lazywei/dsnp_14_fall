@@ -159,6 +159,9 @@ myBase2Int(string str, int base, int& result)
    size_t true_dig = 0;
    result = 0;
 
+   // Only deal with current base
+   digs = digs.substr(0, base);
+
    if (str[0] == '-')
    {
       sign = -1;
@@ -172,11 +175,11 @@ myBase2Int(string str, int base, int& result)
       true_dig = digs.find_first_of(str[i]);
       if (true_dig == string::npos)
       {
-         return 0;
+         return false;
       }
       result += pow(base, i) * true_dig;
    }
    result *= sign;
 
-   return result;
+   return true;
 }
