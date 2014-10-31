@@ -30,7 +30,20 @@ CmdParser::openDofile(const string& dof)
 {
    // TODO...
    _dofile = new ifstream(dof.c_str());
-   return true;
+
+   if (_dofile->is_open())
+   {
+      _dofileStack.push(_dofile);
+      return true;
+   }
+   else
+   {
+      if (_dofileStack.size() > 0)
+      {
+         _dofile = _dofileStack.top();
+      }
+      return false;
+   }
 }
 
 // Must make sure _dofile != 0
@@ -39,7 +52,16 @@ CmdParser::closeDofile()
 {
    assert(_dofile != 0);
    // TODO...
-   delete _dofile;
+   if (_dofile != 0)
+   {
+      delete _dofile;
+      _dofile = 0;
+      _dofileStack.pop();
+      if (_dofileStack.size() > 0)
+      {
+         _dofile = _dofileStack.top();
+      }
+   }
 }
 
 // Return false if registration fails
