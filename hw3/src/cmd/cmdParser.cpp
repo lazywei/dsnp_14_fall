@@ -29,6 +29,12 @@ bool
 CmdParser::openDofile(const string& dof)
 {
    // TODO...
+   if (_dofileStack.size() > 252)
+   {
+      cerr << "Error: dofile stack overflow (252)" << endl;
+      return false;
+   }
+
    _dofile = new ifstream(dof.c_str());
 
    if (_dofile->is_open())
