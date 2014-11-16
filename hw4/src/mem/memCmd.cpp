@@ -155,6 +155,83 @@ MTDeleteCmd::exec(const string& option)
 {
    // TODO
 
+   vector<string> options;
+   CmdExec::lexOptions(option, options);
+
+   size_t nOpt = options.size(), objId = 0, numRandId = 0;
+   size_t i = 0;
+   int tmp;
+   bool isArr = false, isIndex = false, isRandom = false;
+   string oldIndex, oldRandom;
+
+   if (nOpt != 2 && nOpt != 3) {
+      return CmdExec::errorOption(CMD_OPT_MISSING, "");
+   }
+
+   while (i < nOpt) {
+      if (myStrNCmp("-Index", options[i], 2) == 0) {
+
+         if (i+1 >= nOpt) {
+            return CmdExec::errorOption(CMD_OPT_MISSING, "");
+         }
+
+         if (!myStr2Int(options[i+1], tmp) || tmp <= 0) {
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[i+1]);
+         }
+
+         isIndex = true;
+         objId = tmp;
+         oldIndex = options[i+1];
+         i++;
+
+      } else if (myStrNCmp("-Random", options[i], 2) == 0) {
+         if (i+1 >= nOpt) {
+            return CmdExec::errorOption(CMD_OPT_MISSING, "");
+         }
+
+         if (!myStr2Int(options[i+1], tmp) || tmp <= 0) {
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[i+1]);
+         }
+
+         isRandom = true;
+         numRandId = tmp;
+         oldRandom = options[i+1];
+         i++;
+
+      } else if (myStrNCmp("-Array", options[i], 2) == 0) {
+         isArr = true;
+      }
+      i++;
+   }
+
+   if (isIndex) {
+      if (isArr) {
+         if (objId >= mtest.getArrListSize())
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
+         mtest.deleteArr(objId);
+      } else {
+         if (objId >= mtest.getObjListSize())
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
+         mtest.deleteObj(objId);
+      }
+
+   } else if (isRandom) {
+      if (isArr) {
+         for (i = 0; i < numRandId; ++i)
+         {
+            mtest.deleteArr( rnGen(mtest.getArrListSize()) );
+         }
+      } else {
+         for (i = 0; i < numRandId; ++i)
+         {
+            mtest.deleteObj( rnGen(mtest.getObjListSize()) );
+         }
+      }
+
+   } else {
+      return CmdExec::errorOption(CMD_OPT_MISSING, "");
+   }
+
    return CMD_EXEC_DONE;
 }
 
