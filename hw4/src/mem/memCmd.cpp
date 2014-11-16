@@ -60,14 +60,14 @@ MTResetCmd::exec(const string& option)
 
 void
 MTResetCmd::usage(ostream& os) const
-{  
+{
    os << "Usage: MTReset [(size_t blockSize)]" << endl;
 }
 
 void
 MTResetCmd::help() const
-{  
-   cout << setw(15) << left << "MTReset: " 
+{
+   cout << setw(15) << left << "MTReset: "
         << "(memory test) reset memory manager" << endl;
 }
 
@@ -79,20 +79,70 @@ CmdExecStatus
 MTNewCmd::exec(const string& option)
 {
    // TODO
+   vector<string> options;
+   CmdExec::lexOptions(option, options);
+
+   size_t nOpt = options.size(), numObj = 0, arrSize = 0;
+   size_t i = 0;
+   int tmp;
+
+   if (nOpt > 3) {
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[nOpt-1]);
+   } else if (nOpt == 2) {
+      return CmdExec::errorOption(CMD_OPT_MISSING, "");
+   }
+
+   while (i < nOpt) {
+
+      if (myStrNCmp("-Array", options[i], 2) == 0) {
+         if (i+1 >= nOpt) {
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[i]);
+         }
+         if (!myStr2Int(options[i+1], tmp) || tmp <= 0) {
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[i+1]);
+         } else {
+            arrSize = tmp;
+         }
+
+         i++;
+      } else {
+         if (!myStr2Int(options[i], tmp) || tmp <= 0) {
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[i]);
+         } else {
+            numObj = tmp;
+         }
+      }
+
+      i++;
+   }
+
+   if (numObj == 0) {
+      return CmdExec::errorOption(CMD_OPT_MISSING, "");
+   }
+
+   try {
+      if (arrSize == 0) {
+         mtest.newObjs(numObj);
+      } else {
+         mtest.newArrs(numObj, arrSize);
+      }
+   } catch(const bad_alloc& e) {
+      cout << e.what() << endl;
+   }
 
    return CMD_EXEC_DONE;
 }
 
 void
 MTNewCmd::usage(ostream& os) const
-{  
+{
    os << "Usage: MTNew <(size_t numObjects)> [-Array (size_t arraySize)]\n";
 }
 
 void
 MTNewCmd::help() const
-{  
-   cout << setw(15) << left << "MTNew: " 
+{
+   cout << setw(15) << left << "MTNew: "
         << "(memory test) new objects" << endl;
 }
 
@@ -110,15 +160,15 @@ MTDeleteCmd::exec(const string& option)
 
 void
 MTDeleteCmd::usage(ostream& os) const
-{  
+{
    os << "Usage: MTDelete <-Index (size_t objId) | "
       << "-Random (size_t numRandId)> [-Array]" << endl;
 }
 
 void
 MTDeleteCmd::help() const
-{  
-   cout << setw(15) << left << "MTDelete: " 
+{
+   cout << setw(15) << left << "MTDelete: "
         << "(memory test) delete objects" << endl;
 }
 
@@ -139,14 +189,14 @@ MTPrintCmd::exec(const string& option)
 
 void
 MTPrintCmd::usage(ostream& os) const
-{  
+{
    os << "Usage: MTPrint" << endl;
 }
 
 void
 MTPrintCmd::help() const
-{  
-   cout << setw(15) << left << "MTPrint: " 
+{
+   cout << setw(15) << left << "MTPrint: "
         << "(memory test) print memory manager info" << endl;
 }
 
