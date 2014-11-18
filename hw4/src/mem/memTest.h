@@ -78,7 +78,7 @@ public:
    void deleteArr(size_t idx) {
       assert(idx < _arrList.size());
       // TODO
-      delete _arrList[idx];
+      delete [] _arrList[idx];
       _arrList[idx] = NULL;
    }
 

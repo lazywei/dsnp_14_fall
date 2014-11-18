@@ -93,8 +93,8 @@ class MemBlock
       t = toSizeT(t);
       if (getRemainSize() >= t)
       {
-         _ptr = _ptr + t;
          ret = (T*)_ptr;
+         _ptr = _ptr + t;
          return true;
       }
       else

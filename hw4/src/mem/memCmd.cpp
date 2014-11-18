@@ -126,9 +126,7 @@ MTNewCmd::exec(const string& option)
       } else {
          mtest.newArrs(numObj, arrSize);
       }
-   } catch(const bad_alloc& e) {
-      cout << e.what() << endl;
-   }
+   } catch(const bad_alloc& e) { }
 
    return CMD_EXEC_DONE;
 }
@@ -175,7 +173,7 @@ MTDeleteCmd::exec(const string& option)
             return CmdExec::errorOption(CMD_OPT_MISSING, "");
          }
 
-         if (!myStr2Int(options[i+1], tmp) || tmp <= 0) {
+         if (!myStr2Int(options[i+1], tmp) || tmp < 0) {
             return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[i+1]);
          }
 
@@ -208,20 +206,28 @@ MTDeleteCmd::exec(const string& option)
       if (isArr) {
          if (objId >= mtest.getArrListSize())
             return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
+         if (mtest.getArrListSize() == 0)
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
          mtest.deleteArr(objId);
       } else {
          if (objId >= mtest.getObjListSize())
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
+         if (mtest.getObjListSize() == 0)
             return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
          mtest.deleteObj(objId);
       }
 
    } else if (isRandom) {
       if (isArr) {
+         if (mtest.getArrListSize() == 0)
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
          for (i = 0; i < numRandId; ++i)
          {
             mtest.deleteArr( rnGen(mtest.getArrListSize()) );
          }
       } else {
+         if (mtest.getObjListSize() == 0)
+            return CmdExec::errorOption(CMD_OPT_ILLEGAL, oldIndex);
          for (i = 0; i < numRandId; ++i)
          {
             mtest.deleteObj( rnGen(mtest.getObjListSize()) );
