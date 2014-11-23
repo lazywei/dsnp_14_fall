@@ -1,0 +1,21 @@
+adta -s hello
+adtp
+adta -s hello
+adtp
+adta -s hellow
+adtp
+adtd -s helloo
+adtp
+adtd -s hello
+adtp
+adta -r 30
+adtp
+adtd -front 5
+adtp
+adtd -back 5
+adtp
+adtd -r 5
+adtp
+adtd -all
+adtp
+q -f
