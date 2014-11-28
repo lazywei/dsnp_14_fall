@@ -174,10 +174,45 @@ public:
    }
 
    // return false if nothing to erase
-   bool erase(iterator pos) { return false; }
-   bool erase(const T& x) { return false; }
+   bool erase(iterator pos) {
+      for (iterator i = begin(); i != end(); ++i) {
+         if (i._node == pos._node) {
+            DListNode<T>* toDelete = i._node;
 
-   void clear() { }  // delete all nodes except for the dummy node
+            toDelete->_next->_prev = toDelete->_prev;
+            toDelete->_prev->_next = toDelete->_next;
+            delete toDelete;
+            return true;
+         }
+      }
+
+      return false;
+   }
+   bool erase(const T& x) {
+      DListNode<T>* node = new DListNode<T>(x);
+
+      for (iterator i = begin(); i != end(); ++i) {
+         if (i._node == node) {
+            DListNode<T>* toDelete = i._node;
+            toDelete->_next->_prev = toDelete->_prev;
+            toDelete->_prev->_next = toDelete->_next;
+            delete toDelete;
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   void clear() {
+      DListNode<T>* dummy = end()._node;
+      for (iterator i = begin(); i != end(); ++i) {
+         delete i._node;
+      }
+      _head = dummy;
+      _head->_prev = _head;
+      _head->_next = _head;
+   }  // delete all nodes except for the dummy node
 
    void sort() const { }
 
