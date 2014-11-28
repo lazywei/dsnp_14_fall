@@ -4,12 +4,13 @@
   Synopsis     [ Define doubly linked list package ]
   Author       [ Chung-Yang (Ric) Huang ]
   Copyright    [ Copyleft(c) 2005-2014 LaDs(III), GIEE, NTU, Taiwan ]
-****************************************************************************/
+ ****************************************************************************/
 
 #ifndef DLIST_H
 #define DLIST_H
 
 #include <cassert>
+#include <iostream>
 
 template <class T> class DList;
 
@@ -54,31 +55,123 @@ public:
       ~iterator() {} // Should NOT delete _node
 
       // TODO: implement these overloaded operators
-      const T& operator * () const { return *(this); }
+      // DONE
+      const T& operator * () const { return _node->_data; }
       T& operator * () { return _node->_data; }
-      iterator& operator ++ () { return *(this); }
-      iterator operator ++ (int) { return *(this); }
-      iterator& operator -- () { return *(this); }
-      iterator operator -- (int) { return *(this); }
 
-      iterator& operator = (const iterator& i) { return *(this); }
+      // prefix ++
+      iterator& operator ++ () {
+         _node = _node->_next;
+         return *(this);
+      }
 
-      bool operator != (const iterator& i) const { return false; }
-      bool operator == (const iterator& i) const { return false; }
+      // postfix ++
+      iterator operator ++ (int) {
+         iterator result(*this);
+         ++(*this);
+         return result;
+      }
+
+      iterator& operator -- () {
+         _node = _node->_prev;
+         return *(this);
+      }
+
+      iterator operator -- (int) {
+         iterator result(*this);
+         --(*this);
+         return result;
+      }
+
+      iterator& operator = (const iterator& i) {
+         _node = i._node;
+         return *(this);
+      }
+
+      bool operator != (const iterator& i) const {
+         return _node != i._node;
+      }
+
+      bool operator == (const iterator& i) const {
+         return _node == i._node;
+      }
 
    private:
       DListNode<T>* _node;
    };
 
    // TODO: implement these functions
-   iterator begin() const { return 0; }
-   iterator end() const { return 0; }
-   bool empty() const { return false; }
-   size_t size() const {  return 0; }
+   iterator begin() const {
+      return iterator(_head);
+   }
 
-   void push_back(const T& x) { }
-   void pop_front() { }
-   void pop_back() { }
+   iterator end() const {
+      return iterator(_head->_prev);
+   }
+
+   bool empty() const {
+      return _head->_next == _head;
+   }
+
+   size_t size() const {
+      size_t cnt = 0;
+
+      for (iterator i = begin(); i != end(); ++i) {
+         ++cnt;
+      }
+
+      return cnt;
+   }
+
+
+   // dummy -> head -> ... -> x -> dummy
+   void push_back(const T& x) {
+      DListNode<T>* node = new DListNode<T>(x);
+      DListNode<T>* dummy = _head->_prev;
+
+
+      if (empty()) {
+         _head = node;
+         _head->_next = dummy;
+         _head->_prev = dummy;
+
+         dummy->_prev = _head;
+         dummy->_next = _head;
+      } else {
+         node->_next = dummy;
+         node->_prev = dummy->_prev;
+
+         dummy->_prev->_next = node;
+         dummy->_prev = node;
+
+/*          std::cout << "node: " << node << std::endl; */
+/*          std::cout << "node->_prev: " << node->_prev << std::endl; */
+/*          std::cout << "node->_next: " << node->_next << std::endl; */
+/*          std::cout << "dummy: " << dummy << std::endl; */
+/*          std::cout << "dummy->_prev: " << dummy->_prev << std::endl; */
+/*          std::cout << "dummy->_next: " << dummy->_next << std::endl; */
+      }
+   }
+
+   void pop_front() {
+      DListNode<T>* toDelete = _head;
+
+      _head = toDelete->_next;
+
+      _head->_prev = toDelete->_prev; // dummy
+      toDelete->_prev->_next = _head;
+
+      delete toDelete;
+   }
+
+   void pop_back() {
+      DListNode<T>* toDelete = _head->_prev;
+
+      toDelete->_prev->_next = _head;
+      _head->_prev = toDelete->_prev;
+
+      delete toDelete;
+   }
 
    // return false if nothing to erase
    bool erase(iterator pos) { return false; }
