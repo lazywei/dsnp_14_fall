@@ -181,6 +181,9 @@ public:
 
             toDelete->_next->_prev = toDelete->_prev;
             toDelete->_prev->_next = toDelete->_next;
+            if (toDelete->_next == toDelete->_prev) {
+               _head = toDelete->_next;
+            }
             delete toDelete;
             return true;
          }
@@ -188,14 +191,16 @@ public:
 
       return false;
    }
-   bool erase(const T& x) {
-      DListNode<T>* node = new DListNode<T>(x);
 
+   bool erase(const T& x) {
       for (iterator i = begin(); i != end(); ++i) {
-         if (i._node == node) {
+         if (i._node->_data == x) {
             DListNode<T>* toDelete = i._node;
             toDelete->_next->_prev = toDelete->_prev;
             toDelete->_prev->_next = toDelete->_next;
+            if (toDelete->_next == toDelete->_prev) {
+               _head = toDelete->_next;
+            }
             delete toDelete;
             return true;
          }
