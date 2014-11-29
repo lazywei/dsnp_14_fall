@@ -236,20 +236,11 @@ private:
       back->_prev = front;
    }
 
-   void swapNodes(DListNode<T>* front, DListNode<T>* back) {
-      DListNode<T>* head = front->_prev;
-      DListNode<T>* tail = back->_next;
-
-      linkFromTo(head, back);
-      linkFromTo(back, front);
-      linkFromTo(front, tail);
-
-      // Update _head
-      if (_head == front) {
-         _head = back;
-      } else if (_head == back)  {
-         _head = front;
-      }
+   void swapData(DListNode<T>* front, DListNode<T>* back) {
+      T tmp;
+      tmp = front->_data;
+      front->_data = back->_data;
+      back->_data = tmp;
    }
 
    // [OPTIONAL TODO] helper functions; called by public member functions
