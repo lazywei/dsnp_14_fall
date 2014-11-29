@@ -128,48 +128,52 @@ public:
    void push_back(const T& x) {
       DListNode<T>* node = new DListNode<T>(x);
       DListNode<T>* dummy = _head->_prev;
-
+      DListNode<T>* lastNode = dummy->_prev;
 
       if (empty()) {
          _head = node;
-         _head->_next = dummy;
-         _head->_prev = dummy;
-
-         dummy->_prev = _head;
-         dummy->_next = _head;
+         linkFromTo(_head, dummy);
+         linkFromTo(dummy, _head);
       } else {
-         node->_next = dummy;
-         node->_prev = dummy->_prev;
+         linkFromTo(node, dummy);
+         linkFromTo(lastNode, node);
 
-         dummy->_prev->_next = node;
-         dummy->_prev = node;
+         /*
+         std::cout << "node: " << node << std::endl;
+         std::cout << "node->_prev: " << node->_prev << std::endl;
+         std::cout << "node->_next: " << node->_next << std::endl;
+         std::cout << "dummy: " << dummy << std::endl;
+         std::cout << "dummy->_prev: " << dummy->_prev << std::endl;
+         std::cout << "dummy->_next: " << dummy->_next << std::endl;
 
-/*          std::cout << "node: " << node << std::endl; */
-/*          std::cout << "node->_prev: " << node->_prev << std::endl; */
-/*          std::cout << "node->_next: " << node->_next << std::endl; */
-/*          std::cout << "dummy: " << dummy << std::endl; */
-/*          std::cout << "dummy->_prev: " << dummy->_prev << std::endl; */
-/*          std::cout << "dummy->_next: " << dummy->_next << std::endl; */
+         swapNodes(_head, _head->_next);
+
+         std::cout << "dummy: " << dummy << std::endl;
+         std::cout << "dummy->_prev: " << dummy->_prev << std::endl;
+         std::cout << "dummy->_next: " << dummy->_next << std::endl;
+         */
       }
    }
 
    void pop_front() {
+      if (empty()) { return; }
+
       DListNode<T>* toDelete = _head;
+      DListNode<T>* next = toDelete->_next;
+      DListNode<T>* dummy = _head->_prev;
 
-      _head = toDelete->_next;
-
-      _head->_prev = toDelete->_prev; // dummy
-      toDelete->_prev->_next = _head;
-
+      linkFromTo(dummy, next);
+      _head = next;
       delete toDelete;
    }
 
    void pop_back() {
-      DListNode<T>* toDelete = _head->_prev;
+      if (empty()) { return; }
+      DListNode<T>* dummy = _head->_prev;
+      DListNode<T>* toDelete = dummy->_prev;
+      DListNode<T>* prev = toDelete->_prev;
 
-      toDelete->_prev->_next = _head;
-      _head->_prev = toDelete->_prev;
-
+      linkFromTo(prev, dummy);
       delete toDelete;
    }
 
@@ -219,10 +223,34 @@ public:
       _head->_next = _head;
    }  // delete all nodes except for the dummy node
 
-   void sort() const { }
+   void sort() const {
+      _head->_data = (T)"abc";
+      // TODO
+   }
 
 private:
    DListNode<T>*  _head;  // = dummy node if list is empty
+
+   void linkFromTo(DListNode<T>* front, DListNode<T>* back) {
+      front->_next = back;
+      back->_prev = front;
+   }
+
+   void swapNodes(DListNode<T>* front, DListNode<T>* back) {
+      DListNode<T>* head = front->_prev;
+      DListNode<T>* tail = back->_next;
+
+      linkFromTo(head, back);
+      linkFromTo(back, front);
+      linkFromTo(front, tail);
+
+      // Update _head
+      if (_head == front) {
+         _head = back;
+      } else if (_head == back)  {
+         _head = front;
+      }
+   }
 
    // [OPTIONAL TODO] helper functions; called by public member functions
 };
