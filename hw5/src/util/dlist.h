@@ -224,8 +224,30 @@ public:
    }  // delete all nodes except for the dummy node
 
    void sort() const {
-      _head->_data = (T)"abc";
-      // TODO
+      bool flag = true;
+
+      iterator iter_i;
+      iterator iter_j;
+
+      DListNode<T>* cur;
+      DListNode<T>* nxt;
+
+      iter_i = begin();
+      for (size_t i = 0; i < size() && flag; ++i) {
+         flag = false;
+         iter_j = begin();
+         for (size_t j = 0; j < size() - i - 1; ++j) {
+            cur = iter_j._node;
+            nxt = cur->_next;
+            /* std::cout << "cur: " << cur->_data << " nxt: " << nxt->_data << std::endl; */
+            if (nxt->_data < cur->_data) {
+               swapData(cur, nxt);
+               flag = true;
+            }
+            ++iter_j;
+         }
+         ++iter_i;
+      }
    }
 
 private:
@@ -236,7 +258,7 @@ private:
       back->_prev = front;
    }
 
-   void swapData(DListNode<T>* front, DListNode<T>* back) {
+   void swapData(DListNode<T>* front, DListNode<T>* back) const {
       T tmp;
       tmp = front->_data;
       front->_data = back->_data;
