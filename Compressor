@@ -12,7 +12,14 @@ def read_must_files(filename, hw_dir)
   if File.exist?(target_file)
     File.open(target_file, "r") do |file|
       while line = file.gets
-        results << clean_filename(line, hw_dir)
+        result = clean_filename(line, hw_dir)
+        if result.include?("*")
+          Dir["#{hw_dir}/#{result}"].each do |sub_result|
+            results << sub_result.gsub("#{hw_dir}/", "")
+          end
+        else
+          results << result
+        end
       end
     end
   else
