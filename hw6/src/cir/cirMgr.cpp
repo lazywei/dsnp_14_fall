@@ -16,6 +16,9 @@
 #include "cirGate.h"
 #include "util.h"
 
+#include <fstream>
+#include <sstream>
+
 using namespace std;
 
 // TODO: Implement memeber functions for class CirMgr
@@ -151,6 +154,71 @@ parseError(CirParseError err)
 bool
 CirMgr::readCircuit(const string& fileName)
 {
+   ifstream infile(fileName.c_str());
+   istringstream iss;
+   string line;
+   string dummy; // Dump unused string
+
+   int n_max, n_input, n_output, n_and;
+   int literal_input, literal_output, literal_and;
+   int lhs, rhs_1, rhs_2; // For AND Gate
+
+   getline(infile, line);
+
+   iss.str(line);
+
+   iss >> dummy; // aag
+
+   iss >> n_max;
+   iss >> n_input;
+
+   iss >> dummy; // n of latch
+
+   iss >> n_output;
+   iss >> n_and;
+
+   for (int i = 0; i < n_input; ++i)
+   {
+      cout << "Start PI:" << endl;
+      getline(infile, line);
+
+      iss.clear();
+      iss.str(line);
+      iss >> literal_input;
+
+      cout << literal_input << endl;;
+   }
+
+   for (int i = 0; i < n_output; ++i)
+   {
+      cout << "Start PO:" << endl;
+      getline(infile, line);
+
+      iss.clear();
+      iss.str(line);
+      iss >> literal_output;
+
+      cout << literal_output << endl;
+   }
+
+   for (int i = 0; i < n_and; ++i)
+   {
+      cout << "Start AND Gate:" << endl;
+      getline(infile, line);
+
+      iss.clear();
+      iss.str(line);
+      iss >> lhs;
+      iss >> rhs_1;
+      iss >> rhs_2;
+
+      literal_and = lhs;
+
+      cout << lhs << endl;
+      cout << rhs_1 << endl;
+      cout << rhs_2 << endl;
+   }
+
    return true;
 }
 
