@@ -274,6 +274,13 @@ Circuit Statistics
 void
 CirMgr::printSummary() const
 {
+   cout << "Circuit Statistics" << endl;
+   cout << "==================" << endl;
+   cout << "PI\t\t" << _piList.size() << endl;
+   cout << "PO\t\t" << _poList.size() << endl;
+   cout << "AIG\t\t" << _andList.size() << endl;
+   cout << "------------------" << endl;
+   cout << "Total\t\t" << (_piList.size() + _poList.size() + _andList.size()) << endl;
 }
 
 void
@@ -284,20 +291,75 @@ CirMgr::printNetlist() const
 void
 CirMgr::printPIs() const
 {
-   cout << "PIs of the circuit:";
+   cout << "PIs of the circuit: ";
+
+   for (vector<int>::const_iterator i = _orderedPiList.begin(); i != _orderedPiList.end(); ++i) {
+      cout << *i << " ";
+   }
+
    cout << endl;
 }
 
 void
 CirMgr::printPOs() const
 {
-   cout << "POs of the circuit:";
+   cout << "POs of the circuit: ";
+
+   for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
+      cout << *i << " ";
+   }
+
    cout << endl;
 }
 
 void
 CirMgr::printFloatGates() const
 {
+   vector<int> ids;
+
+   for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
+      if (getGate(*i)->isFloating()) {
+         ids.push_back(*i);
+      }
+   }
+
+   for (map<int, CirAndGate*>::const_iterator i = _andList.begin(); i != _andList.end(); ++i) {
+      if (i->second->isFloating()) {
+         ids.push_back(i->first);
+      }
+   }
+
+   if (!ids.empty()) {
+      cout << "Gates with floating fanin(s): ";
+      for (vector<int>::const_iterator i = ids.begin(); i != ids.end(); ++i) {
+         cout << *i << " ";
+      }
+      cout << endl;
+   }
+
+   ids.clear();
+
+   // ------------------------------
+
+   for (vector<int>::const_iterator i = _orderedPiList.begin(); i != _orderedPiList.end(); ++i) {
+      if (getGate(*i)->getFanout().empty()) {
+         ids.push_back(*i);
+      }
+   }
+
+   for (map<int, CirAndGate*>::const_iterator i = _andList.begin(); i != _andList.end(); ++i) {
+      if (i->second->getFanout().empty()) {
+         ids.push_back(i->first);
+      }
+   }
+
+   if (!ids.empty()) {
+      cout << "Gates defined but not used: ";
+      for (vector<int>::const_iterator i = ids.begin(); i != ids.end(); ++i) {
+         cout << *i << " ";
+      }
+      cout << endl;
+   }
 }
 
 void

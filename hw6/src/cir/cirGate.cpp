@@ -53,6 +53,17 @@ CirGate::addFanin(CirGate* fanin, bool isInverted)
    fanin->_fanoutList.insert(pair<CirGate*, bool>(this, isInverted));
 }
 
+bool
+CirGate::isFloating()
+{
+   for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
+      if (cirMgr->getGate(*i) == 0) {
+         return true;
+      }
+   }
+   return false;
+}
+
 // -----------------
 //    CirAndGate
 // -----------------
