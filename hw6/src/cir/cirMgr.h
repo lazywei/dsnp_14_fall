@@ -13,6 +13,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <map>
 
 using namespace std;
 
@@ -43,6 +44,14 @@ public:
    void writeAag(ostream&) const;
 
 private:
+   void parseId(const int&, int&, bool&);
+
+   map<int, CirGate*>    _gateList;
+   map<int, CirPiGate*>  _piList;
+   map<int, CirPoGate*>  _poList;
+   map<int, CirAndGate*> _andList;
+
+   int _nMax, _nInput, _nOutput, _nAnd;
 };
 
 #endif // CIR_MGR_H

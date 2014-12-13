@@ -159,9 +159,12 @@ CirMgr::readCircuit(const string& fileName)
    string line;
    string dummy; // Dump unused string
 
-   int n_max, n_input, n_output, n_and;
-   int literal_input, literal_output, literal_and;
+   int literal;
    int lhs, rhs_1, rhs_2; // For AND Gate
+   int lineNo = 1, colNo = 1;
+
+   int id;
+   bool isInverted;
 
    getline(infile, line);
 
@@ -169,40 +172,56 @@ CirMgr::readCircuit(const string& fileName)
 
    iss >> dummy; // aag
 
-   iss >> n_max;
-   iss >> n_input;
+   iss >> _nMax;
+   iss >> _nInput;
 
    iss >> dummy; // n of latch
 
-   iss >> n_output;
-   iss >> n_and;
+   iss >> _nOutput;
+   iss >> _nAnd;
 
-   for (int i = 0; i < n_input; ++i)
+   for (int i = 0; i < _nInput; ++i)
    {
+      ++lineNo;
+
       cout << "Start PI:" << endl;
       getline(infile, line);
 
       iss.clear();
       iss.str(line);
-      iss >> literal_input;
+      iss >> literal;
 
-      cout << literal_input << endl;;
+      parseId(literal, id, isInverted);
+
+      _piList.insert(pair<int, CirPiGate*>(id, new CirPiGate(id, lineNo, colNo)));
+
+      cout << literal << endl;;
    }
 
-   for (int i = 0; i < n_output; ++i)
+   for (int i = 0; i < _nOutput; ++i)
    {
+      ++lineNo;
       cout << "Start PO:" << endl;
       getline(infile, line);
 
       iss.clear();
       iss.str(line);
-      iss >> literal_output;
+      iss >> literal;
 
-      cout << literal_output << endl;
+      parseId(literal, id, isInverted);
+
+      CirPoGate* poGate = new CirPoGate(_nMax+i+1, lineNo, colNo);
+      poGate->addTmpFanin(id, isInverted);
+
+      _poList.insert(pair<int, CirPoGate*>(id, poGate));
+
+      cout << literal << endl;
    }
 
-   for (int i = 0; i < n_and; ++i)
+   for (int i = 0; i < _nAnd; ++i)
    {
+      ++lineNo;
+
       cout << "Start AND Gate:" << endl;
       getline(infile, line);
 
@@ -212,7 +231,21 @@ CirMgr::readCircuit(const string& fileName)
       iss >> rhs_1;
       iss >> rhs_2;
 
-      literal_and = lhs;
+      literal = lhs;
+
+      parseId(literal, id, isInverted);
+
+      CirAndGate* andGate = new CirAndGate(id, lineNo, colNo);
+
+      // -- Parse RHS --
+      parseId(rhs_1, id, isInverted);
+      andGate->addTmpFanin(id, isInverted);
+
+      parseId(rhs_2, id, isInverted);
+      andGate->addTmpFanin(id, isInverted);
+      // ---------------
+
+      _andList.insert(pair<int, CirAndGate*>(andGate->getId(), andGate));
 
       cout << lhs << endl;
       cout << rhs_1 << endl;
@@ -266,4 +299,21 @@ CirMgr::printFloatGates() const
 void
 CirMgr::writeAag(ostream& outfile) const
 {
+}
+
+/**********************************************************/
+/*   class CirMgr helper member functions                 */
+/**********************************************************/
+void
+CirMgr::parseId(const int& literal, int& id, bool& isInverted)
+{
+   assert (literal > 0);
+
+   if (literal % 2 == 0) {
+      id = literal / 2;
+      isInverted = false;
+   } else {
+      id = (literal - 1) / 2;
+      isInverted = true;
+   }
 }

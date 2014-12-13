@@ -14,6 +14,8 @@
 #include <iostream>
 #include "cirDef.h"
 
+#include <map>
+
 using namespace std;
 
 class CirGate;
@@ -25,14 +27,15 @@ class CirGate;
 class CirGate
 {
 public:
-   CirGate(int id, int lineNo, int colNo, bool isInverted) :
-      _id(id), _lineNo(lineNo), _colNo(colNo), _isInverted(isInverted)
+   CirGate(int id, int lineNo, int colNo) :
+      _id(id), _lineNo(lineNo), _colNo(colNo)
    {}
    virtual ~CirGate() {}
 
    // Basic access methods
-   string getTypeStr() const { return ""; }
-   unsigned getLineNo() const { return 0; }
+   string getTypeStr() const { return _typeStr; }
+   unsigned getLineNo() const { return _lineNo; }
+   unsigned getId() const { return _id; }
 
    // Printing functions
    virtual void printGate() const = 0;
@@ -40,54 +43,74 @@ public:
    void reportFanin(int level) const;
    void reportFanout(int level) const;
 
+   // My helper functions
+   void addFanin(CirGate*, bool);
+   void addTmpFanin(int, bool);
 private:
 
 protected:
-   string           _typeStr;
+   string   _typeStr;
 
-   vector<CirGate*> _fanins;
-   vector<CirGate*> _fanouts;
+   int      _id;
+   int      _lineNo;
+   int      _colNo;
 
-   int  _id;
-   int  _lineNo;
-   int  _colNo;
+   // <fanin, isInverted>
+   map<CirGate*, bool> _faninList;
 
-   bool _isInverted;
+   // <gateId, isInverted>
+   map<int, bool> _tmpFaninList;
+
+   /* CirGate* _fanin1; */
+   /* bool     _isInverted1; */
+
+   /* CirGate* _fanin2; */
+   /* bool     _isInverted2; */
 };
 
 class CirPiGate : public CirGate {
-   CirPiGate(int id, int lineNo, int colNo, bool isInverted) :
-      CirGate(id, lineNo, colNo, isInverted) {
+public:
+   CirPiGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
          _typeStr = "PI";
       }
+   void printGate() const;
 };
 
 class CirPoGate : public CirGate {
-   CirPoGate(int id, int lineNo, int colNo, bool isInverted) :
-      CirGate(id, lineNo, colNo, isInverted) {
-         _typeStr = "PO"; 
+public:
+   CirPoGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "PO";
       }
+   void printGate() const;
 };
 
 class CirAndGate : public CirGate {
-   CirAndGate(int id, int lineNo, int colNo, bool isInverted) :
-      CirGate(id, lineNo, colNo, isInverted) {
-         _typeStr = "AND"; 
+public:
+   CirAndGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "AND";
       }
+   void printGate() const;
 };
 
 class CirConstGate : public CirGate {
-   CirConstGate(int id, int lineNo, int colNo, bool isInverted) :
-      CirGate(id, lineNo, colNo, isInverted) {
-         _typeStr = "Const"; 
+public:
+   CirConstGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "Const";
       }
+   void printGate() const;
 };
 
 class CirUndefGate : public CirGate {
-   CirUndefGate(int id, int lineNo, int colNo, bool isInverted) :
-      CirGate(id, lineNo, colNo, isInverted) {
-         _typeStr = "UNDEF"; 
+public:
+   CirUndefGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "UNDEF";
       }
+   void printGate() const;
 };
 
 #endif // CIR_GATE_H

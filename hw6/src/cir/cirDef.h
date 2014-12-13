@@ -14,6 +14,11 @@
 using namespace std;
 
 class CirGate;
+class CirPiGate;
+class CirPoGate;
+class CirAndGate;
+class CirConstGate;
+class CirUndefGate;
 class CirMgr;
 
 typedef vector<CirGate*>           GateList;
