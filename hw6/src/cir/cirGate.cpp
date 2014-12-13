@@ -50,14 +50,14 @@ CirGate::addFanin(CirGate* fanin, bool isInverted)
    _faninList.insert(pair<CirGate*, bool>(fanin, isInverted));
 }
 
-void
-CirGate::addTmpFanin(int gateId, bool isInverted)
-{
-   // Similarly, we should have only 2 tmp
-   // fanins on 1 gate
-   assert (_tmpFaninList.size() < 2);
-   _tmpFaninList.insert(pair<int, bool>(gateId, isInverted));
-}
+/* void */
+/* CirGate::addTmpFanin(int gateId, bool isInverted) */
+/* { */
+/*    // Similarly, we should have only 2 tmp */
+/*    // fanins on 1 gate */
+/*    assert (_tmpFaninList.size() < 2); */
+/*    _tmpFaninList.insert(pair<int, bool>(gateId, isInverted)); */
+/* } */
 
 // -----------------
 //    CirAndGate

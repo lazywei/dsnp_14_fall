@@ -18,6 +18,7 @@
 using namespace std;
 
 #include "cirDef.h"
+#include "cirGate.h"
 
 extern CirMgr *cirMgr;
 
@@ -25,7 +26,7 @@ extern CirMgr *cirMgr;
 class CirMgr
 {
 public:
-   CirMgr(){}
+   CirMgr() : _constGate(0) {}
    ~CirMgr() {}
 
    // Access functions
@@ -43,13 +44,30 @@ public:
    void printFloatGates() const;
    void writeAag(ostream&) const;
 
+   CirConstGate* getOrCreateConstGate() {
+      if (_constGate == 0) {
+         _constGate = new CirConstGate(0, -1, -1);
+      }
+      return _constGate;
+   }
+   CirConstGate* getConstGate() {
+      return _constGate;
+   }
+
 private:
    void parseId(const int&, int&, bool&);
+   void realizePoFanin(CirPoGate*);
+   void realizeAndFanin(CirAndGate*);
+   CirGate* getGateById(const int&);
 
-   map<int, CirGate*>    _gateList;
-   map<int, CirPiGate*>  _piList;
-   map<int, CirPoGate*>  _poList;
-   map<int, CirAndGate*> _andList;
+   vector<CirGate*>        _gateList;
+
+   map<int, CirPiGate*>    _piList;
+   map<int, CirPoGate*>    _poList;
+   map<int, CirAndGate*>   _andList;
+   map<int, CirUndefGate*> _undefList;
+
+   CirConstGate* _constGate;
 
    int _nMax, _nInput, _nOutput, _nAnd;
 };
