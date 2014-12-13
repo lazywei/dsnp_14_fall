@@ -291,6 +291,7 @@ CirMgr::printNetlist() const
 
    for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
       getGate(*i)->dfsTraversal(counter);
+      /* cout << "PO fanin: " << getGate(*i)->getFanin().size() << endl; */
    }
 }
 
@@ -403,7 +404,7 @@ CirMgr::realizePoFanin(CirPoGate* poGate)
    if (id != -1) {
       if (id == 0) { createConstGate(); }
 
-      fanin = getGateById(id);
+      fanin = getGateInAll(id);
       if (fanin == 0) {
          fanin = new CirUndefGate(id, -1, -1);
          _undefList.insert(pair<int, CirUndefGate*>(fanin->getId(), (CirUndefGate*) fanin));
@@ -429,7 +430,7 @@ CirMgr::realizeAndFanin(CirAndGate* andGate)
    if (id_1 != -1) {
       if (id_1 == 0) { createConstGate(); }
 
-      fanin = getGateById(id_1);
+      fanin = getGateInAll(id_1);
       if (fanin == 0) {
          fanin = new CirUndefGate(id_1, -1, -1);
          _undefList.insert(pair<int, CirUndefGate*>(fanin->getId(), (CirUndefGate*) fanin));
@@ -441,18 +442,18 @@ CirMgr::realizeAndFanin(CirAndGate* andGate)
    if (id_2 != -1) {
       if (id_2 == 0) { createConstGate(); }
 
-      fanin = getGateById(id_2);
+      fanin = getGateInAll(id_2);
       if (fanin == 0) {
          fanin = new CirUndefGate(id_2, -1, -1);
          _undefList.insert(pair<int, CirUndefGate*>(fanin->getId(), (CirUndefGate*) fanin));
       }
 
-      andGate->addFanin(getGateById(id_2), isInverted_2);
+      andGate->addFanin(getGateInAll(id_2), isInverted_2);
    }
 }
 
 CirGate*
-CirMgr::getGateById(const int& id) const
+CirMgr::getGateInAll(const int& id) const
 {
    if (_piList.count(id)) {
       return _piList.at(id);

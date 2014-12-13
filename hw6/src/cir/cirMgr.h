@@ -35,9 +35,12 @@ public:
       if (_undefList.count(gid)) {
          return 0;
       } else {
-         return getGateById(gid);
+         return getGateInAll(gid);
       }
    }
+
+   // This returns including UNDEF gates.
+   CirGate* getGateInAll(const int&) const;
 
    // Member functions about circuit construction
    bool readCircuit(const string&);
@@ -82,8 +85,6 @@ private:
       _poList.insert(pair<int, CirPoGate*>(poGate->getId(), poGate));
       _orderedPoList.push_back(poGate->getId());
    }
-
-   CirGate* getGateById(const int&) const;
 
    vector<int> _dfsList;
 

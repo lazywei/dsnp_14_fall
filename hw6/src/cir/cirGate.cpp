@@ -95,7 +95,14 @@ CirPoGate::printGate() const {
    vector<int>::const_iterator iter = _orderedFaninList.begin();
    cout << "PO " << _id << " ";
 
-   if (_faninList.at(cirMgr->getGate(*iter))) {
+   CirGate* fanin = cirMgr->getGateInAll(*iter);
+
+   // Check if undef
+   if (fanin->getTypeStr() == "UNDEF") {
+      cout << "*";
+   }
+   // Check if inverted
+   if (_faninList.at(fanin)) {
       cout << "!";
    }
    cout << *iter << " ";
@@ -111,13 +118,13 @@ CirAndGate::printGate() const {
    vector<int>::const_iterator iter = _orderedFaninList.begin();
    cout << "AIG " << _id << " ";
 
-   if (_faninList.at(cirMgr->getGate(*iter))) {
+   if (_faninList.at(cirMgr->getGateInAll(*iter))) {
       cout << "!";
    }
    cout << *iter << " ";
 
    ++iter;
-   if (_faninList.at(cirMgr->getGate(*iter))) {
+   if (_faninList.at(cirMgr->getGateInAll(*iter))) {
       cout << "!";
    }
    cout << *iter;
