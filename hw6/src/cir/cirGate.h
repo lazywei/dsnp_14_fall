@@ -55,7 +55,9 @@ protected:
    int      _colNo;
 
    // <fanin, isInverted>
+   vector<int>         _orderedFaninList;
    map<CirGate*, bool> _faninList;
+   map<CirGate*, bool> _fanoutList;
 };
 
 class CirPiGate : public CirGate {

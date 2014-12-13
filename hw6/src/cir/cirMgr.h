@@ -62,6 +62,27 @@ private:
    void parseId(const int&, int&, bool&);
    void realizePoFanin(CirPoGate*);
    void realizeAndFanin(CirAndGate*);
+
+   void addPi(const int& literal, const int& lineNo, const int& colNo) {
+      int id;
+      bool isInverted; // dummy bool
+      parseId(literal, id, isInverted);
+      _piList.insert(pair<int, CirPiGate*>(id, new CirPiGate(id, lineNo, colNo)));
+      _orderedPiList.push_back(id);
+   }
+
+   void addPo(const int& literal, const int& lineNo, const int& colNo, const int& poId) {
+      int id;
+      bool isInverted;
+      parseId(literal, id, isInverted);
+
+      CirPoGate* poGate = new CirPoGate(poId, lineNo, colNo);
+      poGate->addTmpFanin(id, isInverted);
+
+      _poList.insert(pair<int, CirPoGate*>(poGate->getId(), poGate));
+      _orderedPoList.push_back(poGate->getId());
+   }
+
    CirGate* getGateById(const int&) const;
 
    vector<CirGate*>        _gateList;
@@ -70,6 +91,9 @@ private:
    map<int, CirPoGate*>    _poList;
    map<int, CirAndGate*>   _andList;
    map<int, CirUndefGate*> _undefList;
+
+   vector<int> _orderedPiList;
+   vector<int> _orderedPoList;
 
    CirConstGate* _constGate;
 

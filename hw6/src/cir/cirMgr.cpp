@@ -187,39 +187,25 @@ CirMgr::readCircuit(const string& fileName)
    for (int i = 0; i < _nInput; ++i)
    {
       ++lineNo;
-
-      cout << "Start PI:" << endl;
       getline(infile, line);
 
       iss.clear();
       iss.str(line);
       iss >> literal;
 
-      parseId(literal, id, isInverted);
-
-      _piList.insert(pair<int, CirPiGate*>(id, new CirPiGate(id, lineNo, colNo)));
-
-      cout << id << " " << isInverted << endl;;
+      addPi(literal, lineNo, colNo);
    }
 
    for (int i = 0; i < _nOutput; ++i)
    {
       ++lineNo;
-      cout << "Start PO:" << endl;
       getline(infile, line);
 
       iss.clear();
       iss.str(line);
       iss >> literal;
 
-      parseId(literal, id, isInverted);
-
-      CirPoGate* poGate = new CirPoGate(_nMax+i+1, lineNo, colNo);
-      poGate->addTmpFanin(id, isInverted);
-
-      _poList.insert(pair<int, CirPoGate*>(poGate->getId(), poGate));
-
-      cout << id << " " << isInverted << endl;;
+      addPo(literal, lineNo, colNo, _nMax+i+1);
    }
 
    for (int i = 0; i < _nAnd; ++i)
