@@ -199,7 +199,7 @@ CirMgr::readCircuit(const string& fileName)
 
       _piList.insert(pair<int, CirPiGate*>(id, new CirPiGate(id, lineNo, colNo)));
 
-      cout << literal << endl;;
+      cout << id << " " << isInverted << endl;;
    }
 
    for (int i = 0; i < _nOutput; ++i)
@@ -217,9 +217,9 @@ CirMgr::readCircuit(const string& fileName)
       CirPoGate* poGate = new CirPoGate(_nMax+i+1, lineNo, colNo);
       poGate->addTmpFanin(id, isInverted);
 
-      _poList.insert(pair<int, CirPoGate*>(id, poGate));
+      _poList.insert(pair<int, CirPoGate*>(poGate->getId(), poGate));
 
-      cout << literal << endl;
+      cout << id << " " << isInverted << endl;;
    }
 
    for (int i = 0; i < _nAnd; ++i)
@@ -249,9 +249,9 @@ CirMgr::readCircuit(const string& fileName)
 
       _andList.insert(pair<int, CirAndGate*>(andGate->getId(), andGate));
 
-      cout << lhs << endl;
-      cout << rhs_1 << endl;
-      cout << rhs_2 << endl;
+      cout << andGate->getId() << endl;
+      cout << id << " " << isInverted << endl;;
+      cout << id_2 << " " << isInverted_2 << endl;;
    }
 
    // Now, start connect or set undef gates
@@ -259,7 +259,7 @@ CirMgr::readCircuit(const string& fileName)
       realizePoFanin(i->second);
    }
 
-   for (map<int, CirAndGate*>::const_iterator i = _andList.begin(); i != _andList.end(); ++i) { 
+   for (map<int, CirAndGate*>::const_iterator i = _andList.begin(); i != _andList.end(); ++i) {
       realizeAndFanin(i->second);
    }
 
@@ -342,10 +342,20 @@ CirMgr::realizePoFanin(CirPoGate* poGate)
    int id;
    bool isInverted;
 
+   CirGate* fanin;
+
    poGate->getTmpFanin(id, isInverted);
 
    if (id != -1) {
-      poGate->addFanin(getGateById(id), isInverted);
+      if (id == 0) { createConstGate(); }
+
+      fanin = getGateById(id);
+      if (fanin == 0) {
+         fanin = new CirUndefGate(id, -1, -1);
+         _undefList.insert(pair<int, CirUndefGate*>(fanin->getId(), (CirUndefGate*) fanin));
+      }
+
+      poGate->addFanin(fanin, isInverted);
    }
 }
 
@@ -358,19 +368,37 @@ CirMgr::realizeAndFanin(CirAndGate* andGate)
    int id_2;
    bool isInverted_2;
 
+   CirGate* fanin;
+
    andGate->getTmpFanin(id_1, isInverted_1, id_2, isInverted_2);
 
    if (id_1 != -1) {
-      andGate->addFanin(getGateById(id_1), isInverted_1);
+      if (id_1 == 0) { createConstGate(); }
+
+      fanin = getGateById(id_1);
+      if (fanin == 0) {
+         fanin = new CirUndefGate(id_1, -1, -1);
+         _undefList.insert(pair<int, CirUndefGate*>(fanin->getId(), (CirUndefGate*) fanin));
+      }
+
+      andGate->addFanin(fanin, isInverted_1);
    }
 
    if (id_2 != -1) {
+      if (id_2 == 0) { createConstGate(); }
+
+      fanin = getGateById(id_2);
+      if (fanin == 0) {
+         fanin = new CirUndefGate(id_2, -1, -1);
+         _undefList.insert(pair<int, CirUndefGate*>(fanin->getId(), (CirUndefGate*) fanin));
+      }
+
       andGate->addFanin(getGateById(id_2), isInverted_2);
    }
 }
 
 CirGate*
-CirMgr::getGateById(const int& id)
+CirMgr::getGateById(const int& id) const
 {
    if (_piList.count(id)) {
       return _piList.at(id);
@@ -381,7 +409,7 @@ CirMgr::getGateById(const int& id)
    } else if (_undefList.count(id)) {
       return _undefList.at(id);
    } else if (id == 0) {
-      return getOrCreateConstGate();
+      return getConstGate();
    } else {
       return 0;
    }

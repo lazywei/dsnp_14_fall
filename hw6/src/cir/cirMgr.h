@@ -31,7 +31,13 @@ public:
 
    // Access functions
    // return '0' if "gid" corresponds to an undefined gate.
-   CirGate* getGate(unsigned gid) const { return 0; }
+   CirGate* getGate(unsigned gid) const {
+      if (_undefList.count(gid)) {
+         return 0;
+      } else {
+         return getGateById(gid);
+      }
+   }
 
    // Member functions about circuit construction
    bool readCircuit(const string&);
@@ -44,21 +50,19 @@ public:
    void printFloatGates() const;
    void writeAag(ostream&) const;
 
-   CirConstGate* getOrCreateConstGate() {
+   void createConstGate() {
       if (_constGate == 0) {
          _constGate = new CirConstGate(0, -1, -1);
       }
-      return _constGate;
    }
-   CirConstGate* getConstGate() {
-      return _constGate;
-   }
+
+   CirConstGate* getConstGate() const { return _constGate; }
 
 private:
    void parseId(const int&, int&, bool&);
    void realizePoFanin(CirPoGate*);
    void realizeAndFanin(CirAndGate*);
-   CirGate* getGateById(const int&);
+   CirGate* getGateById(const int&) const;
 
    vector<CirGate*>        _gateList;
 
