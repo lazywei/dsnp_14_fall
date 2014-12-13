@@ -19,6 +19,8 @@ using namespace std;
 
 extern CirMgr *cirMgr;
 
+unsigned CirGate::_globalRef = 0;
+
 // TODO: Implement memeber functions for class(es) in cirGate.h
 
 /**************************************/
@@ -64,6 +66,61 @@ CirGate::isFloating()
    return false;
 }
 
+void
+CirGate::dfsTraversal(int& counter) const
+{
+   CirGate* targetGate;
+   for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
+      targetGate = cirMgr->getGate(*i);
+
+      if (targetGate == 0) {
+         continue;
+      }
+
+      if (!targetGate->isGlobalRef()) {
+         targetGate->setToGlobalRef();
+         targetGate->dfsTraversal(counter);
+      }
+   }
+   cout << "[" << counter << "] ";
+   printGate();
+   counter++;
+}
+
+// -----------------
+//    CirPoGate
+// -----------------
+void
+CirPoGate::printGate() const {
+   vector<int>::const_iterator iter = _orderedFaninList.begin();
+   cout << "PO " << _id << " ";
+
+   if (_faninList.at(cirMgr->getGate(*iter))) {
+      cout << "!";
+   }
+   cout << *iter << " ";
+
+   cout << endl;
+};
+
 // -----------------
 //    CirAndGate
 // -----------------
+void
+CirAndGate::printGate() const {
+   vector<int>::const_iterator iter = _orderedFaninList.begin();
+   cout << "AIG " << _id << " ";
+
+   if (_faninList.at(cirMgr->getGate(*iter))) {
+      cout << "!";
+   }
+   cout << *iter << " ";
+
+   ++iter;
+   if (_faninList.at(cirMgr->getGate(*iter))) {
+      cout << "!";
+   }
+   cout << *iter;
+
+   cout << endl;
+};

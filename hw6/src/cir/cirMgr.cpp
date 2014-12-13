@@ -286,6 +286,12 @@ CirMgr::printSummary() const
 void
 CirMgr::printNetlist() const
 {
+   CirGate::setGlobalRef();
+   int counter = 0;
+
+   for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
+      getGate(*i)->dfsTraversal(counter);
+   }
 }
 
 void

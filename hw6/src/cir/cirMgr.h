@@ -85,7 +85,7 @@ private:
 
    CirGate* getGateById(const int&) const;
 
-   vector<CirGate*>        _gateList;
+   vector<int> _dfsList;
 
    map<int, CirPiGate*>    _piList;
    map<int, CirPoGate*>    _poList;

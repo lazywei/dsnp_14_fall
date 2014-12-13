@@ -28,7 +28,7 @@ class CirGate
 {
 public:
    CirGate(int id, int lineNo, int colNo) :
-      _id(id), _lineNo(lineNo), _colNo(colNo)
+      _ref(0), _id(id), _lineNo(lineNo), _colNo(colNo)
    {}
    virtual ~CirGate() {}
 
@@ -49,7 +49,15 @@ public:
    map<CirGate*, bool> getFanin() const { return _faninList; }
    map<CirGate*, bool> getFanout() const { return _fanoutList; }
 
+   // Traversal
+   bool isGlobalRef() const { return _ref == _globalRef; }
+   void setToGlobalRef() { _ref = _globalRef; }
+   static void setGlobalRef() { ++_globalRef; }
+
+   void dfsTraversal(int&) const;
 private:
+   static unsigned _globalRef;
+   unsigned _ref;
 
 protected:
    string   _typeStr;
@@ -70,7 +78,9 @@ public:
       CirGate(id, lineNo, colNo) {
          _typeStr = "PI";
       }
-   void printGate() const {};
+   void printGate() const {
+      cout << "PI " << _id << endl;
+   };
 };
 
 class CirPoGate : public CirGate {
@@ -81,7 +91,7 @@ public:
          _tmpFaninId = -1;
          _tmpFaninInverted = false;
       }
-   void printGate() const {};
+   void printGate() const;
 
    void addTmpFanin(int id, bool isInverted) {
       _tmpFaninId = id;
@@ -108,7 +118,7 @@ public:
          _tmpFaninInverted_1 = false;
          _tmpFaninInverted_2 = false;
       }
-   void printGate() const {};
+   void printGate() const;
 
    void addTmpFanin(int id_1, bool isInverted_1, int id_2, bool isInverted_2) {
       _tmpFaninId_1 = id_1;
@@ -149,8 +159,9 @@ public:
       CirGate(id, lineNo, colNo) {
          _typeStr = "CONST";
       }
-   void printGate() const {};
+   void printGate() const {
+      cout << "CONST0" << endl;
+   };
 };
-
 
 #endif // CIR_GATE_H
