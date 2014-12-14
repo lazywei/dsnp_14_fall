@@ -212,7 +212,6 @@ CirMgr::readCircuit(const string& fileName)
    {
       ++lineNo;
 
-      cout << "Start AND Gate:" << endl;
       getline(infile, line);
 
       iss.clear();
@@ -234,10 +233,6 @@ CirMgr::readCircuit(const string& fileName)
       // ---------------
 
       _andList.insert(pair<int, CirAndGate*>(andGate->getId(), andGate));
-
-      cout << andGate->getId() << endl;
-      cout << id << " " << isInverted << endl;;
-      cout << id_2 << " " << isInverted_2 << endl;;
    }
 
    // Now, start connect or set undef gates
@@ -249,12 +244,12 @@ CirMgr::readCircuit(const string& fileName)
       realizeAndFanin(i->second);
    }
 
-   cout << "----reporting----" << endl;
-   cout << "PIs: " << _piList.size() << endl;
-   cout << "POs: " << _poList.size() << endl;
-   cout << "AIGs: " << _andList.size() << endl;
-   cout << "UNDEFs: " << _undefList.size() << endl;
-   cout << "CONST:" << _constGate << endl;
+   /* cout << "----reporting----" << endl; */
+   /* cout << "PIs: " << _piList.size() << endl; */
+   /* cout << "POs: " << _poList.size() << endl; */
+   /* cout << "AIGs: " << _andList.size() << endl; */
+   /* cout << "UNDEFs: " << _undefList.size() << endl; */
+   /* cout << "CONST:" << _constGate << endl; */
 
    return true;
 }
