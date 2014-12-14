@@ -181,7 +181,7 @@ CirGate::dfsTraversal(int& counter) const
 void
 CirPoGate::printGate() const {
    vector<int>::const_iterator iter = _orderedFaninList.begin();
-   cout << _typeStr << " " << _id << " ";
+   cout << _typeStr << "  " << _id << " ";
 
    CirGate* fanin = cirMgr->getGateInAll(*iter);
 
@@ -206,12 +206,18 @@ CirAndGate::printGate() const {
    vector<int>::const_iterator iter = _orderedFaninList.begin();
    cout << _typeStr << " " << _id << " ";
 
+   if (cirMgr->getGate(*iter) == 0) {
+      cout << "*";
+   }
    if (_faninList.at(cirMgr->getGateInAll(*iter))) {
       cout << "!";
    }
    cout << *iter << " ";
 
    ++iter;
+   if (cirMgr->getGate(*iter) == 0) {
+      cout << "*";
+   }
    if (_faninList.at(cirMgr->getGateInAll(*iter))) {
       cout << "!";
    }

@@ -96,7 +96,7 @@ public:
          _typeStr = "PI";
       }
    void printGate() const {
-      cout << "PI " << _id << endl;
+      cout << "PI  " << _id << endl;
    };
 };
 
