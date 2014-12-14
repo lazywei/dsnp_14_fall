@@ -28,7 +28,8 @@ class CirGate
 {
 public:
    CirGate(int id, int lineNo, int colNo) :
-      _ref(0), _id(id), _lineNo(lineNo), _colNo(colNo)
+      _ref(0), _reportRef(0),
+      _id(id), _lineNo(lineNo), _colNo(colNo)
    {}
    virtual ~CirGate() {}
 
@@ -42,6 +43,8 @@ public:
    void reportGate() const;
    void reportFanin(int level) const;
    void reportFanout(int level) const;
+   void reportFaninWithSpace(int level, int numSpace, bool printInv) const;
+   void reportFanoutWithSpace(int level, int numSpace, bool printInv) const;
 
    // My helper functions
    void addFanin(CirGate*, bool);
@@ -53,8 +56,11 @@ public:
    bool isGlobalRef() const { return _ref == _globalRef; }
    void setToGlobalRef() { _ref = _globalRef; }
    static void setGlobalRef() { ++_globalRef; }
-
    void dfsTraversal(int&) const;
+
+   // Report
+   bool isGlobalReportRef() const { return _reportRef == _globalRef; }
+   void setReportToGlobalRef() { _reportRef = _globalRef; }
 
    bool isFaninInverted(CirGate* fanin) const {
       return (_faninList.count(fanin) > 0) && (_faninList.at(fanin));
@@ -65,7 +71,10 @@ public:
    }
 private:
    static unsigned _globalRef;
-   unsigned _ref;
+   mutable unsigned _ref;
+
+   // For reporting fanin/fanout
+   mutable unsigned _reportRef;
 
 protected:
    string   _typeStr;
@@ -120,7 +129,7 @@ class CirAndGate : public CirGate {
 public:
    CirAndGate(int id, int lineNo, int colNo) :
       CirGate(id, lineNo, colNo) {
-         _typeStr = "AND";
+         _typeStr = "AIG";
          _tmpFaninId_1 = -1;
          _tmpFaninId_2 = -1;
          _tmpFaninInverted_1 = false;

@@ -35,10 +35,63 @@ void
 CirGate::reportFanin(int level) const
 {
    assert (level >= 0);
+   reportFaninWithSpace(level, 0, false);
+}
+
+void
+CirGate::reportFaninWithSpace(int level, int numSpace, bool printInv) const
+{
+   assert (level >= 0);
+
+   CirGate::setGlobalRef();
+   CirGate* fanin;
+
+   for (int n = 0; n < numSpace; ++n) {
+      cout << " ";
+   }
+
+   if (printInv) {
+      cout << "!";
+   }
+
+   // Print self.
+   cout << _typeStr << " " << _id;
+
+   if (isGlobalRef()) {
+      cout << " (*)";
+   }
+
+   cout << endl;
+
+   if (level > 0) {
+
+      for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
+
+         fanin = cirMgr->getGateInAll(*i);
+
+         /* if () { */
+         /*    cout << "!"; */
+         /* } */
+
+         if (fanin->isGlobalRef()) {
+            fanin->reportFaninWithSpace(0, numSpace+1, isFaninInverted(fanin));
+            /* cout << fanin->getTypeStr() << " " << fanin->getId() << " " << "(*)" << endl; */
+         } else {
+            fanin->setToGlobalRef();
+            fanin->reportFaninWithSpace(level - 1, numSpace+1, isFaninInverted(fanin));
+         }
+      }
+   }
 }
 
 void
 CirGate::reportFanout(int level) const
+{
+   assert (level >= 0);
+}
+
+void
+CirGate::reportFanoutWithSpace(int level, int numSpace, bool printInv) const
 {
    assert (level >= 0);
 }
@@ -93,7 +146,7 @@ CirGate::dfsTraversal(int& counter) const
 void
 CirPoGate::printGate() const {
    vector<int>::const_iterator iter = _orderedFaninList.begin();
-   cout << "PO " << _id << " ";
+   cout << _typeStr << " " << _id << " ";
 
    CirGate* fanin = cirMgr->getGateInAll(*iter);
 
@@ -116,7 +169,7 @@ CirPoGate::printGate() const {
 void
 CirAndGate::printGate() const {
    vector<int>::const_iterator iter = _orderedFaninList.begin();
-   cout << "AIG " << _id << " ";
+   cout << _typeStr << " " << _id << " ";
 
    if (_faninList.at(cirMgr->getGateInAll(*iter))) {
       cout << "!";
