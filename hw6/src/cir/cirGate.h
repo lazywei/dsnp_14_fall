@@ -45,7 +45,7 @@ public:
 
    // My helper functions
    void addFanin(CirGate*, bool);
-   bool isFloating();
+   bool isFloating() const;
    map<CirGate*, bool> getFanin() const { return _faninList; }
    map<CirGate*, bool> getFanout() const { return _fanoutList; }
 

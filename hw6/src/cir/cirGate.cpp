@@ -56,7 +56,7 @@ CirGate::addFanin(CirGate* fanin, bool isInverted)
 }
 
 bool
-CirGate::isFloating()
+CirGate::isFloating() const
 {
    for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
       if (cirMgr->getGate(*i) == 0) {
@@ -98,7 +98,7 @@ CirPoGate::printGate() const {
    CirGate* fanin = cirMgr->getGateInAll(*iter);
 
    // Check if undef
-   if (fanin->getTypeStr() == "UNDEF") {
+   if (isFloating()) {
       cout << "*";
    }
    // Check if inverted
