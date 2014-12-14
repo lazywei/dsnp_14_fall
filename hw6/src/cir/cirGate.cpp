@@ -29,6 +29,9 @@ unsigned CirGate::_globalRef = 0;
 void
 CirGate::reportGate() const
 {
+   cout << "==================================================" << endl;
+   cout << "= " << _typeStr << "(" << _id << "), line " << _lineNo << endl;
+   cout << "==================================================" << endl;
 }
 
 void
