@@ -55,6 +55,14 @@ public:
    static void setGlobalRef() { ++_globalRef; }
 
    void dfsTraversal(int&) const;
+
+   bool isFaninInverted(CirGate* fanin) const {
+      return (_faninList.count(fanin) > 0) && (_faninList.at(fanin));
+   }
+
+   bool isFanoutInverted(CirGate* fanout) const {
+      return (_fanoutList.count(fanout) > 0) && (_fanoutList.at(fanout));
+   }
 private:
    static unsigned _globalRef;
    unsigned _ref;

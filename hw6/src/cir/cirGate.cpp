@@ -102,7 +102,7 @@ CirPoGate::printGate() const {
       cout << "*";
    }
    // Check if inverted
-   if (_faninList.at(fanin)) {
+   if (isFaninInverted(fanin)) {
       cout << "!";
    }
    cout << *iter << " ";
