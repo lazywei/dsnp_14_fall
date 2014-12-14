@@ -115,18 +115,33 @@ CirGate::reportFanoutWithSpace(int level, int numSpace, bool prtInv, bool prtSta
 
    cout << endl;
 
-   if (level > 0) {
+   if (numSpace < level) {
 
       for (map<CirGate*, bool>::const_iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
          fanout = i->first;
          isInverted = i->second;
 
          if (fanout->isGlobalRef()) {
-            fanout->reportFanoutWithSpace(0, numSpace+1, isInverted, true);
+            fanout->reportFanoutWithSpace(numSpace+1, numSpace+1, isInverted, true);
          } else {
-            fanout->setToGlobalRef();
-            fanout->reportFanoutWithSpace(level-1, numSpace+1, isInverted, false);
+
+            if (fanout->getFanout().size() > 0 && numSpace+1 < level) {
+               fanout->setToGlobalRef();
+            }
+
+            fanout->reportFanoutWithSpace(level, numSpace+1, isInverted, false);
          }
+
+
+         /* if (!fanout->isGlobalRef()) { */
+         /*    /1* fanout->setToGlobalRef(); *1/ */
+
+         /*    if (fanout->getFanout().size() > 0 && numSpace+1 < level) { */
+         /*       fanout->setToGlobalRef(); */
+         /*    } */
+
+         /*    fanout->reportFanoutWithSpace(level, numSpace+1, isInverted, false); */
+         /* } */
       }
    }
 }
