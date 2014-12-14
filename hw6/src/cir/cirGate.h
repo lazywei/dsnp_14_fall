@@ -43,8 +43,8 @@ public:
    void reportGate() const;
    void reportFanin(int level) const;
    void reportFanout(int level) const;
-   void reportFaninWithSpace(int level, int numSpace, bool printInv) const;
-   void reportFanoutWithSpace(int level, int numSpace, bool printInv) const;
+   void reportFaninWithSpace(int level, int numSpace, bool prtInv, bool prtStar) const;
+   void reportFanoutWithSpace(int level, int numSpace, bool prtInv, bool prtStar) const;
 
    // My helper functions
    void addFanin(CirGate*, bool);

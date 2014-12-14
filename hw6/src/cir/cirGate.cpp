@@ -35,29 +35,29 @@ void
 CirGate::reportFanin(int level) const
 {
    assert (level >= 0);
-   reportFaninWithSpace(level, 0, false);
+   CirGate::setGlobalRef();
+   reportFaninWithSpace(level, 0, false, false);
 }
 
 void
-CirGate::reportFaninWithSpace(int level, int numSpace, bool printInv) const
+CirGate::reportFaninWithSpace(int level, int numSpace, bool prtInv, bool prtStar) const
 {
    assert (level >= 0);
 
-   CirGate::setGlobalRef();
    CirGate* fanin;
 
    for (int n = 0; n < numSpace; ++n) {
-      cout << " ";
+      cout << "  ";
    }
 
-   if (printInv) {
+   if (prtInv) {
       cout << "!";
    }
 
    // Print self.
    cout << _typeStr << " " << _id;
 
-   if (isGlobalRef()) {
+   if (prtStar) {
       cout << " (*)";
    }
 
@@ -69,16 +69,11 @@ CirGate::reportFaninWithSpace(int level, int numSpace, bool printInv) const
 
          fanin = cirMgr->getGateInAll(*i);
 
-         /* if () { */
-         /*    cout << "!"; */
-         /* } */
-
          if (fanin->isGlobalRef()) {
-            fanin->reportFaninWithSpace(0, numSpace+1, isFaninInverted(fanin));
-            /* cout << fanin->getTypeStr() << " " << fanin->getId() << " " << "(*)" << endl; */
+            fanin->reportFaninWithSpace(0, numSpace+1, isFaninInverted(fanin), true);
          } else {
             fanin->setToGlobalRef();
-            fanin->reportFaninWithSpace(level - 1, numSpace+1, isFaninInverted(fanin));
+            fanin->reportFaninWithSpace(level - 1, numSpace+1, isFaninInverted(fanin), false);
          }
       }
    }
@@ -88,12 +83,49 @@ void
 CirGate::reportFanout(int level) const
 {
    assert (level >= 0);
+   CirGate::setGlobalRef();
+   reportFanoutWithSpace(level, 0, false, false);
 }
 
 void
-CirGate::reportFanoutWithSpace(int level, int numSpace, bool printInv) const
+CirGate::reportFanoutWithSpace(int level, int numSpace, bool prtInv, bool prtStar) const
 {
    assert (level >= 0);
+
+   CirGate* fanout;
+   bool isInverted;
+
+   for (int n = 0; n < numSpace; ++n) {
+      cout << "  ";
+   }
+
+   if (prtInv) {
+      cout << "!";
+   }
+
+   // Print self.
+   cout << _typeStr << " " << _id;
+
+   if (prtStar) {
+      cout << " (*)";
+   }
+
+   cout << endl;
+
+   if (level > 0) {
+
+      for (map<CirGate*, bool>::const_iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
+         fanout = i->first;
+         isInverted = i->second;
+
+         if (fanout->isGlobalRef()) {
+            fanout->reportFanoutWithSpace(0, numSpace+1, isInverted, true);
+         } else {
+            fanout->setToGlobalRef();
+            fanout->reportFanoutWithSpace(level-1, numSpace+1, isInverted, false);
+         }
+      }
+   }
 }
 
 void
