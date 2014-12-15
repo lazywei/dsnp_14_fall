@@ -78,7 +78,11 @@ CirGate::reportFaninWithSpace(int level, int numSpace, bool prtInv, bool prtStar
          isInverted = i->second;
 
          if (fanin->isGlobalRef()) {
-            fanin->reportFaninWithSpace(numSpace+1, numSpace+1, isInverted, true);
+            if (fanin->getFaninList().size() > 0 && numSpace+1 < level) {
+               fanin->reportFaninWithSpace(numSpace+1, numSpace+1, isInverted, true);
+            } else {
+               fanin->reportFaninWithSpace(numSpace+1, numSpace+1, isInverted, false);
+            }
          } else {
 
             if (fanin->getFaninList().size() > 0 && numSpace+1 < level) {
@@ -132,7 +136,11 @@ CirGate::reportFanoutWithSpace(int level, int numSpace, bool prtInv, bool prtSta
          isInverted = i->second;
 
          if (fanout->isGlobalRef()) {
-            fanout->reportFanoutWithSpace(numSpace+1, numSpace+1, isInverted, true);
+            if (fanout->getFanoutList().size() > 0 && numSpace+1 < level) {
+               fanout->reportFanoutWithSpace(numSpace+1, numSpace+1, isInverted, true);
+            } else {
+               fanout->reportFanoutWithSpace(numSpace+1, numSpace+1, isInverted, false);
+            }
          } else {
 
             if (fanout->getFanoutList().size() > 0 && numSpace+1 < level) {
