@@ -53,7 +53,7 @@ public:
    bool isFloating() const;
 
    vector<GateIdInv> getFaninList() const { return _faninList; }
-   vector<GateIdInv> getFanoutList() const { return _faninList; }
+   vector<GateIdInv> getFanoutList() const { return _fanoutList; }
 
    /* map<CirGate*, bool> getFanin() const { return _faninList; } */
    /* map<CirGate*, bool> getFanout() const { return _fanoutList; } */

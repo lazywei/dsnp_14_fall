@@ -357,7 +357,10 @@ CirMgr::printFloatGates() const
    if (!ids.empty()) {
       cout << "Gates with floating fanin(s): ";
       for (vector<int>::const_iterator i = ids.begin(); i != ids.end(); ++i) {
-         cout << *i << " ";
+         cout << *i;
+         if (i+1 != ids.end()) {
+            cout << " ";
+         }
       }
       cout << endl;
    }
@@ -381,7 +384,10 @@ CirMgr::printFloatGates() const
    if (!ids.empty()) {
       cout << "Gates defined but not used: ";
       for (vector<int>::const_iterator i = ids.begin(); i != ids.end(); ++i) {
-         cout << *i << " ";
+         cout << *i;
+         if (i+1 != ids.end()) {
+            cout << " ";
+         }
       }
       cout << endl;
    }
