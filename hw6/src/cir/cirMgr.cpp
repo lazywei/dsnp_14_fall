@@ -269,13 +269,26 @@ Circuit Statistics
 void
 CirMgr::printSummary() const
 {
+   cout << endl;
    cout << "Circuit Statistics" << endl;
    cout << "==================" << endl;
-   cout << "PI\t\t" << _piList.size() << endl;
-   cout << "PO\t\t" << _poList.size() << endl;
-   cout << "AIG\t\t" << _andList.size() << endl;
+
+   cout << "  PI";
+   cout.width(12);
+   cout << right << _piList.size() << endl;
+
+   cout << "  PO";
+   cout.width(12);
+   cout << right <<  _poList.size() << endl;
+
+   cout << "  AIG";
+   cout.width(11);
+   cout << right <<  _andList.size() << endl;
    cout << "------------------" << endl;
-   cout << "Total\t\t" << (_piList.size() + _poList.size() + _andList.size()) << endl;
+
+   cout << "  Total";
+   cout.width(9);
+   cout << right << (_piList.size() + _poList.size() + _andList.size()) << endl;
 }
 
 void
@@ -283,6 +296,8 @@ CirMgr::printNetlist() const
 {
    CirGate::setGlobalRef();
    int counter = 0;
+
+   cout << endl;
 
    for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
       getGate(*i)->dfsTraversal(counter);
@@ -296,7 +311,10 @@ CirMgr::printPIs() const
    cout << "PIs of the circuit: ";
 
    for (vector<int>::const_iterator i = _orderedPiList.begin(); i != _orderedPiList.end(); ++i) {
-      cout << *i << " ";
+      cout << *i;
+      if (i+1 != _orderedPiList.end()) {
+         cout << " ";
+      }
    }
 
    cout << endl;
@@ -308,7 +326,10 @@ CirMgr::printPOs() const
    cout << "POs of the circuit: ";
 
    for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
-      cout << *i << " ";
+      cout << *i;
+      if (i+1 != _orderedPoList.end()) {
+         cout << " ";
+      }
    }
 
    cout << endl;
