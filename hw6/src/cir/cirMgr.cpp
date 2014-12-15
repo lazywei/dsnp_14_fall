@@ -319,6 +319,8 @@ CirMgr::printFloatGates() const
 {
    vector<int> ids;
 
+   // floating -- fanin not define
+
    for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
       if (getGate(*i)->isFloating()) {
          ids.push_back(*i);
@@ -341,16 +343,16 @@ CirMgr::printFloatGates() const
 
    ids.clear();
 
-   // ------------------------------
+   // define but not used -- no fanouts
 
    for (vector<int>::const_iterator i = _orderedPiList.begin(); i != _orderedPiList.end(); ++i) {
-      if (getGate(*i)->getFanout().empty()) {
+      if (getGate(*i)->getFanoutList().empty()) {
          ids.push_back(*i);
       }
    }
 
    for (map<int, CirAndGate*>::const_iterator i = _andList.begin(); i != _andList.end(); ++i) {
-      if (i->second->getFanout().empty()) {
+      if (i->second->getFanoutList().empty()) {
          ids.push_back(i->first);
       }
    }

@@ -72,21 +72,22 @@ CirGate::reportFaninWithSpace(int level, int numSpace, bool prtInv, bool prtStar
 
    if (numSpace < level) {
 
-      for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
+      for (vector<GateIdInv>::const_iterator i = _faninList.begin(); i != _faninList.end(); ++i) {
 
-         fanin = cirMgr->getGateInAll(*i);
-         isInverted = isFaninInverted(fanin);
+         fanin = cirMgr->getGateInAll(i->first);
+         isInverted = i->second;
 
          if (fanin->isGlobalRef()) {
             fanin->reportFaninWithSpace(numSpace+1, numSpace+1, isInverted, true);
          } else {
 
-            if (fanin->getFanin().size() > 0 && numSpace+1 < level) {
+            if (fanin->getFaninList().size() > 0 && numSpace+1 < level) {
                fanin->setToGlobalRef();
             }
 
             fanin->reportFaninWithSpace(level, numSpace+1, isInverted, false);
          }
+
       }
    }
 }
@@ -126,31 +127,20 @@ CirGate::reportFanoutWithSpace(int level, int numSpace, bool prtInv, bool prtSta
 
    if (numSpace < level) {
 
-      for (map<CirGate*, bool>::const_iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
-         fanout = i->first;
+      for (vector<GateIdInv>::const_iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
+         fanout = cirMgr->getGateInAll(i->first);
          isInverted = i->second;
 
          if (fanout->isGlobalRef()) {
             fanout->reportFanoutWithSpace(numSpace+1, numSpace+1, isInverted, true);
          } else {
 
-            if (fanout->getFanout().size() > 0 && numSpace+1 < level) {
+            if (fanout->getFanoutList().size() > 0 && numSpace+1 < level) {
                fanout->setToGlobalRef();
             }
 
             fanout->reportFanoutWithSpace(level, numSpace+1, isInverted, false);
          }
-
-
-         /* if (!fanout->isGlobalRef()) { */
-         /*    /1* fanout->setToGlobalRef(); *1/ */
-
-         /*    if (fanout->getFanout().size() > 0 && numSpace+1 < level) { */
-         /*       fanout->setToGlobalRef(); */
-         /*    } */
-
-         /*    fanout->reportFanoutWithSpace(level, numSpace+1, isInverted, false); */
-         /* } */
       }
    }
 }
@@ -161,17 +151,15 @@ CirGate::addFanin(CirGate* fanin, bool isInverted)
    // We can have only 2 fanins on 1 gate
    assert (_faninList.size() < 2);
 
-   _orderedFaninList.push_back(fanin->getId());
-   _faninList.insert(pair<CirGate*, bool>(fanin, isInverted));
-
-   fanin->_fanoutList.insert(pair<CirGate*, bool>(this, isInverted));
+   _faninList.push_back(make_pair(fanin->getId(), isInverted));
+   fanin->_fanoutList.push_back(make_pair(_id, isInverted));
 }
 
 bool
 CirGate::isFloating() const
 {
-   for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
-      if (cirMgr->getGate(*i) == 0) {
+   for (vector<GateIdInv>::const_iterator i = _faninList.begin(); i != _faninList.end(); ++i) {
+      if (cirMgr->getGate(i->first) == 0) {
          return true;
       }
    }
@@ -181,17 +169,17 @@ CirGate::isFloating() const
 void
 CirGate::dfsTraversal(int& counter) const
 {
-   CirGate* targetGate;
-   for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
-      targetGate = cirMgr->getGate(*i);
+   CirGate* nxtGate;
+   for (vector<GateIdInv>::const_iterator i = _faninList.begin(); i != _faninList.end(); ++i) {
+      nxtGate = cirMgr->getGate(i->first);
 
-      if (targetGate == 0) {
+      if (nxtGate == 0) {
          continue;
       }
 
-      if (!targetGate->isGlobalRef()) {
-         targetGate->setToGlobalRef();
-         targetGate->dfsTraversal(counter);
+      if (!nxtGate->isGlobalRef()) {
+         nxtGate->setToGlobalRef();
+         nxtGate->dfsTraversal(counter);
       }
    }
    cout << "[" << counter << "] ";
@@ -204,22 +192,19 @@ CirGate::dfsTraversal(int& counter) const
 // -----------------
 void
 CirPoGate::printGate() const {
-   vector<int>::const_iterator iter = _orderedFaninList.begin();
+   vector<GateIdInv>::const_iterator iter = _faninList.begin();
    cout << _typeStr << "  " << _id << " ";
 
-   CirGate* fanin = cirMgr->getGateInAll(*iter);
-
    // Check if undef
-   if (isFloating()) {
+   /* if (isFloating()) { */
+   if (cirMgr->getGate(iter->first) == 0) {
       cout << "*";
    }
    // Check if inverted
-   if (isFaninInverted(fanin)) {
+   if (iter->second) {
       cout << "!";
    }
-   cout << *iter << " ";
-
-   cout << endl;
+   cout << iter->first << endl;
 };
 
 // -----------------
@@ -227,25 +212,24 @@ CirPoGate::printGate() const {
 // -----------------
 void
 CirAndGate::printGate() const {
-   vector<int>::const_iterator iter = _orderedFaninList.begin();
+   vector<GateIdInv>::const_iterator iter = _faninList.begin();
    cout << _typeStr << " " << _id << " ";
 
-   if (cirMgr->getGate(*iter) == 0) {
+   if (cirMgr->getGate(iter->first) == 0) {
       cout << "*";
    }
-   if (_faninList.at(cirMgr->getGateInAll(*iter))) {
+   if (iter->second) {
       cout << "!";
    }
-   cout << *iter << " ";
+   cout << iter->first << " ";
 
    ++iter;
-   if (cirMgr->getGate(*iter) == 0) {
+   if (cirMgr->getGate(iter->first) == 0) {
       cout << "*";
    }
-   if (_faninList.at(cirMgr->getGateInAll(*iter))) {
+   if (iter->second) {
       cout << "!";
    }
-   cout << *iter;
 
-   cout << endl;
+   cout << iter->first << endl;
 };

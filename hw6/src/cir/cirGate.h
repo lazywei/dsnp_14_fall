@@ -18,6 +18,8 @@
 
 using namespace std;
 
+typedef pair<int, bool> GateIdInv;
+
 class CirGate;
 
 //------------------------------------------------------------------------
@@ -49,8 +51,12 @@ public:
    // My helper functions
    void addFanin(CirGate*, bool);
    bool isFloating() const;
-   map<CirGate*, bool> getFanin() const { return _faninList; }
-   map<CirGate*, bool> getFanout() const { return _fanoutList; }
+
+   vector<GateIdInv> getFaninList() const { return _faninList; }
+   vector<GateIdInv> getFanoutList() const { return _faninList; }
+
+   /* map<CirGate*, bool> getFanin() const { return _faninList; } */
+   /* map<CirGate*, bool> getFanout() const { return _fanoutList; } */
 
    // Traversal
    bool isGlobalRef() const { return _ref == _globalRef; }
@@ -62,13 +68,13 @@ public:
    bool isGlobalReportRef() const { return _reportRef == _globalRef; }
    void setReportToGlobalRef() { _reportRef = _globalRef; }
 
-   bool isFaninInverted(CirGate* fanin) const {
-      return (_faninList.count(fanin) > 0) && (_faninList.at(fanin));
-   }
+   /* bool isFaninInverted(CirGate* fanin) const { */
+   /*    return (_faninList.count(fanin) > 0) && (_faninList.at(fanin)); */
+   /* } */
 
-   bool isFanoutInverted(CirGate* fanout) const {
-      return (_fanoutList.count(fanout) > 0) && (_fanoutList.at(fanout));
-   }
+   /* bool isFanoutInverted(CirGate* fanout) const { */
+   /*    return (_fanoutList.count(fanout) > 0) && (_fanoutList.at(fanout)); */
+   /* } */
 private:
    static unsigned _globalRef;
    mutable unsigned _ref;
@@ -84,9 +90,12 @@ protected:
    int      _colNo;
 
    // <fanin, isInverted>
-   vector<int>         _orderedFaninList;
-   map<CirGate*, bool> _faninList;
-   map<CirGate*, bool> _fanoutList;
+   /* vector<int>         _orderedFaninList; */
+   /* map<CirGate*, bool> _faninList; */
+   /* map<CirGate*, bool> _fanoutList; */
+
+   vector<GateIdInv> _faninList;
+   vector<GateIdInv> _fanoutList;
 };
 
 class CirPiGate : public CirGate {
