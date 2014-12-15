@@ -397,12 +397,8 @@ CirMgr::realizePoFanin(CirPoGate* poGate)
    poGate->getTmpFanin(id, isInverted);
 
    if (id != -1) {
-      if (id == 0) {
+      if (id == 0 || id == 1) {
          createConstGate();
-         isInverted = false;
-      } else if (id == 1) {
-         createConstGate();
-         isInverted = true;
       }
 
       fanin = getGateInAll(id);
@@ -429,12 +425,8 @@ CirMgr::realizeAndFanin(CirAndGate* andGate)
    andGate->getTmpFanin(id_1, isInverted_1, id_2, isInverted_2);
 
    if (id_1 != -1) {
-      if (id_1 == 0) {
+      if (id_1 == 0 || id_1 == 1) {
          createConstGate();
-         isInverted_1 = false;
-      } else if (id_1 == 1) {
-         createConstGate();
-         isInverted_1 = true;
       }
 
       fanin = getGateInAll(id_1);
@@ -447,12 +439,8 @@ CirMgr::realizeAndFanin(CirAndGate* andGate)
    }
 
    if (id_2 != -1) {
-      if (id_2 == 0) {
+      if (id_2 == 0 || id_2 == 1) {
          createConstGate();
-         isInverted_2 = false;
-      } else if (id_2 == 1) {
-         createConstGate();
-         isInverted_2 = true;
       }
 
       fanin = getGateInAll(id_2);

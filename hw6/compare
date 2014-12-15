@@ -1,0 +1,5 @@
+#/bin/bash
+
+time ./cirTest -f $1 > usr.ref 2>&1 
+time ./ref/cirTest -f $1 > ref.ref 2>&1
+# vimdiff usr.ref ref.ref

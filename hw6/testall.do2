@@ -1,0 +1,3316 @@
+cirr ./ok01.aag -R
+cirg 13 -fani 4
+cirg 11 -fano 9
+cirg -1
+cirg 13
+cirg 8 -fano 5
+cirg 10 -fani 0
+cirp -po
+cirg -3
+cirg 12
+cirg 11 -fano 9
+cirg 10
+cirp -n
+cirg -3 -fani 2
+cirg 12
+cirg 8 -fani 3
+cirg -3
+cirg 16 -fani 1
+cirg 2 -fani 4
+cirp -fl
+cirg 2
+cirg 2
+cirg 8
+cirp -n
+cirg 1
+cirg 10 -fano 8
+cirg 10 -fani 8
+cirp -pi
+cirg 4
+cirg 10 -fani 4
+cirg 11 -fani 7
+cirg -3
+cirp -po
+cirg -3
+cirg 2 -fano 1
+cirg -2 -fani 4
+cirg 6
+cirp -fl
+cirp -fl
+cirg 3 -fano 2
+cirg 8
+cirg 13
+cirg 14
+cirp -n
+cirp -s
+cirg 15
+cirg 9 -fano 1
+cirg 8 -fani 6
+cirw
+cirg 13
+cirp -n
+cirr ./tests.err/flt01.aag -R
+cirp -po
+cirg 4 -fani 3
+cirg 15 -fani 5
+cirg 15
+cirg 6
+cirg -1 -fani 9
+cirp -n
+cirp -po
+cirg 7
+cirg 10
+cirg 4
+cirp -pi
+cirg 6 -fani 2
+cirg 11 -fani 8
+cirp -s
+cirg 5 -fano 8
+cirp -n
+cirw
+cirg 15 -fano 0
+cirg 15 -fani 2
+cirg 6 -fani 1
+cirg -3
+cirg 6
+cirw
+cirg 9
+cirp -n
+cirg -3 -fano 7
+cirg -1 -fani 8
+cirg 16 -fano 2
+cirg 13 -fano 5
+cirg 12 -fani 2
+cirg -3 -fani 1
+cirg 12
+cirg -1
+cirg 2
+cirw
+cirg 10
+cirg 9
+cirp -po
+cirg 13
+cirp -po
+cirp -s
+cirg 10 -fano 9
+cirg 14
+cirg -1
+cirp -n
+cirg 5 -fano 9
+cirp -po
+cirg 9
+cirg 16
+cirr ./tests.err/flt02.aag -R
+cirg 11 -fani 3
+cirg 10 -fano 4
+cirg 3 -fani 7
+cirp -n
+cirp -pi
+cirg -2 -fano 5
+cirg 0 -fani 1
+cirg 5 -fani 6
+cirg 3 -fani 6
+cirg 4
+cirg 1
+cirg 2
+cirp -pi
+cirg 7 -fani 7
+cirp -n
+cirg 6 -fani 8
+cirp -s
+cirg 16
+cirg -1 -fani 5
+cirg 6
+cirp -pi
+cirp -fl
+cirg 15
+cirg -1 -fani 7
+cirg 3
+cirg 16
+cirg 8
+cirp -pi
+cirg 8
+cirg 13
+cirp -po
+cirg 9 -fano 6
+cirg 5 -fani 9
+cirg 14
+cirg 13
+cirg 11
+cirw
+cirg 6
+cirg 8
+cirg 1 -fano 1
+cirp -pi
+cirg 14 -fani 7
+cirg 16 -fano 5
+cirg 5 -fano 0
+cirg 16 -fano 3
+cirg -2 -fani 1
+cirg 1 -fani 0
+cirg 2
+cirg -2
+cirg 3 -fano 6
+cirr ./tests.err/flt03.aag -R
+cirg 8 -fani 1
+cirp -fl
+cirg 0
+cirg -1 -fani 3
+cirg 1 -fano 7
+cirg -1 -fano 1
+cirg 2 -fano 9
+cirp -pi
+cirp -pi
+cirg 2 -fano 5
+cirw
+cirg 6 -fano 0
+cirg 7 -fani 7
+cirg -1
+cirg 0
+cirg 11
+cirg 7
+cirg 7
+cirg 2
+cirp -po
+cirg -3
+cirg 15 -fano 8
+cirg -3
+cirg 4 -fani 9
+cirg 14 -fani 8
+cirg 13 -fani 6
+cirg 5 -fani 1
+cirp -s
+cirg 1
+cirg 16
+cirg 16 -fani 0
+cirg 2 -fano 6
+cirg 3
+cirg 13
+cirg 9 -fano 6
+cirp -po
+cirg 5 -fano 8
+cirg 5
+cirg 7
+cirg 10 -fani 1
+cirp -n
+cirw
+cirg 12
+cirp -n
+cirg 2
+cirg 11 -fano 5
+cirg 10 -fano 2
+cirg 5 -fani 0
+cirg 4 -fani 8
+cirp -po
+cirr ./tests.err/flt04.aag -R
+cirp -n
+cirg 9
+cirg 8 -fano 4
+cirp -po
+cirg 11 -fano 4
+cirg 15 -fani 0
+cirg 15
+cirg 4
+cirg 6
+cirg 15 -fano 8
+cirp -po
+cirg 6 -fano 8
+cirp -po
+cirg 4
+cirp -n
+cirg 16 -fano 4
+cirg 16 -fano 2
+cirg 7
+cirg 6
+cirg 7 -fani 1
+cirp -s
+cirg 9 -fani 1
+cirg 11 -fano 4
+cirg 14
+cirg 11
+cirg -2 -fano 0
+cirp -n
+cirg 8 -fani 0
+cirg 6 -fani 9
+cirg 9
+cirg 13
+cirg 0 -fano 0
+cirg 5
+cirg 14 -fani 5
+cirg 9 -fano 1
+cirg 6
+cirg 12 -fano 2
+cirg 12 -fano 3
+cirp -po
+cirg -3
+cirg -2
+cirp -n
+cirg 12
+cirp -pi
+cirg 6
+cirp -n
+cirg 16
+cirg 12 -fano 5
+cirp -po
+cirp -fl
+cirr ./tests.err/flt05.aag -R
+cirg 13 -fani 3
+cirg -3
+cirg 3
+cirg -1
+cirg 6 -fano 6
+cirw
+cirp -po
+cirg 1 -fano 7
+cirg -2 -fano 8
+cirp -n
+cirg 6
+cirg 10 -fani 3
+cirg 16 -fani 2
+cirg 7 -fano 8
+cirg 7 -fani 2
+cirg -3 -fani 3
+cirg 8 -fani 0
+cirp -n
+cirg 3
+cirp -s
+cirg 11
+cirg 15 -fano 7
+cirg 7 -fano 4
+cirg -3 -fani 8
+cirp -fl
+cirg 1
+cirg 12 -fano 5
+cirg 4 -fani 4
+cirg 8
+cirg 11 -fani 3
+cirg -1 -fani 3
+cirg 10 -fani 5
+cirg 13
+cirg 1 -fani 1
+cirg 10
+cirg 8
+cirp -po
+cirp -pi
+cirw
+cirg 7 -fano 4
+cirp -n
+cirg 3 -fano 5
+cirw
+cirg 0 -fano 1
+cirg 11
+cirp -pi
+cirg 11 -fani 8
+cirg 1
+cirg 11 -fani 1
+cirg 9 -fano 7
+cirr ./tests.err/flt06.aag -R
+cirg -3
+cirg 13 -fani 5
+cirp -fl
+cirg 0 -fano 9
+cirg 2
+cirg 16
+cirg 3
+cirg 10 -fani 2
+cirg 0
+cirg 2 -fano 2
+cirg 7 -fani 7
+cirp -s
+cirg 1
+cirg 11 -fani 6
+cirg 15 -fani 9
+cirg 14 -fano 5
+cirg 14 -fani 7
+cirg 11
+cirg 10
+cirg 12 -fani 4
+cirg -2 -fani 7
+cirg 10
+cirg -1 -fano 0
+cirg 7 -fano 6
+cirg 9 -fano 1
+cirg -3 -fani 5
+cirg -1
+cirg 0 -fano 6
+cirg 10 -fani 5
+cirg 9 -fani 9
+cirg 4
+cirp -pi
+cirg 3
+cirg 6
+cirg -3 -fani 7
+cirg 11
+cirp -s
+cirg 0 -fani 8
+cirw
+cirg 10
+cirg -1
+cirg 13 -fani 7
+cirg 7
+cirg 15
+cirg 10 -fani 2
+cirg 3 -fano 9
+cirp -n
+cirg 9 -fano 6
+cirg 16 -fani 6
+cirg 16 -fani 6
+cirr ./tests.err/flt07.aag -R
+cirw
+cirg 11
+cirg -1 -fano 9
+cirg 8
+cirg 9 -fani 5
+cirg 14 -fano 6
+cirw
+cirp -fl
+cirg 10
+cirg 1
+cirg 11
+cirg 16
+cirg 11 -fani 3
+cirg 1 -fano 8
+cirp -n
+cirg 9 -fani 4
+cirp -n
+cirg 9 -fano 8
+cirp -fl
+cirg 6 -fani 3
+cirg 7 -fani 2
+cirg 9 -fani 1
+cirp -s
+cirg 12
+cirg -2 -fano 2
+cirg 11 -fani 6
+cirg 9
+cirg 9
+cirg 4
+cirg 4 -fano 7
+cirg 11 -fani 9
+cirp -n
+cirp -n
+cirp -n
+cirg 6 -fani 8
+cirg 9
+cirp -s
+cirg 1
+cirg 8
+cirp -po
+cirg 15 -fano 8
+cirp -s
+cirg 0 -fani 8
+cirp -n
+cirg -3
+cirg -3 -fani 8
+cirg 4 -fano 2
+cirg 15
+cirp -pi
+cirg 4
+cirr ./tests.err/good.aag -R
+cirg 8 -fano 4
+cirg 8 -fano 8
+cirg 5 -fani 4
+cirg -2
+cirg -2 -fani 1
+cirg 0 -fani 7
+cirg 9 -fani 1
+cirp -n
+cirg 9 -fano 7
+cirg -1 -fano 8
+cirg 14 -fano 4
+cirp -n
+cirg 0 -fano 0
+cirp -n
+cirp -n
+cirg 4
+cirg 15 -fano 0
+cirg 0 -fano 7
+cirg 3
+cirg 3 -fani 6
+cirp -pi
+cirg 8
+cirw
+cirg 8 -fani 0
+cirg -2
+cirp -po
+cirg 2
+cirg 0
+cirg 8 -fani 7
+cirg 8 -fani 2
+cirg 3
+cirg 8
+cirw
+cirg 4 -fano 2
+cirg 4 -fani 0
+cirp -pi
+cirp -n
+cirg 14
+cirp -n
+cirg 9
+cirg -1 -fani 1
+cirg 3
+cirg 7 -fano 2
+cirg 11
+cirg -1 -fani 5
+cirp -n
+cirg 12 -fani 8
+cirg 14 -fano 6
+cirp -fl
+cirg 4 -fani 2
+cirr ./tests.err/ok01.aag -R
+cirg 14
+cirp -n
+cirg 16
+cirg 8 -fani 7
+cirp -fl
+cirp -po
+cirg 12
+cirg -1 -fani 2
+cirp -n
+cirg 5 -fano 2
+cirg 14
+cirg 16 -fani 3
+cirg 2
+cirg 6 -fani 1
+cirg 14 -fani 7
+cirg 6 -fano 8
+cirg 8 -fani 4
+cirg 13
+cirg 2 -fani 6
+cirg -1 -fano 9
+cirg 1
+cirg 15 -fano 9
+cirg 3
+cirg 2 -fani 1
+cirg 5
+cirg 15 -fani 6
+cirg -3
+cirp -fl
+cirg 9
+cirg 11
+cirg 15 -fano 7
+cirg 7 -fano 8
+cirg 1 -fano 6
+cirg 5 -fano 9
+cirg -3 -fano 9
+cirg 11 -fano 9
+cirg 11 -fano 2
+cirg 1 -fano 0
+cirp -s
+cirg 4
+cirg 4 -fano 1
+cirg 5
+cirg 8 -fano 6
+cirg 12
+cirg -3 -fani 0
+cirg -3 -fani 9
+cirp -n
+cirg -3
+cirg 10 -fano 2
+cirp -pi
+cirr ./tests.err/ok02.aag -R
+cirg 3 -fani 9
+cirp -po
+cirg 7 -fano 2
+cirg 4 -fani 8
+cirp -po
+cirg 1 -fani 1
+cirg 0 -fano 8
+cirg 8 -fano 0
+cirg 7
+cirg 0 -fano 3
+cirg 14
+cirg 15
+cirp -n
+cirg 8 -fani 2
+cirg 11 -fani 7
+cirg 14
+cirg 3 -fani 8
+cirg 14 -fani 2
+cirg 11 -fani 4
+cirp -po
+cirg 16 -fano 0
+cirg 0
+cirp -fl
+cirg 11 -fano 5
+cirg 14 -fano 3
+cirg 15 -fani 4
+cirg 11
+cirg 4 -fani 0
+cirg 7
+cirg 8 -fano 6
+cirg 6 -fano 5
+cirg -3
+cirp -pi
+cirg -1
+cirg 14
+cirg -3
+cirp -n
+cirg 2
+cirp -po
+cirg 7
+cirg -2 -fano 7
+cirg 10 -fano 4
+cirg 0 -fano 7
+cirg 2
+cirg 15 -fano 7
+cirg 11
+cirg 1 -fano 3
+cirg 8 -fano 7
+cirg -2
+cirw
+cirr ./tests.err/ok03.aag -R
+cirg 13 -fani 5
+cirp -po
+cirg 12
+cirg -1
+cirp -n
+cirg 1 -fani 8
+cirg 16 -fani 7
+cirg 13 -fano 6
+cirg 3 -fano 9
+cirg 13
+cirg 9
+cirg -2 -fano 6
+cirg 16
+cirp -n
+cirg 11 -fani 4
+cirw
+cirg 2
+cirg 7
+cirw
+cirg 14
+cirw
+cirg 10 -fano 7
+cirg -3 -fani 6
+cirg 14
+cirg -1
+cirg -3 -fano 0
+cirg 2 -fani 7
+cirg 13 -fani 8
+cirp -n
+cirp -fl
+cirp -fl
+cirp -n
+cirg 4
+cirg 15
+cirg 5
+cirg 8
+cirp -pi
+cirg 15
+cirg 8 -fano 2
+cirg 7 -fano 5
+cirg 7 -fani 4
+cirg 8
+cirp -s
+cirp -n
+cirp -pi
+cirg 6 -fano 5
+cirg 6 -fani 1
+cirg 7 -fani 7
+cirp -fl
+cirp -po
+cirr ./tests.err/ok04.aag -R
+cirg 11 -fano 2
+cirg 9 -fano 0
+cirg 13
+cirg -3 -fano 2
+cirg 6
+cirg 16
+cirp -n
+cirp -s
+cirp -pi
+cirg 10 -fani 0
+cirg -1
+cirp -pi
+cirg 14
+cirg 16 -fani 8
+cirg 2 -fano 7
+cirg 7
+cirg -3 -fano 7
+cirg 11 -fano 5
+cirp -po
+cirp -n
+cirg 11 -fani 0
+cirp -fl
+cirp -n
+cirg 10
+cirp -n
+cirg 14
+cirg 5 -fano 5
+cirg 10 -fani 0
+cirg 3
+cirp -n
+cirg 14
+cirg 1 -fani 5
+cirp -fl
+cirp -po
+cirg 16 -fano 9
+cirg 7
+cirg 13 -fano 1
+cirg 10
+cirp -n
+cirp -fl
+cirg -1 -fani 6
+cirp -s
+cirg 13 -fani 5
+cirg 3 -fano 3
+cirg 12 -fano 1
+cirg 14
+cirg 6 -fani 1
+cirg 10
+cirg 5 -fano 2
+cirg 3 -fani 7
+cirr ./tests.err/ok05.aag -R
+cirg 14
+cirg 9
+cirg -1 -fano 3
+cirg 10 -fani 0
+cirg 2 -fani 6
+cirg 8
+cirg -1
+cirg 14
+cirg 14
+cirg 5
+cirg 8
+cirp -n
+cirg -3 -fano 8
+cirp -fl
+cirg 15
+cirg 13 -fani 3
+cirw
+cirg 10
+cirg 14 -fani 6
+cirg 11 -fano 4
+cirg -3 -fano 1
+cirp -po
+cirg 11
+cirg -2 -fani 6
+cirg 7 -fani 1
+cirg 14 -fano 8
+cirg 11 -fani 8
+cirp -n
+cirg 15
+cirp -po
+cirg 1 -fano 4
+cirg 2
+cirp -n
+cirg 16 -fano 1
+cirg 13 -fano 6
+cirg 16
+cirw
+cirp -n
+cirg 12 -fani 0
+cirg 10
+cirg 12 -fani 1
+cirg 15 -fano 5
+cirg 9 -fani 6
+cirw
+cirg 8
+cirg 12
+cirp -n
+cirg 3
+cirw
+cirg -3
+cirr ./tests.err/ok06.aag -R
+cirp -n
+cirg 7 -fani 7
+cirw
+cirg 16
+cirg 8 -fano 4
+cirg 14
+cirg 1 -fano 6
+cirg -3 -fani 9
+cirw
+cirp -n
+cirg -1
+cirp -n
+cirg -1
+cirw
+cirg 9 -fano 9
+cirp -fl
+cirg -2
+cirg 9 -fano 6
+cirg -3 -fani 0
+cirg 10 -fano 6
+cirg 12 -fani 8
+cirg 8 -fani 2
+cirg 3 -fani 0
+cirg 16 -fano 9
+cirg 4
+cirg 1
+cirg 5 -fani 7
+cirg 13 -fani 6
+cirp -po
+cirg 13 -fano 5
+cirw
+cirg -2 -fano 6
+cirp -n
+cirg 6 -fani 8
+cirg 15 -fano 0
+cirg 10 -fani 6
+cirg 15
+cirp -fl
+cirg 3 -fano 7
+cirg 11 -fani 1
+cirp -fl
+cirg 5 -fani 4
+cirg 6
+cirg 13 -fano 5
+cirg 0 -fano 5
+cirg -2 -fano 3
+cirg 4 -fani 1
+cirg 14 -fani 4
+cirg 13 -fano 6
+cirp -fl
+cirr ./tests.err/ok07.aag -R
+cirg 12 -fani 7
+cirg 8
+cirg 0
+cirg 12
+cirg 2
+cirg 5
+cirg 1
+cirp -pi
+cirp -fl
+cirg 15
+cirg 10
+cirp -pi
+cirp -n
+cirg 1
+cirw
+cirg 3
+cirg 11
+cirg 6 -fano 5
+cirg -1
+cirp -fl
+cirg 0
+cirg 14 -fani 7
+cirw
+cirg 7
+cirg 9 -fani 5
+cirg 2
+cirg 11 -fano 5
+cirp -fl
+cirg 13 -fano 8
+cirp -n
+cirg 3
+cirg 6
+cirg 16 -fani 1
+cirg 7
+cirp -n
+cirw
+cirg 11
+cirg -2 -fano 5
+cirg 1
+cirg 10
+cirg 14 -fani 8
+cirg 3
+cirp -s
+cirw
+cirg 9 -fani 2
+cirg 10 -fani 5
+cirg 7
+cirp -s
+cirg 7
+cirg 8 -fano 0
+cirr ./tests.err/ok08.aag -R
+cirp -fl
+cirg 3
+cirg -1 -fano 8
+cirg -3 -fano 1
+cirg -3 -fani 7
+cirw
+cirg 12 -fano 6
+cirp -fl
+cirg 13 -fano 6
+cirg 3 -fani 9
+cirg 3 -fani 8
+cirg 11
+cirg 15 -fano 0
+cirg 0
+cirp -n
+cirg 13
+cirw
+cirg 14
+cirg 13
+cirg 9 -fani 4
+cirg -2 -fani 6
+cirg 4 -fano 7
+cirg 15
+cirw
+cirg 14
+cirp -s
+cirg 11 -fani 2
+cirg 11 -fano 3
+cirg -3
+cirg 7 -fano 0
+cirg 9 -fano 0
+cirg 16 -fani 4
+cirp -n
+cirg -2 -fani 7
+cirp -s
+cirg 11
+cirg 0 -fano 4
+cirg 8 -fani 7
+cirp -po
+cirg 16
+cirg 16 -fano 8
+cirp -pi
+cirg -1
+cirg 15 -fano 5
+cirp -pi
+cirg -2 -fano 6
+cirg -3
+cirp -n
+cirp -fl
+cirg 0
+cirr ./tests.err/ok09.aag -R
+cirg 4
+cirg 7
+cirg 6 -fani 9
+cirp -fl
+cirg 2 -fani 3
+cirg 16 -fano 9
+cirg -2 -fano 7
+cirg 0
+cirg 11 -fani 4
+cirg -3 -fano 2
+cirg 15 -fano 1
+cirg 11 -fano 9
+cirp -fl
+cirg -2
+cirg 7 -fani 7
+cirg 2
+cirg 8 -fano 0
+cirw
+cirg -2
+cirw
+cirg -3
+cirg 10 -fani 4
+cirg 1 -fano 0
+cirp -pi
+cirg 13 -fano 9
+cirw
+cirw
+cirp -pi
+cirg 12
+cirw
+cirg 6 -fano 7
+cirg 12
+cirp -n
+cirg 0 -fani 4
+cirg 6
+cirg 8 -fani 7
+cirg 16
+cirg 16 -fani 1
+cirg 15 -fani 4
+cirg 11 -fano 8
+cirg 11
+cirp -fl
+cirg -1 -fani 1
+cirg 15
+cirg -3
+cirp -n
+cirg 15 -fani 6
+cirg 9
+cirg 16 -fano 6
+cirp -n
+cirr ./tests.err/ok10.aag -R
+cirw
+cirg 9
+cirg -2 -fani 9
+cirg 14 -fano 5
+cirw
+cirg 12 -fani 8
+cirg 13 -fani 3
+cirg 7 -fani 7
+cirg -1 -fano 9
+cirg 11
+cirp -pi
+cirg 6
+cirg 7
+cirg 6 -fani 4
+cirp -s
+cirg 6 -fani 0
+cirg 2
+cirg -3 -fani 2
+cirg 5
+cirg 4 -fani 3
+cirg -1 -fano 7
+cirg 14
+cirp -n
+cirp -s
+cirg 5 -fano 6
+cirg 8
+cirg -3
+cirp -fl
+cirg 4 -fano 5
+cirg 9 -fani 6
+cirw
+cirg 3 -fani 8
+cirg 0
+cirw
+cirg 10
+cirg 1
+cirg 11 -fano 4
+cirg 8 -fani 6
+cirp -pi
+cirp -n
+cirg 16
+cirg 16
+cirg 13 -fano 3
+cirw
+cirg 11
+cirp -n
+cirg 8 -fano 3
+cirp -fl
+cirg 3 -fano 9
+cirg 3
+cirr ./tests.err/ok11.aag -R
+cirg 4 -fani 4
+cirg 3 -fano 8
+cirg 2 -fano 2
+cirg 7
+cirg -1
+cirp -fl
+cirw
+cirp -s
+cirg 1 -fano 1
+cirg 10
+cirg 1
+cirg 16
+cirp -fl
+cirg 2 -fani 6
+cirg -3 -fani 7
+cirg 15 -fano 8
+cirg 12
+cirg 3 -fani 6
+cirp -n
+cirp -n
+cirg 1 -fani 2
+cirg 3
+cirg 3
+cirp -fl
+cirg 13 -fano 9
+cirg 15
+cirg 1 -fani 9
+cirg 7
+cirg 15 -fano 2
+cirg 0
+cirg 8 -fano 8
+cirg 12 -fano 8
+cirp -fl
+cirg 16 -fano 9
+cirp -fl
+cirg 0
+cirg 11 -fano 4
+cirg 6
+cirg 0 -fano 3
+cirg 6 -fano 3
+cirp -pi
+cirg 7 -fano 9
+cirg 2 -fani 5
+cirg 0 -fani 9
+cirp -n
+cirg 0 -fani 5
+cirg 4
+cirg 3
+cirg 15 -fani 3
+cirg 12
+cirr ./tests.fraig/opt01.aag -R
+cirg 15 -fani 1
+cirg 6 -fano 7
+cirw
+cirg 0 -fani 8
+cirg 5
+cirg 11 -fani 5
+cirp -n
+cirg 15
+cirg -1
+cirg 12 -fani 8
+cirg 5
+cirg 12 -fani 2
+cirg 12
+cirg 9
+cirg 6
+cirg 6 -fano 6
+cirg 6
+cirg 7 -fani 3
+cirg 15 -fano 4
+cirg 10 -fani 0
+cirg 12 -fani 5
+cirg 10 -fano 0
+cirg -1
+cirg 0 -fani 4
+cirg 11 -fano 9
+cirg 3
+cirg 16 -fano 1
+cirg 13 -fano 4
+cirg 5
+cirg 4 -fani 8
+cirg 15
+cirw
+cirg -1 -fano 7
+cirg -3 -fano 5
+cirg 9 -fani 1
+cirg 10
+cirg 6 -fano 0
+cirp -fl
+cirg 15 -fani 3
+cirg 12 -fani 1
+cirw
+cirg -3
+cirg 11
+cirg 14 -fani 4
+cirp -po
+cirg 9
+cirg 9 -fani 4
+cirp -po
+cirg 12
+cirg 0 -fani 0
+cirr ./tests.fraig/opt02.aag -R
+cirg 7
+cirg 10
+cirp -fl
+cirg -2 -fani 3
+cirg 7
+cirg 2 -fano 1
+cirp -fl
+cirw
+cirg 16
+cirg 2 -fano 7
+cirw
+cirp -n
+cirp -n
+cirg 3 -fani 2
+cirg 16 -fani 6
+cirg 11
+cirg 3 -fani 0
+cirg -1
+cirg 5 -fano 8
+cirp -pi
+cirp -n
+cirg 9 -fano 1
+cirg 2 -fani 4
+cirg -2
+cirg 10
+cirg -3 -fani 8
+cirg 9 -fani 6
+cirg 13
+cirg 11 -fano 0
+cirp -n
+cirg 12 -fani 6
+cirp -pi
+cirg 14 -fani 6
+cirw
+cirg 7 -fani 8
+cirg -1 -fano 6
+cirg 7 -fano 4
+cirg 8 -fano 5
+cirg 16 -fano 4
+cirg -2 -fani 3
+cirw
+cirg -3
+cirg 14
+cirg 2
+cirg 7 -fani 4
+cirg -2 -fani 0
+cirw
+cirw
+cirg 14 -fano 1
+cirp -n
+cirr ./tests.fraig/opt03.aag -R
+cirg 4 -fani 9
+cirp -pi
+cirg 12 -fano 7
+cirg 16 -fani 1
+cirp -n
+cirg 13 -fani 6
+cirp -pi
+cirg 0 -fano 5
+cirg 4 -fani 5
+cirg 8 -fani 1
+cirp -pi
+cirp -po
+cirg 0 -fano 0
+cirg 6
+cirg 6
+cirg 4
+cirg 8 -fani 9
+cirg 12
+cirp -fl
+cirg 3 -fano 7
+cirw
+cirg -3
+cirg -3
+cirg 15 -fani 1
+cirg 11 -fani 9
+cirg 14 -fani 2
+cirg 1 -fani 1
+cirg 5
+cirg 6 -fano 8
+cirg 0
+cirg 5 -fano 0
+cirg 15 -fano 0
+cirg 8 -fano 2
+cirg 1 -fani 0
+cirg 14 -fano 6
+cirg 7 -fano 4
+cirp -n
+cirg 16 -fano 9
+cirp -n
+cirg 7 -fani 7
+cirg 12 -fani 2
+cirg 5
+cirg 0
+cirg 3
+cirg 16
+cirg 13
+cirg -2 -fano 9
+cirg -1
+cirg 14 -fani 3
+cirp -n
+cirr ./tests.fraig/opt04.aag -R
+cirg -2
+cirg -3 -fani 1
+cirw
+cirg 12
+cirg 16
+cirg 4
+cirp -n
+cirw
+cirp -fl
+cirp -s
+cirp -po
+cirg 6
+cirp -n
+cirg 10
+cirg -2
+cirg 14
+cirg 4 -fani 7
+cirg 1 -fani 5
+cirg 12 -fani 4
+cirg 8 -fani 3
+cirg 15 -fano 2
+cirg 0 -fani 1
+cirw
+cirg 15 -fani 5
+cirg -1 -fani 4
+cirg 2 -fani 8
+cirg 7 -fani 3
+cirg 7
+cirg 1 -fano 9
+cirg 14 -fani 6
+cirg 11
+cirg 2 -fano 8
+cirp -s
+cirg 3 -fano 8
+cirp -n
+cirg 0
+cirg 14 -fano 2
+cirg 4
+cirg -3 -fani 7
+cirp -s
+cirg 4 -fano 4
+cirw
+cirg 5 -fano 3
+cirg 15
+cirg 2
+cirg 8 -fano 8
+cirg 3 -fani 4
+cirg 2
+cirg 12
+cirw
+cirr ./tests.fraig/opt05.aag -R
+cirg 7
+cirg -1
+cirg 12 -fano 8
+cirp -n
+cirg 13 -fano 5
+cirg 1
+cirp -po
+cirp -fl
+cirg 4
+cirg 6 -fani 6
+cirg 3 -fani 6
+cirw
+cirp -n
+cirg 12 -fano 7
+cirp -pi
+cirp -n
+cirg 3 -fani 3
+cirg 10 -fano 3
+cirg 0 -fani 6
+cirg -2
+cirg 11
+cirg -1 -fani 0
+cirg 8
+cirg 16 -fani 9
+cirg 15
+cirp -po
+cirg 5 -fano 2
+cirg 2 -fani 2
+cirg 3 -fani 2
+cirg -1 -fano 3
+cirp -n
+cirg 13 -fani 4
+cirg 1
+cirg 12
+cirg 0
+cirg 0
+cirg -2 -fani 4
+cirg 5
+cirg -1 -fano 0
+cirg 5
+cirg 11 -fani 7
+cirg 1 -fano 8
+cirp -po
+cirp -n
+cirg 6 -fani 7
+cirg 1
+cirp -fl
+cirg 9 -fano 7
+cirg 0
+cirg -1 -fani 5
+cirr ./tests.fraig/opt06.aag -R
+cirg 16
+cirg -1
+cirg 0 -fano 0
+cirg -2 -fani 8
+cirg -1 -fano 1
+cirg 10 -fano 3
+cirp -s
+cirg -1 -fano 1
+cirg -1 -fani 6
+cirp -po
+cirg 14
+cirg 12 -fano 2
+cirg 11 -fani 1
+cirg 1
+cirp -n
+cirg 1
+cirg 10
+cirg 13 -fani 1
+cirp -s
+cirg 16 -fano 7
+cirp -s
+cirg 4 -fani 9
+cirp -po
+cirp -fl
+cirg 10 -fani 0
+cirg 6 -fani 3
+cirg 6
+cirg 5 -fano 7
+cirg 3
+cirg 0
+cirg 5
+cirw
+cirg 1 -fani 6
+cirg 8 -fano 2
+cirg -1 -fani 7
+cirg -3 -fani 4
+cirg 8 -fano 9
+cirg 14
+cirg 5
+cirg 8
+cirg 6
+cirg 4 -fano 8
+cirg 6
+cirg 3 -fani 2
+cirg -1
+cirg 8
+cirp -pi
+cirw
+cirg -1 -fani 8
+cirg 15 -fani 5
+cirr ./tests.fraig/sim01.aag -R
+cirg 16
+cirg 12 -fani 9
+cirg 13 -fani 6
+cirg 6
+cirg 13 -fani 4
+cirg 0 -fano 1
+cirg 4 -fano 9
+cirp -po
+cirg 7 -fani 9
+cirg 14 -fani 6
+cirg 13 -fano 3
+cirp -n
+cirg -3 -fani 3
+cirg -3
+cirg -2
+cirw
+cirg -1 -fano 5
+cirp -n
+cirg 15
+cirg 7 -fani 0
+cirg 6 -fani 3
+cirg 1 -fano 5
+cirg 8
+cirp -n
+cirg 15
+cirg 0 -fani 6
+cirg 3 -fani 3
+cirg 2 -fano 7
+cirg 14
+cirp -s
+cirg 0 -fani 1
+cirg 5 -fano 4
+cirg 16 -fani 3
+cirp -fl
+cirg 2
+cirg 12
+cirg 11 -fani 9
+cirg 3 -fani 6
+cirg 11 -fano 6
+cirg 13 -fano 4
+cirp -n
+cirg 10 -fani 7
+cirg 6 -fani 9
+cirg 11
+cirg -2 -fani 2
+cirg 2 -fani 3
+cirg 0 -fani 1
+cirg 16 -fano 0
+cirp -n
+cirg 13
+cirr ./tests.fraig/sim02.aag -R
+cirp -fl
+cirg 15 -fani 2
+cirg 9 -fano 3
+cirp -n
+cirp -po
+cirg 12 -fano 6
+cirg 6
+cirg 9 -fani 1
+cirp -s
+cirg 12
+cirp -n
+cirg 14 -fani 1
+cirg 16
+cirg 16 -fani 4
+cirg 15 -fano 1
+cirg 13
+cirg 12 -fani 9
+cirg 8 -fani 1
+cirg 1 -fani 2
+cirg 10 -fano 2
+cirg 15 -fano 0
+cirp -po
+cirp -n
+cirg 8 -fani 9
+cirg 3 -fano 5
+cirg -3 -fani 2
+cirg 10
+cirg -1 -fano 3
+cirg 13
+cirg 0 -fani 0
+cirw
+cirg 5 -fani 8
+cirg 10 -fani 4
+cirg 11 -fani 2
+cirg 8 -fani 5
+cirg 15 -fani 6
+cirg 2 -fani 4
+cirg 7
+cirg 16 -fani 3
+cirg 7 -fani 3
+cirg 8 -fani 4
+cirg -2 -fano 6
+cirg 10 -fano 4
+cirg 14 -fani 0
+cirp -n
+cirp -po
+cirg 6 -fani 6
+cirw
+cirw
+cirg -3
+cirr ./tests.fraig/sim03.aag -R
+cirp -n
+cirg 11
+cirg 10
+cirg 16 -fano 3
+cirp -po
+cirg -1 -fani 7
+cirg -2
+cirg 4 -fano 6
+cirg 0 -fani 2
+cirg 10 -fano 1
+cirg 9 -fano 5
+cirg 13 -fani 6
+cirp -pi
+cirg 15 -fano 4
+cirg 3 -fano 4
+cirg 3
+cirg 0 -fani 2
+cirg 13
+cirw
+cirg 4
+cirg 3 -fano 3
+cirp -n
+cirp -n
+cirg 8
+cirg 12
+cirg 8
+cirg 8 -fani 2
+cirg 7 -fano 2
+cirg 8
+cirg 7 -fani 5
+cirg 11 -fano 8
+cirg -3 -fani 3
+cirg 6
+cirg 8 -fani 6
+cirg 15 -fano 8
+cirg -3 -fano 4
+cirw
+cirg 1
+cirg -1 -fani 7
+cirp -s
+cirg -1
+cirg 16
+cirp -po
+cirg 12
+cirg 16 -fano 9
+cirg 1 -fano 0
+cirg 3 -fano 6
+cirg 3
+cirp -n
+cirp -fl
+cirr ./tests.fraig/sim04.aag -R
+cirp -s
+cirg 0 -fano 9
+cirg 13 -fani 3
+cirg 10 -fano 5
+cirg 5 -fano 8
+cirp -fl
+cirg 4 -fano 5
+cirg -2 -fano 1
+cirg 12
+cirg 8 -fani 2
+cirg -1 -fani 2
+cirg 15
+cirg 8 -fani 6
+cirg -3 -fano 1
+cirp -s
+cirp -po
+cirg 11
+cirg 14 -fano 9
+cirg 16 -fani 1
+cirg 15 -fano 7
+cirg 5
+cirp -pi
+cirg 12 -fano 6
+cirg 2
+cirg 8
+cirg 9 -fani 2
+cirg 1
+cirp -n
+cirp -po
+cirg -3 -fano 3
+cirg -2
+cirg -3 -fano 5
+cirg 2
+cirp -pi
+cirg 10
+cirw
+cirg 7 -fani 7
+cirw
+cirp -fl
+cirp -s
+cirg 13 -fani 6
+cirg 11
+cirp -fl
+cirg 2 -fani 1
+cirg 6 -fani 9
+cirg 11 -fani 0
+cirg 16 -fano 0
+cirg 16
+cirg 4
+cirg 3
+cirr ./tests.fraig/sim05.aag -R
+cirg 2
+cirg 16 -fani 4
+cirg 14
+cirg 0
+cirg 1 -fani 1
+cirg 10 -fani 3
+cirw
+cirg 15 -fani 7
+cirg -3 -fani 0
+cirg 15 -fano 7
+cirg -2
+cirp -n
+cirp -fl
+cirw
+cirg 13
+cirg -1 -fani 5
+cirg -2
+cirg 13 -fani 1
+cirg 3
+cirg 7 -fano 0
+cirg -3
+cirg 14
+cirg 5
+cirg 13 -fano 2
+cirg 7 -fani 0
+cirw
+cirg 0 -fani 2
+cirg 10 -fani 5
+cirg -1
+cirw
+cirp -fl
+cirp -po
+cirp -n
+cirg 10
+cirg 12 -fano 3
+cirg 4 -fano 6
+cirw
+cirg 13 -fano 8
+cirp -pi
+cirg 1
+cirg 9 -fano 8
+cirp -fl
+cirg 5 -fano 7
+cirp -n
+cirg 3 -fano 5
+cirg 0 -fani 4
+cirg 9 -fano 1
+cirg 10 -fano 8
+cirp -fl
+cirp -s
+cirr ./tests.fraig/sim06.aag -R
+cirg 4 -fano 2
+cirg 14
+cirg 3
+cirp -n
+cirg 5 -fano 9
+cirg -3 -fani 0
+cirg 6
+cirg 13
+cirp -fl
+cirg 1 -fani 1
+cirg 2 -fani 0
+cirp -fl
+cirg 2
+cirg 15 -fano 5
+cirp -n
+cirg 5
+cirg -2 -fani 2
+cirg 6
+cirg -3
+cirg 0
+cirg 11 -fano 4
+cirg 13 -fani 6
+cirw
+cirg 9
+cirp -n
+cirg -2 -fano 3
+cirg 7 -fani 0
+cirg 5 -fano 1
+cirp -s
+cirp -s
+cirp -pi
+cirp -pi
+cirp -n
+cirg 16 -fano 7
+cirg 2 -fani 8
+cirg 0 -fano 6
+cirg 5
+cirg 6 -fani 4
+cirg 12 -fano 9
+cirg 9 -fano 7
+cirg 5 -fano 7
+cirg 0 -fani 0
+cirp -s
+cirg 0 -fano 3
+cirg 12
+cirg 5 -fani 7
+cirg 16 -fani 6
+cirp -fl
+cirg -3
+cirp -pi
+cirr ./tests.fraig/sim07.aag -R
+cirg 12 -fani 5
+cirg -1
+cirp -s
+cirg 2 -fani 6
+cirg 16 -fano 1
+cirp -po
+cirg 1
+cirg 1 -fano 3
+cirg 4 -fani 6
+cirw
+cirg 4
+cirg 1 -fani 6
+cirg 6 -fano 9
+cirg 11 -fano 1
+cirp -po
+cirg -3 -fani 3
+cirp -n
+cirg 7 -fani 1
+cirg 4 -fani 7
+cirp -pi
+cirg -3 -fano 0
+cirp -n
+cirg 9
+cirg 15 -fani 3
+cirg 1
+cirg 15 -fani 4
+cirg 15
+cirg -1
+cirg 6
+cirp -n
+cirg 10 -fano 8
+cirw
+cirp -po
+cirg 4
+cirg 8 -fano 8
+cirg 2 -fani 6
+cirg 7 -fano 0
+cirg 7 -fano 6
+cirg 0
+cirg 14 -fani 6
+cirg 11 -fani 6
+cirp -fl
+cirg 6
+cirg -1 -fano 9
+cirg 8 -fani 8
+cirg 8
+cirg 8 -fani 8
+cirg 6 -fani 4
+cirg 9 -fano 0
+cirg 16 -fani 1
+cirr ./tests.fraig/sim08.aag -R
+cirp -s
+cirg -2 -fani 3
+cirg 8 -fano 5
+cirg 10
+cirg -1
+cirg 8 -fano 7
+cirg 0 -fano 4
+cirw
+cirg 10 -fano 5
+cirp -n
+cirg 2 -fani 5
+cirp -n
+cirg 5 -fani 3
+cirg -1 -fano 5
+cirg 13 -fano 2
+cirp -fl
+cirw
+cirg 13 -fani 2
+cirg 6 -fano 3
+cirp -po
+cirp -n
+cirg 5
+cirg 8 -fani 8
+cirp -n
+cirg 1
+cirp -fl
+cirg 5 -fani 4
+cirp -n
+cirg 16 -fano 1
+cirg 8 -fano 9
+cirp -n
+cirg -1
+cirg 7
+cirg 11 -fano 2
+cirg 5 -fani 6
+cirg 16 -fani 4
+cirg 5 -fani 9
+cirg 3 -fani 0
+cirg 10
+cirg 10 -fani 5
+cirp -s
+cirg 7 -fani 9
+cirg 1 -fani 0
+cirw
+cirg 2 -fano 4
+cirg -2 -fani 4
+cirg 6
+cirg 0
+cirg -1 -fani 4
+cirg 6
+cirr ./tests.fraig/sim09.aag -R
+cirp -s
+cirg 11
+cirg 1 -fani 1
+cirg 10 -fani 3
+cirw
+cirp -po
+cirp -n
+cirg -3 -fano 8
+cirw
+cirg 5 -fani 5
+cirw
+cirw
+cirg 0 -fani 5
+cirg 13
+cirg -3
+cirp -pi
+cirg 14
+cirg 15 -fani 0
+cirg 1 -fano 2
+cirg 15 -fano 5
+cirg 13 -fani 2
+cirg 1 -fano 2
+cirg 3
+cirg 0
+cirg 9
+cirp -fl
+cirg -3 -fano 9
+cirg 9 -fani 8
+cirg 7
+cirg 9
+cirg 0 -fani 4
+cirp -pi
+cirp -po
+cirg -1
+cirg 6 -fano 8
+cirg -3 -fano 4
+cirg 3 -fani 2
+cirp -n
+cirg 8
+cirg 3
+cirp -pi
+cirg 5 -fano 9
+cirw
+cirg 9
+cirp -fl
+cirg 8 -fano 0
+cirp -pi
+cirp -s
+cirg 16 -fani 6
+cirg 16 -fano 7
+cirr ./tests.fraig/sim10.aag -R
+cirp -po
+cirg -1 -fani 8
+cirg 13
+cirp -fl
+cirg 6
+cirp -n
+cirg 15 -fani 1
+cirg 12 -fani 9
+cirp -s
+cirg 3 -fano 8
+cirg 7
+cirg 4
+cirw
+cirp -pi
+cirg -2
+cirg -3
+cirp -po
+cirp -pi
+cirg 0 -fano 9
+cirg 14 -fani 1
+cirg -3
+cirp -s
+cirg 14
+cirg 8 -fani 5
+cirg -2
+cirg 10
+cirg 11 -fani 6
+cirp -pi
+cirg 10
+cirp -po
+cirg -1 -fani 8
+cirg 3
+cirg 4 -fano 5
+cirg -3
+cirg -1 -fano 9
+cirg 0 -fani 3
+cirg 5 -fani 8
+cirp -fl
+cirp -n
+cirg 15 -fano 9
+cirg 8 -fano 2
+cirg 14 -fani 2
+cirg 14 -fano 3
+cirg 9
+cirw
+cirp -pi
+cirg 1
+cirg 7
+cirg 14 -fano 6
+cirg 2 -fano 0
+cirr ./tests.fraig/sim11.aag -R
+cirg 10 -fano 2
+cirg 4
+cirg 9
+cirp -n
+cirp -n
+cirg 15
+cirg 11 -fani 8
+cirp -pi
+cirg 14
+cirg 12
+cirg 13 -fano 5
+cirg -2
+cirw
+cirw
+cirp -fl
+cirp -fl
+cirg 2 -fani 8
+cirg -3 -fano 7
+cirg 15
+cirg 13
+cirg 2 -fani 6
+cirg 16 -fani 6
+cirg 14
+cirg 0
+cirg -1
+cirg 7
+cirp -n
+cirg 0 -fani 9
+cirg -1
+cirg 7
+cirg 12 -fano 3
+cirg 7
+cirg 6 -fani 9
+cirg 6
+cirp -fl
+cirp -s
+cirg 14 -fani 4
+cirp -n
+cirg 10 -fano 8
+cirg 3
+cirp -po
+cirg 12 -fano 9
+cirp -n
+cirg 3
+cirg 2 -fano 2
+cirg 13
+cirg 15 -fani 4
+cirg 12 -fani 2
+cirg 4 -fano 1
+cirg 9 -fano 2
+cirr ./tests.fraig/sim12.aag -R
+cirg 10 -fano 9
+cirg -1 -fani 1
+cirg 4
+cirg -3 -fani 5
+cirg -2 -fani 2
+cirp -n
+cirg -3 -fano 7
+cirg 1
+cirg 12 -fani 8
+cirp -pi
+cirg 2 -fano 5
+cirg 0
+cirg 2 -fano 8
+cirg -2
+cirg -1
+cirg 15
+cirg -2 -fani 9
+cirg 0 -fano 8
+cirg 15 -fano 6
+cirg 13 -fano 7
+cirp -n
+cirg 1 -fani 2
+cirg 9
+cirg 3 -fano 8
+cirp -s
+cirg 12
+cirp -fl
+cirg 12
+cirg -1 -fano 6
+cirp -s
+cirg 1 -fano 3
+cirg 6 -fani 4
+cirg 4
+cirp -n
+cirg -3
+cirg 9 -fano 7
+cirg 13
+cirg 16
+cirg -3
+cirw
+cirg 3
+cirg 10 -fano 7
+cirg -3 -fani 2
+cirp -n
+cirg 16
+cirg 8
+cirw
+cirg 14 -fani 5
+cirg 3
+cirg 0
+cirr ./tests.fraig/sim13.aag -R
+cirg 2 -fani 1
+cirp -pi
+cirg 8
+cirg -2
+cirg 6
+cirg 11
+cirg 14 -fano 4
+cirw
+cirw
+cirg -2 -fano 5
+cirw
+cirg 5 -fani 6
+cirg 10 -fano 1
+cirg 10
+cirg 14 -fano 2
+cirg 2 -fano 6
+cirg 14
+cirp -n
+cirg 14 -fani 6
+cirg 3
+cirg 2 -fano 1
+cirp -po
+cirp -n
+cirg 9 -fani 9
+cirg -1 -fano 1
+cirg -2 -fano 6
+cirg 10 -fano 6
+cirg 9
+cirg 6
+cirg 12
+cirg 6
+cirg 4 -fani 9
+cirg 14 -fano 8
+cirg -1 -fani 4
+cirp -n
+cirg -1
+cirg -2 -fano 9
+cirg 3 -fano 6
+cirg 13 -fano 5
+cirp -n
+cirg 15
+cirg -2 -fano 4
+cirg 0
+cirg 16 -fano 1
+cirg -3 -fano 0
+cirg 8
+cirg 1 -fano 6
+cirg 8 -fani 6
+cirp -n
+cirg 6 -fani 7
+cirr ./tests.fraig/sim14.aag -R
+cirp -pi
+cirg 0 -fani 7
+cirg 15
+cirg 9 -fano 2
+cirp -n
+cirp -pi
+cirg 11
+cirg 12
+cirp -fl
+cirg -1 -fani 3
+cirg 12 -fani 6
+cirg 3 -fano 4
+cirg 15
+cirg 5
+cirg -3 -fani 0
+cirp -s
+cirg 8
+cirw
+cirg 12 -fano 0
+cirp -po
+cirg -3 -fani 8
+cirg 2
+cirg 11
+cirg 10 -fani 2
+cirg 10
+cirp -fl
+cirg 16 -fano 3
+cirg -1 -fano 9
+cirg 8 -fani 9
+cirg 9 -fano 4
+cirp -n
+cirg 1 -fano 7
+cirg 16
+cirg 9 -fano 5
+cirg 6 -fani 1
+cirg 2
+cirp -po
+cirg 3
+cirp -pi
+cirg 15 -fano 7
+cirg 3
+cirg -3
+cirg 10
+cirg -2 -fani 9
+cirg 14 -fano 1
+cirg 6
+cirg -2
+cirg 4 -fani 2
+cirg 11
+cirg 1 -fano 1
+cirr ./tests.fraig/sim15.aag -R
+cirg 4 -fani 1
+cirw
+cirg 13
+cirg 14 -fani 3
+cirg 11
+cirg -3 -fano 7
+cirg 11 -fano 6
+cirg 1 -fano 5
+cirg 6
+cirg 6
+cirp -n
+cirg 16
+cirp -po
+cirg 12 -fano 4
+cirg 16 -fano 2
+cirg 6
+cirg 9 -fani 3
+cirp -s
+cirp -s
+cirg 13
+cirg 14 -fano 0
+cirg 7
+cirw
+cirg 8 -fani 2
+cirg 9
+cirg 12 -fano 3
+cirg 3
+cirg 6 -fani 0
+cirg 6 -fano 6
+cirg -2
+cirg -3 -fano 0
+cirg 5 -fano 9
+cirp -s
+cirg 5 -fani 7
+cirw
+cirg 1 -fani 9
+cirg 15
+cirg 13 -fano 9
+cirg 5
+cirg 9
+cirg 9
+cirp -po
+cirg -3
+cirg 1
+cirg 12
+cirg 11 -fani 1
+cirp -s
+cirg 8 -fano 7
+cirg 3 -fano 7
+cirg -2 -fano 3
+cirr ./tests.fraig/strash01.aag -R
+cirg 11 -fano 6
+cirp -n
+cirg 15 -fani 1
+cirg 5
+cirg 5
+cirg 11
+cirp -fl
+cirg 8 -fani 7
+cirg 3 -fano 0
+cirg 16 -fani 7
+cirg -3
+cirg 4 -fano 2
+cirg -2
+cirg 12 -fano 2
+cirp -s
+cirg 12
+cirp -po
+cirp -po
+cirg 11 -fani 2
+cirg 3 -fani 1
+cirg 10
+cirg 0 -fani 6
+cirg 9
+cirg 14 -fani 3
+cirg 4
+cirg 1 -fano 1
+cirg 0 -fani 5
+cirg 10
+cirg 11
+cirp -n
+cirg 6 -fano 7
+cirg -1 -fano 4
+cirg 9 -fani 9
+cirp -fl
+cirp -po
+cirg 13 -fani 6
+cirg 8 -fani 2
+cirg 3
+cirg -2
+cirg 2 -fano 6
+cirg 8
+cirg 8 -fano 1
+cirg 6
+cirp -pi
+cirw
+cirw
+cirg -3 -fani 6
+cirg 11
+cirg 11
+cirg 9
+cirr ./tests.fraig/strash02.aag -R
+cirg 4
+cirg 5
+cirg 7
+cirg 15 -fano 9
+cirg 5 -fano 4
+cirg -3 -fano 3
+cirg 13
+cirg 6 -fani 3
+cirp -pi
+cirg 12 -fano 7
+cirp -n
+cirg 2 -fano 9
+cirp -n
+cirg -3 -fano 5
+cirg -3 -fani 2
+cirw
+cirp -n
+cirg 10 -fano 1
+cirg -2
+cirg -3
+cirp -po
+cirg 1 -fano 1
+cirg 3 -fano 9
+cirg 9 -fani 8
+cirg 4 -fano 1
+cirg 6
+cirg 16
+cirg -3
+cirg -2
+cirg 13
+cirg -2 -fano 6
+cirg -3 -fani 3
+cirp -n
+cirp -n
+cirp -n
+cirg 14 -fano 6
+cirg 5 -fani 6
+cirp -fl
+cirg 2 -fani 8
+cirp -n
+cirg 13
+cirg 8 -fani 7
+cirg -3 -fani 5
+cirg -1
+cirg 9
+cirg 16
+cirg 9 -fano 0
+cirg 1 -fano 4
+cirg -3 -fano 2
+cirg 12
+cirr ./tests.fraig/strash03.aag -R
+cirw
+cirp -po
+cirp -n
+cirg 3 -fani 5
+cirg 14
+cirp -pi
+cirg 11 -fano 2
+cirg 7
+cirg 10
+cirp -po
+cirg -1 -fano 8
+cirg 10
+cirg -2
+cirp -s
+cirg 9 -fani 5
+cirg 5 -fano 7
+cirp -n
+cirp -n
+cirg 2
+cirw
+cirg 3 -fano 0
+cirp -po
+cirg 15
+cirg 14
+cirg 0
+cirg 7
+cirg 7
+cirg 1 -fano 7
+cirg 14 -fani 0
+cirg 10 -fano 1
+cirg 14 -fani 3
+cirg 15
+cirp -po
+cirg -1 -fano 2
+cirg -2 -fano 4
+cirp -n
+cirg -2 -fani 0
+cirw
+cirg 14
+cirp -fl
+cirg -1
+cirg 14
+cirg -2 -fani 9
+cirg -2 -fani 2
+cirg 5 -fano 2
+cirp -s
+cirg 1 -fano 5
+cirg -1 -fani 8
+cirg 8 -fani 6
+cirp -pi
+cirr ./tests.fraig/strash04.aag -R
+cirg 1
+cirp -fl
+cirp -n
+cirw
+cirg 15 -fani 7
+cirg 4 -fani 5
+cirp -fl
+cirg 8 -fano 7
+cirg 10 -fani 8
+cirg 9 -fano 4
+cirg 13 -fani 5
+cirp -po
+cirg 3
+cirp -n
+cirg 13 -fano 9
+cirg 9
+cirw
+cirg 12 -fano 6
+cirg 7
+cirg 15 -fani 4
+cirg 12
+cirg 6 -fani 9
+cirg 3 -fani 1
+cirg -2 -fani 1
+cirg 14 -fani 4
+cirp -pi
+cirg 3 -fani 6
+cirp -s
+cirg 7
+cirg 6
+cirg 0 -fano 7
+cirg -3 -fani 0
+cirg 2
+cirg -3 -fano 0
+cirw
+cirg 1 -fani 8
+cirg 12 -fani 8
+cirg 2 -fani 9
+cirg 0
+cirg 16 -fano 8
+cirp -pi
+cirg 5 -fani 7
+cirw
+cirg 16
+cirg 6
+cirg -2
+cirg 1
+cirp -n
+cirg 3 -fani 3
+cirg 7
+cirr ./tests.fraig/strash05.aag -R
+cirg 8 -fano 2
+cirg 1 -fano 6
+cirg 9 -fano 4
+cirg 5
+cirw
+cirg 14 -fani 1
+cirg 4 -fano 1
+cirw
+cirg 11
+cirg 7 -fani 8
+cirg 1
+cirw
+cirg 8 -fani 2
+cirg -2 -fano 7
+cirg 14
+cirp -pi
+cirg -1 -fano 0
+cirw
+cirg 8 -fani 6
+cirg 2 -fani 9
+cirg 11
+cirg 0
+cirp -n
+cirg 8 -fani 1
+cirp -n
+cirg 8 -fani 9
+cirg 8 -fani 1
+cirp -n
+cirw
+cirg 15 -fani 3
+cirp -n
+cirg 1 -fani 4
+cirg -3 -fano 1
+cirg 8 -fani 4
+cirg -3 -fani 2
+cirw
+cirp -n
+cirg 2 -fano 5
+cirg 6
+cirg 2
+cirp -n
+cirg -2 -fani 5
+cirg 5
+cirg 10
+cirg 12 -fani 4
+cirp -s
+cirg 15 -fani 7
+cirp -fl
+cirg 7 -fani 5
+cirg 2
+cirr ./tests.fraig/strash06.aag -R
+cirg 4
+cirg 15
+cirg 14 -fani 1
+cirg 9 -fano 6
+cirg -2 -fani 7
+cirg 5
+cirg 15
+cirg 5
+cirg 2 -fano 3
+cirg 0
+cirg 9 -fani 9
+cirg 1
+cirw
+cirg 15
+cirp -fl
+cirp -fl
+cirg 3 -fano 1
+cirg 0
+cirg -2
+cirp -n
+cirg -1
+cirg 5 -fani 9
+cirp -n
+cirg 6 -fano 4
+cirw
+cirg 15 -fani 4
+cirg -1
+cirp -fl
+cirg 11 -fani 2
+cirp -po
+cirg -1 -fano 6
+cirg 2 -fano 5
+cirg 10 -fano 4
+cirg 12
+cirg 3 -fano 4
+cirp -n
+cirg 6 -fani 1
+cirp -n
+cirg -2 -fani 7
+cirp -po
+cirp -pi
+cirg 14 -fani 8
+cirp -s
+cirp -s
+cirg 15 -fani 3
+cirp -pi
+cirg -2 -fano 5
+cirg 12 -fano 9
+cirg 7
+cirp -po
+cirr ./tests.fraig/strash07.aag -R
+cirg 3
+cirg 14 -fani 6
+cirg 0 -fano 4
+cirg -1 -fano 3
+cirg 4 -fani 1
+cirg 14
+cirg 16 -fani 0
+cirp -n
+cirg 16
+cirg 16 -fani 3
+cirg 14 -fani 5
+cirg 14
+cirp -s
+cirg 7 -fano 2
+cirp -pi
+cirg 12
+cirg 8
+cirg 0 -fano 4
+cirg 11 -fano 7
+cirg -2 -fano 8
+cirg 0 -fano 4
+cirg 11 -fano 8
+cirp -pi
+cirg 13 -fani 8
+cirg -3 -fano 9
+cirg 2
+cirg 12 -fani 9
+cirp -n
+cirg 6
+cirp -po
+cirp -po
+cirg 10 -fani 9
+cirp -n
+cirp -pi
+cirg 10
+cirg 11
+cirg 10 -fani 1
+cirg 15 -fano 0
+cirg -2
+cirg 16 -fani 2
+cirp -pi
+cirg -1 -fani 0
+cirg 10
+cirg 5
+cirg 12 -fani 0
+cirp -s
+cirg 6
+cirg 5
+cirg 16 -fano 6
+cirw
+cirr ./tests.fraig/strash08.aag -R
+cirg 2
+cirp -n
+cirg 0 -fano 5
+cirg 11
+cirg 14
+cirg 0 -fano 6
+cirp -po
+cirg 7 -fani 1
+cirg 8
+cirg 4
+cirw
+cirg 3 -fano 9
+cirg 16
+cirg 1
+cirp -pi
+cirg 16
+cirg 16 -fani 8
+cirg 2 -fano 1
+cirg 4
+cirg 6
+cirg -1
+cirg 0
+cirp -fl
+cirg 16 -fano 1
+cirg 13
+cirg -3 -fani 1
+cirg 1 -fano 5
+cirg 16 -fani 1
+cirp -n
+cirg 16 -fano 1
+cirg 3
+cirp -s
+cirg 0
+cirw
+cirg -3 -fani 7
+cirg 2 -fani 1
+cirp -fl
+cirg -3 -fani 9
+cirg 11
+cirg 15
+cirp -n
+cirp -s
+cirg 6 -fani 1
+cirg -1 -fani 7
+cirg 16 -fano 0
+cirp -po
+cirg 4 -fano 6
+cirg 9 -fano 0
+cirg 16
+cirg 13 -fano 8
+cirr ./tests.fraig/strash09.aag -R
+cirg 15
+cirp -n
+cirp -n
+cirg 10 -fani 3
+cirp -po
+cirp -fl
+cirg 15
+cirg -2
+cirg 10
+cirg 2
+cirg 5
+cirg 15 -fani 5
+cirg 15
+cirg -3
+cirp -n
+cirg -2
+cirp -n
+cirg -1
+cirg 9 -fano 3
+cirg 3 -fani 9
+cirg 13
+cirg 7
+cirg 4 -fano 3
+cirp -n
+cirg 6
+cirg 13 -fano 9
+cirg 10 -fani 5
+cirg 12 -fani 4
+cirp -n
+cirg 7 -fani 3
+cirg 13 -fano 0
+cirp -s
+cirg -3 -fani 3
+cirg 15
+cirg -3
+cirg 6
+cirp -po
+cirg 2 -fano 7
+cirg 0
+cirg 13
+cirg -1 -fano 9
+cirg 15
+cirg 12 -fano 0
+cirg -2 -fani 0
+cirg 4 -fano 6
+cirp -n
+cirg 6 -fani 9
+cirp -pi
+cirp -s
+cirg 5 -fano 3
+cirr ./tests.fraig/strash10.aag -R
+cirw
+cirp -pi
+cirg -3 -fano 1
+cirg 0 -fano 4
+cirg 6 -fano 4
+cirg 12 -fani 2
+cirg 3 -fani 6
+cirg 14 -fani 6
+cirg 7 -fano 8
+cirg 11
+cirp -s
+cirg 16
+cirp -s
+cirg 3 -fano 1
+cirg -1 -fani 3
+cirg 5
+cirg 13 -fano 2
+cirg 14 -fano 8
+cirg 6
+cirg 10 -fano 6
+cirp -s
+cirg 0 -fano 3
+cirg 15 -fano 0
+cirg -2
+cirg 0 -fani 6
+cirg 6
+cirg 13 -fano 0
+cirg 14 -fano 1
+cirg 15 -fano 2
+cirg -2
+cirg -2
+cirg 0 -fani 0
+cirp -s
+cirp -po
+cirp -n
+cirg 12 -fano 9
+cirg 4 -fano 5
+cirg 7 -fano 4
+cirp -n
+cirg 10
+cirg 12
+cirg 10
+cirp -n
+cirg -3
+cirp -fl
+cirg 10
+cirg -3
+cirg 0
+cirg -2
+cirg 11 -fano 3
+cirr ./tests.fraig/test1.aag -R
+cirp -fl
+cirg 5 -fano 4
+cirp -n
+cirg -2 -fano 6
+cirg 4 -fani 4
+cirw
+cirp -pi
+cirg 4 -fani 2
+cirg 12
+cirg 16 -fani 5
+cirg -1 -fano 4
+cirg 5
+cirg 2 -fano 9
+cirg 0 -fani 1
+cirg 8 -fani 4
+cirp -n
+cirg 6 -fano 4
+cirg 16
+cirg 12 -fano 7
+cirg 1 -fani 0
+cirp -po
+cirg -1 -fano 0
+cirg -1 -fani 2
+cirp -po
+cirg 13 -fano 0
+cirg -2
+cirg 16 -fano 3
+cirg -2 -fano 2
+cirg 0
+cirp -n
+cirp -n
+cirp -pi
+cirg -1 -fani 6
+cirp -fl
+cirg 3 -fano 8
+cirw
+cirg 11
+cirg 7 -fano 8
+cirg 13
+cirg 8
+cirg 12 -fani 1
+cirp -po
+cirg 14 -fano 6
+cirg 6 -fani 7
+cirg -2 -fani 5
+cirg 8 -fani 7
+cirg 6 -fano 5
+cirg 16
+cirg 5 -fani 1
+cirg 14 -fani 9
+cirr ./tests.fraig/test2.aag -R
+cirg 12
+cirg 5 -fano 0
+cirg -3 -fani 9
+cirg 7 -fano 4
+cirg 13 -fano 9
+cirg -3
+cirg 10 -fano 7
+cirp -pi
+cirg 12 -fano 9
+cirg 10 -fani 6
+cirg 9
+cirp -po
+cirg 3 -fani 3
+cirp -s
+cirg 8
+cirg 4
+cirg -3
+cirp -n
+cirg 1 -fano 9
+cirg 15
+cirg 7
+cirw
+cirp -po
+cirg 12
+cirg 12
+cirg 10 -fani 2
+cirg 14
+cirw
+cirg 10 -fano 5
+cirg 3 -fani 2
+cirg -3 -fano 3
+cirp -n
+cirg 5
+cirg 0 -fano 0
+cirp -n
+cirg 1 -fani 6
+cirg 14
+cirp -n
+cirg 2 -fano 7
+cirg 0 -fani 3
+cirg 6
+cirg 10 -fano 5
+cirp -s
+cirg 0 -fani 3
+cirg 6
+cirp -fl
+cirg 15 -fani 7
+cirg 14
+cirg 10
+cirg 15 -fani 5
+cirr ./tests.fraig/ISCAS85/C1355.aag -R
+cirp -pi
+cirg 12
+cirg 4
+cirg -2 -fani 6
+cirg 13 -fani 1
+cirw
+cirg 2 -fani 3
+cirg -1 -fani 9
+cirp -n
+cirg 16 -fani 9
+cirg 6 -fano 0
+cirg 16 -fano 2
+cirg -3 -fano 8
+cirg 16
+cirp -fl
+cirg 13
+cirg -2 -fano 8
+cirg 1
+cirg 7 -fano 6
+cirg 0 -fano 1
+cirg 12 -fani 5
+cirg -3
+cirg -2 -fani 6
+cirg 5
+cirp -s
+cirg -1 -fano 3
+cirp -pi
+cirp -n
+cirp -n
+cirg -2 -fano 4
+cirg 13
+cirg -1 -fani 3
+cirg 15 -fani 8
+cirw
+cirp -s
+cirg 13 -fani 7
+cirg 10
+cirp -fl
+cirg 12 -fano 0
+cirg 14 -fani 2
+cirg 16 -fani 0
+cirg 10 -fani 0
+cirp -fl
+cirg 0 -fani 9
+cirg 10
+cirp -n
+cirg 10 -fano 8
+cirg 8
+cirp -fl
+cirp -pi
+cirr ./tests.fraig/ISCAS85/C17.aag -R
+cirg 3
+cirg 12 -fani 2
+cirg 4
+cirw
+cirg 6 -fano 4
+cirg -3 -fani 5
+cirg 9 -fano 9
+cirg 11
+cirg 16
+cirg 6
+cirg 16 -fano 6
+cirg 8 -fano 2
+cirg 8
+cirg 5 -fani 4
+cirg 5
+cirg 12
+cirp -n
+cirg 4
+cirg 4 -fano 2
+cirg 15 -fano 0
+cirg 2 -fani 5
+cirg 3 -fani 9
+cirg 1 -fano 5
+cirg 16 -fani 7
+cirg 11
+cirg 14 -fani 2
+cirg -3 -fano 1
+cirg 14 -fani 7
+cirg 5 -fani 5
+cirw
+cirg 10 -fano 9
+cirg 8
+cirg 1
+cirg 5
+cirg 7
+cirg 6 -fani 5
+cirg -1 -fano 8
+cirg -2
+cirg 3
+cirg 9 -fani 7
+cirg 10 -fani 0
+cirg 1 -fano 5
+cirg 3
+cirg 7
+cirg 2 -fani 4
+cirg -1
+cirg 10 -fano 0
+cirg 12 -fano 8
+cirg 4
+cirp -n
+cirr ./tests.fraig/ISCAS85/C1908.aag -R
+cirg -2 -fano 7
+cirg 7 -fano 5
+cirg 4 -fano 2
+cirg -2
+cirg 8 -fani 6
+cirw
+cirg 14 -fano 9
+cirg 5 -fano 6
+cirg 15 -fano 3
+cirg 4 -fano 5
+cirg 4 -fani 1
+cirg 16 -fani 8
+cirg -1 -fano 7
+cirw
+cirg 9
+cirg 9 -fano 3
+cirw
+cirg 5 -fani 0
+cirg -3 -fano 4
+cirg 6 -fano 7
+cirg 7
+cirp -fl
+cirg 6 -fani 5
+cirg 1 -fani 7
+cirg 0 -fani 9
+cirg 2 -fani 6
+cirg -3
+cirg 16
+cirp -n
+cirp -n
+cirg 1
+cirg 4
+cirg -2
+cirg 12 -fani 2
+cirg 15 -fani 3
+cirg 6 -fani 4
+cirg 12 -fano 5
+cirg 15 -fani 8
+cirg 0 -fani 8
+cirg 6 -fani 9
+cirg -3
+cirg 11 -fano 7
+cirp -n
+cirg 16 -fano 2
+cirg 3 -fani 5
+cirg 14 -fani 9
+cirg 11 -fani 4
+cirg -3 -fani 3
+cirg 3 -fano 8
+cirg 6
+cirr ./tests.fraig/ISCAS85/C3540.aag -R
+cirg -1 -fani 1
+cirg 2
+cirg 16 -fani 5
+cirg -2
+cirg 9
+cirg 10 -fano 3
+cirg 1 -fani 9
+cirg 12 -fani 8
+cirg -1 -fano 4
+cirg 9
+cirg 10 -fani 5
+cirp -fl
+cirg 12 -fani 0
+cirp -s
+cirp -s
+cirg -1 -fani 8
+cirg -2
+cirp -po
+cirg 13
+cirg 5 -fano 7
+cirp -pi
+cirp -pi
+cirp -pi
+cirp -po
+cirp -n
+cirg 12 -fani 4
+cirp -n
+cirg 8
+cirg 0 -fano 4
+cirg -1
+cirg 4 -fani 5
+cirp -n
+cirp -n
+cirg 13
+cirg 5
+cirw
+cirg 16
+cirg 8 -fano 8
+cirw
+cirp -s
+cirw
+cirp -n
+cirg 12 -fano 5
+cirg 13 -fano 6
+cirp -pi
+cirg 1
+cirp -n
+cirg 11 -fano 6
+cirp -s
+cirg 10
+cirr ./tests.fraig/ISCAS85/C432.aag -R
+cirg 15
+cirg 13
+cirp -pi
+cirg -3
+cirp -fl
+cirp -n
+cirg 7 -fano 9
+cirg 8
+cirp -fl
+cirg 10
+cirg 2 -fani 4
+cirp -n
+cirg 14 -fano 1
+cirg 0 -fani 7
+cirg 12
+cirg 0
+cirg 13
+cirg 14 -fani 8
+cirg 0 -fano 0
+cirg 5 -fano 7
+cirp -s
+cirw
+cirg 4
+cirg -3
+cirg 12
+cirg 12 -fano 7
+cirg 8
+cirp -n
+cirg 16 -fani 9
+cirw
+cirg -2 -fani 1
+cirg 2 -fano 1
+cirw
+cirg 14 -fani 4
+cirp -fl
+cirg 13 -fano 3
+cirp -n
+cirg 9
+cirg 16
+cirg 6 -fano 4
+cirp -po
+cirp -n
+cirg 4
+cirg 12 -fano 6
+cirg -3 -fano 3
+cirg 4
+cirg 3 -fani 3
+cirp -s
+cirg 8 -fani 9
+cirp -n
+cirr ./tests.fraig/ISCAS85/C432_r.aag -R
+cirg 10 -fano 2
+cirg 5 -fani 4
+cirp -po
+cirp -s
+cirp -po
+cirp -n
+cirg 13
+cirg 1
+cirp -s
+cirg 5
+cirg 9
+cirp -po
+cirg 11 -fano 9
+cirg 6
+cirg 15
+cirg 12 -fani 6
+cirp -po
+cirp -n
+cirg 11
+cirg 0 -fani 6
+cirg 8
+cirp -pi
+cirg 6 -fano 4
+cirg 15
+cirg -2 -fano 6
+cirp -s
+cirg 13 -fano 7
+cirg 6
+cirg 13 -fani 0
+cirg 0
+cirg -2 -fano 8
+cirp -s
+cirg 10
+cirg 8 -fano 7
+cirg 11 -fano 4
+cirg 12
+cirg 9 -fano 3
+cirg -2
+cirg 14
+cirp -po
+cirp -n
+cirg 14
+cirg 15 -fano 2
+cirg 11 -fani 0
+cirp -fl
+cirp -s
+cirg 2 -fani 0
+cirp -s
+cirg 2 -fani 7
+cirg 2 -fano 3
+cirr ./tests.fraig/ISCAS85/C499.aag -R
+cirg 7 -fani 4
+cirp -pi
+cirg 9 -fano 5
+cirg 4
+cirp -n
+cirw
+cirg 12
+cirg 15 -fani 9
+cirg 0 -fani 8
+cirg 15
+cirg 0 -fano 3
+cirg 13
+cirp -n
+cirg 7
+cirg 10
+cirp -pi
+cirg 3 -fano 8
+cirp -n
+cirp -n
+cirg 9 -fani 6
+cirg -3 -fani 1
+cirp -n
+cirp -n
+cirg 4 -fani 2
+cirg 4 -fano 3
+cirw
+cirg 0 -fani 0
+cirg 4 -fano 0
+cirg -1 -fano 6
+cirp -po
+cirg 4 -fano 4
+cirp -pi
+cirg 3 -fani 0
+cirg 16
+cirg 0
+cirp -s
+cirw
+cirp -s
+cirg 13
+cirg 15 -fano 2
+cirg 2 -fani 4
+cirw
+cirg 4 -fani 2
+cirg -1
+cirg 11 -fano 6
+cirg 6 -fani 1
+cirp -s
+cirp -s
+cirg 12 -fani 7
+cirg 12 -fani 5
+cirr ./tests.fraig/ISCAS85/C499_r.aag -R
+cirg 12 -fano 8
+cirg 12 -fani 0
+cirg 5
+cirg 0 -fano 6
+cirg 13
+cirp -pi
+cirg 5 -fano 2
+cirp -fl
+cirg 12 -fani 4
+cirg -3 -fano 0
+cirp -n
+cirg 6 -fano 2
+cirg -3
+cirp -n
+cirg 11
+cirg 4 -fani 5
+cirp -po
+cirg 16
+cirg 4
+cirg 14 -fano 2
+cirg 13
+cirp -po
+cirg 13 -fano 2
+cirg 15 -fani 2
+cirp -n
+cirp -n
+cirw
+cirw
+cirg 9 -fani 9
+cirg 11 -fani 8
+cirg 6
+cirg 12
+cirp -pi
+cirg 8 -fani 0
+cirg -2
+cirg 5 -fani 2
+cirp -s
+cirp -po
+cirg -2 -fani 3
+cirg 2 -fano 8
+cirg 15
+cirg -2 -fani 1
+cirp -fl
+cirg 14 -fani 6
+cirg 16
+cirg 12 -fani 4
+cirg 6
+cirg 6
+cirg 9 -fano 5
+cirg 9 -fano 4
+cirr ./tests.fraig/ISCAS85/C5315.aag -R
+cirg 6 -fano 0
+cirg 15 -fani 2
+cirg 7 -fani 6
+cirg 13
+cirg 7 -fani 6
+cirg -3
+cirg 11 -fani 8
+cirp -fl
+cirg -2 -fani 3
+cirw
+cirg 14
+cirg 4 -fani 1
+cirg 5 -fano 7
+cirp -po
+cirg 12 -fani 3
+cirp -fl
+cirg -2
+cirg -1 -fani 5
+cirg 7 -fano 2
+cirw
+cirg 4 -fano 7
+cirw
+cirg 8 -fano 0
+cirg 12
+cirg 10 -fano 2
+cirg 13 -fani 2
+cirw
+cirg 12 -fano 6
+cirg 11
+cirg -3 -fani 2
+cirg 0
+cirg 11 -fani 8
+cirp -n
+cirg -1 -fano 3
+cirw
+cirg -1
+cirp -pi
+cirg 16 -fano 6
+cirg 2
+cirp -n
+cirp -n
+cirg 7 -fani 8
+cirp -po
+cirg 9 -fani 1
+cirp -n
+cirg -1
+cirg 6
+cirg 11 -fani 9
+cirp -n
+cirp -fl
+cirr ./tests.fraig/ISCAS85/C6288.aag -R
+cirg 10
+cirg 5 -fani 4
+cirg 6 -fano 1
+cirg 5
+cirg 16
+cirg 6 -fani 0
+cirg 1 -fani 2
+cirg -2 -fano 0
+cirg 1 -fano 1
+cirp -pi
+cirg 4 -fani 9
+cirg 9
+cirg 0 -fani 5
+cirg 5 -fani 2
+cirw
+cirg 0
+cirg -1
+cirg 4 -fani 7
+cirg 4
+cirp -po
+cirg 4 -fani 9
+cirg 11 -fano 6
+cirg 7 -fano 4
+cirg 5 -fano 6
+cirg 9
+cirg 0 -fano 5
+cirg 12 -fano 6
+cirg 3
+cirg 0 -fani 5
+cirg 5
+cirg 4
+cirg 2
+cirg 7 -fano 6
+cirp -po
+cirg 12
+cirw
+cirp -s
+cirg 10
+cirw
+cirg 2
+cirg 8 -fani 5
+cirg 8 -fano 9
+cirg 11 -fano 1
+cirp -n
+cirg 14
+cirg -2 -fano 0
+cirg 10 -fani 6
+cirp -po
+cirg 2
+cirg 3 -fani 3
+cirr ./tests.fraig/ISCAS85/C7552.aag -R
+cirg 15 -fani 9
+cirg 5
+cirg -2
+cirg 13
+cirg 2
+cirp -n
+cirg 11
+cirp -s
+cirg 5
+cirg 6 -fani 4
+cirg -1
+cirg 15 -fani 9
+cirg 11
+cirg 14 -fani 0
+cirg 16
+cirg 5 -fani 7
+cirg 15 -fano 0
+cirw
+cirg 8
+cirp -n
+cirg -2 -fano 2
+cirg 1 -fani 8
+cirg 6
+cirg 4 -fano 8
+cirg 11
+cirg 4 -fani 9
+cirw
+cirp -fl
+cirg 16 -fano 5
+cirp -s
+cirg 6 -fani 2
+cirp -fl
+cirg -1 -fano 9
+cirp -n
+cirg 12 -fani 1
+cirg 3 -fani 9
+cirw
+cirg 10 -fano 8
+cirp -po
+cirg 8 -fano 4
+cirp -fl
+cirg 8
+cirg 7
+cirp -fl
+cirg 12
+cirg 4 -fani 7
+cirg 7 -fano 7
+cirg 13 -fani 1
+cirw
+cirp -po
+cirr ./tests.fraig/ISCAS85/C880.aag -R
+cirg 2 -fani 5
+cirg 2
+cirg 6 -fani 3
+cirw
+cirg 16 -fani 9
+cirp -n
+cirg 10 -fano 8
+cirg -1 -fani 5
+cirg 8 -fano 0
+cirp -pi
+cirg 2 -fano 1
+cirg 6 -fano 1
+cirp -n
+cirw
+cirg 16 -fani 9
+cirg 2
+cirg 15 -fano 7
+cirg 5 -fano 0
+cirg 10
+cirg -1
+cirg 10
+cirg 2
+cirg 9
+cirg 16
+cirp -po
+cirp -n
+cirg 16 -fani 8
+cirg 15
+cirg 10 -fani 6
+cirg 1 -fano 0
+cirg 3
+cirp -n
+cirg 11 -fani 0
+cirg -2 -fano 6
+cirp -s
+cirg 0 -fano 7
+cirg 3
+cirg 9
+cirg 5
+cirg -3 -fani 5
+cirw
+cirg 3
+cirg -2
+cirg 5
+cirg 16 -fano 5
+cirg 2 -fani 7
+cirg 2 -fano 5
+cirg 8 -fani 5
+cirg 9 -fani 8
+cirg 6 -fano 6
+q -f
