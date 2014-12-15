@@ -167,7 +167,7 @@ CirGate::isFloating() const
 }
 
 void
-CirGate::dfsTraversal(int& counter) const
+CirGate::dfsTraversal(vector<int>& dfsIdList) const
 {
    CirGate* nxtGate;
    for (vector<GateIdInv>::const_iterator i = _faninList.begin(); i != _faninList.end(); ++i) {
@@ -179,12 +179,10 @@ CirGate::dfsTraversal(int& counter) const
 
       if (!nxtGate->isGlobalRef()) {
          nxtGate->setToGlobalRef();
-         nxtGate->dfsTraversal(counter);
+         nxtGate->dfsTraversal(dfsIdList);
       }
    }
-   cout << "[" << counter << "] ";
-   printGate();
-   counter++;
+   dfsIdList.push_back(_id);
 }
 
 // -----------------

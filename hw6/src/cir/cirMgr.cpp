@@ -295,13 +295,21 @@ void
 CirMgr::printNetlist() const
 {
    CirGate::setGlobalRef();
+   _dfsIdList.clear();
+
+   CirGate* toPrint;
    int counter = 0;
 
    cout << endl;
 
    for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
-      getGate(*i)->dfsTraversal(counter);
-      /* cout << "PO fanin: " << getGate(*i)->getFanin().size() << endl; */
+      getGate(*i)->dfsTraversal(_dfsIdList);
+   }
+
+   for (vector<int>::const_iterator i = _dfsIdList.begin(); i != _dfsIdList.end(); ++i) {
+      toPrint = getGate(*i);
+      cout << "[" << counter++ << "] ";
+      toPrint->printGate();
    }
 }
 
@@ -396,6 +404,62 @@ CirMgr::printFloatGates() const
 void
 CirMgr::writeAag(ostream& outfile) const
 {
+   CirGate* targetGate;
+   vector<GateIdInv>::const_iterator targetFanin;
+
+   if (_dfsIdList.empty()) {
+      CirGate::setGlobalRef();
+
+      for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
+         getGate(*i)->dfsTraversal(_dfsIdList);
+      }
+   }
+
+   outfile << "aag "
+      << _nMax << " "
+      << _nInput << " 0 "
+      << _nOutput << " "
+      << _nAnd << endl;
+
+   for (vector<int>::const_iterator i = _orderedPiList.begin(); i != _orderedPiList.end(); ++i) {
+      outfile << 2*(*i) << endl;
+   }
+
+   for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
+      targetFanin = getGate(*i)->getFaninList().begin();
+
+      if (targetFanin->second) {
+         outfile << 2*(targetFanin->first) + 1 << endl;
+      } else {
+         outfile << 2*(targetFanin->first) << endl;
+      }
+   }
+
+   for (vector<int>::const_iterator i = _dfsIdList.begin(); i != _dfsIdList.end(); ++i) {
+      if (_andList.count(*i)) {
+         targetGate = _andList.at(*i);
+
+         vector<GateIdInv>::const_iterator fanin = targetGate->getFaninList().begin();
+
+         outfile << 2*(*i) << " ";
+
+         if (fanin->second) {
+            outfile << 2*(fanin->first)+1;
+         } else {
+            outfile << 2*(fanin->first);
+         }
+         outfile << " ";
+
+         ++fanin;
+
+         if (fanin->second) {
+            outfile << 2*(fanin->first)+1;
+         } else {
+            outfile << 2*(fanin->first);
+         }
+         outfile << endl;
+      }
+   }
 }
 
 /**********************************************************/

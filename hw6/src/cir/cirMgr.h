@@ -86,7 +86,7 @@ private:
       _orderedPoList.push_back(poGate->getId());
    }
 
-   vector<int> _dfsList;
+   mutable vector<int> _dfsIdList;
 
    map<int, CirPiGate*>    _piList;
    map<int, CirPoGate*>    _poList;
