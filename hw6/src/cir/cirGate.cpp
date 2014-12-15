@@ -29,8 +29,11 @@ unsigned CirGate::_globalRef = 0;
 void
 CirGate::reportGate() const
 {
+   stringstream output;
+   output << "= " << _typeStr << "(" << _id << "), line " << _lineNo;
    cout << "==================================================" << endl;
-   cout << "= " << _typeStr << "(" << _id << "), line " << _lineNo << endl;
+   cout.width(49);
+   cout << left << output.str() << "=" << endl;
    cout << "==================================================" << endl;
 }
 
@@ -48,6 +51,7 @@ CirGate::reportFaninWithSpace(int level, int numSpace, bool prtInv, bool prtStar
    assert (level >= 0);
 
    CirGate* fanin;
+   bool isInverted;
 
    for (int n = 0; n < numSpace; ++n) {
       cout << "  ";
@@ -66,17 +70,22 @@ CirGate::reportFaninWithSpace(int level, int numSpace, bool prtInv, bool prtStar
 
    cout << endl;
 
-   if (level > 0) {
+   if (numSpace < level) {
 
       for (vector<int>::const_iterator i = _orderedFaninList.begin(); i != _orderedFaninList.end(); ++i) {
 
          fanin = cirMgr->getGateInAll(*i);
+         isInverted = isFaninInverted(fanin);
 
          if (fanin->isGlobalRef()) {
-            fanin->reportFaninWithSpace(0, numSpace+1, isFaninInverted(fanin), true);
+            fanin->reportFaninWithSpace(numSpace+1, numSpace+1, isInverted, true);
          } else {
-            fanin->setToGlobalRef();
-            fanin->reportFaninWithSpace(level - 1, numSpace+1, isFaninInverted(fanin), false);
+
+            if (fanin->getFanin().size() > 0 && numSpace+1 < level) {
+               fanin->setToGlobalRef();
+            }
+
+            fanin->reportFaninWithSpace(level, numSpace+1, isInverted, false);
          }
       }
    }

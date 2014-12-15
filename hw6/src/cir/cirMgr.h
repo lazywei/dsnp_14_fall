@@ -55,7 +55,7 @@ public:
 
    void createConstGate() {
       if (_constGate == 0) {
-         _constGate = new CirConstGate(0, -1, -1);
+         _constGate = new CirConstGate(0, 0, 0);
       }
    }
 
