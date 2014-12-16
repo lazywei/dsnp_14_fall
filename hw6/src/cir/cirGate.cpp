@@ -30,7 +30,15 @@ void
 CirGate::reportGate() const
 {
    stringstream output;
-   output << "= " << _typeStr << "(" << _id << "), line " << _lineNo;
+   output << "= " << _typeStr << "(" << _id << ")";
+
+   if (_typeStr=="PI" || _typeStr=="PO") {
+      if (symbol.size() > 0) {
+         output << "\"" << symbol << "\"";
+      }
+   }
+   output << ", line " << _lineNo;
+
    cout << "==================================================" << endl;
    cout.width(49);
    cout << left << output.str() << "=" << endl;
@@ -210,7 +218,13 @@ CirPoGate::printGate() const {
    if (iter->second) {
       cout << "!";
    }
-   cout << iter->first << endl;
+   cout << iter->first;
+
+   if (symbol.size() > 0) {
+      cout << " (" << symbol << ")";
+   }
+
+   cout << endl;
 };
 
 // -----------------

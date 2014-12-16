@@ -65,6 +65,10 @@ public:
    bool isGlobalReportRef() const { return _reportRef == _globalRef; }
    void setReportToGlobalRef() { _reportRef = _globalRef; }
 
+
+   // Dirty symbol
+   string symbol;
+
 private:
    static unsigned _globalRef;
    mutable unsigned _ref;
@@ -90,7 +94,13 @@ public:
          _typeStr = "PI";
       }
    void printGate() const {
-      cout << "PI  " << _id << endl;
+      cout << "PI  " << _id;
+
+      if (symbol.size() > 0) {
+         cout << " (" << symbol << ")";
+      }
+
+      cout << endl;
    };
 };
 
@@ -113,7 +123,6 @@ public:
       id = _tmpFaninId;
       isInverted = _tmpFaninInverted;
    }
-
 private:
    int  _tmpFaninId;
    bool _tmpFaninInverted;

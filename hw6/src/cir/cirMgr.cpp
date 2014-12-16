@@ -237,6 +237,14 @@ CirMgr::readCircuit(const string& fileName)
       _andList.insert(pair<int, CirAndGate*>(andGate->getId(), andGate));
    }
 
+   while (getline(infile, line) && line.size() > 0 && line.at(0) != 'c') {
+      if (line.at(0) == 'i') {
+         _piList.at(_orderedPiList.at(line.at(1) - '0'))->symbol = line.substr(3);
+      } else if (line.at(0) == 'o') {
+         _poList.at(_orderedPoList.at(line.at(1) - '0'))->symbol = line.substr(3);
+      }
+   }
+
    // Now, start connect or set undef gates
    for (map<int, CirPoGate*>::iterator i = _poList.begin(); i != _poList.end(); ++i) {
       realizePoFanin(i->second);
