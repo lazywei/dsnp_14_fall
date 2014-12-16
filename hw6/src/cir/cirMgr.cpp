@@ -419,6 +419,8 @@ CirMgr::writeAag(ostream& outfile) const
    CirGate* targetGate;
    vector<GateIdInv>::const_iterator targetFanin;
 
+   int symCount;
+
    if (_dfsIdList.empty()) {
       CirGate::setGlobalRef();
 
@@ -471,6 +473,26 @@ CirMgr::writeAag(ostream& outfile) const
          }
          outfile << endl;
       }
+   }
+
+   symCount = 0;
+
+   for (vector<int>::const_iterator i = _orderedPiList.begin(); i != _orderedPiList.end(); ++i) {
+      targetGate = _piList.at(*i);
+      if (targetGate->symbol.size() > 0) {
+         outfile << "i" << symCount << " " << targetGate->symbol << endl;
+      }
+      ++symCount;
+   }
+
+   symCount = 0;
+
+   for (vector<int>::const_iterator i = _orderedPoList.begin(); i != _orderedPoList.end(); ++i) {
+      targetGate = _poList.at(*i);
+      if (targetGate->symbol.size() > 0) {
+         outfile << "o" << symCount << " " << targetGate->symbol << endl;
+      }
+      ++symCount;
    }
 }
 
