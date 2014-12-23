@@ -1,0 +1,8 @@
+taski 10
+taskq -all
+taska 100
+taskq -all
+taska 1000
+taskq -all
+taska 1000 -r 10
+taskq -all
