@@ -55,6 +55,7 @@ void
 TaskMgr::add(size_t nMachines)
 {
    // TODO...
+   cout << "call add" << endl;
 }
 
 // return true TaskNode is successfully inserted
@@ -63,6 +64,7 @@ bool
 TaskMgr::add(const string& s, size_t l)
 {
    // TODO...
+   cout << "call add return" << endl;
    return false;
 }
 
@@ -76,6 +78,7 @@ bool
 TaskMgr::assign(size_t l)
 {
    // TODO...
+   cout << "call assign" << endl;
    return true;
 }
 
@@ -83,8 +86,8 @@ TaskMgr::assign(size_t l)
 void
 TaskMgr::printAll() const 
 {
+   cout << "call printall" << endl;
    HashSet<TaskNode>::iterator hi = _taskHash.begin();
    for (; hi != _taskHash.end(); ++hi)
       cout << *hi << endl;
 }
-

@@ -139,7 +139,7 @@ public:
 
          ++bucketIdx;
       }
-      *d = _buckets[bucketIdx].front();
+      d = &(_buckets[bucketIdx].front());
 
       return iterator(d, this);
    }
@@ -154,7 +154,7 @@ public:
 
          --bucketIdx;
       }
-      *d = _buckets[bucketIdx].back();
+      d = &(_buckets[bucketIdx].back());
 
       return iterator(d, this);
    }
