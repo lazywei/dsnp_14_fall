@@ -41,7 +41,7 @@ public:
       bool flag = true;
 
       while (flag && idx > 0) {
-         if (_data[idx] > _data[idx/2]) {
+         if (_data[idx/2] < _data[idx]) {
             flag = false;
          } else {
             iter_swap(_data.begin() + idx, _data.begin() + idx/2);
@@ -56,12 +56,13 @@ public:
 
       int idx = 0;
 
-      int minVal, minIdx;
+      Data minVal;
+      int minIdx;
 
       while (idx * 2 < _data.size()) {
          if (idx * 2 + 1 < _data.size()) {
             // Has two children
-            if (_data[idx] > _data[idx*2] || _data[idx*2+1]) {
+            if (_data[idx*2] < _data[idx] || _data[idx*2+1] < _data[idx]) {
                // Order break
                minVal = _data[idx];
                minIdx = idx;
@@ -81,7 +82,7 @@ public:
             }
          } else {
             // Has one child
-            if (_data[idx] > _data[idx*2]) {
+            if (_data[idx*2] < _data[idx]) {
                iter_swap(_data.begin() + idx, _data.begin() + idx*2);
                idx = idx*2;
             }
@@ -90,18 +91,11 @@ public:
    }
 
    void delData(size_t i) {
-      _data[i] = _data[0] - 1;
-
       int idx = i;
-      bool flag = true;
 
-      while (flag && idx > 0) {
-         if (_data[idx] > _data[idx/2]) {
-            flag = false;
-         } else {
-            iter_swap(_data.begin() + idx, _data.begin() + idx/2);
-            idx = idx/2;
-         }
+      while (idx > 0) {
+         iter_swap(_data.begin() + idx, _data.begin() + idx/2);
+         idx = idx/2;
       }
 
       delMin();
