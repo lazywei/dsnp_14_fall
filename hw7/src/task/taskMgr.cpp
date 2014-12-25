@@ -55,7 +55,16 @@ void
 TaskMgr::add(size_t nMachines)
 {
    // TODO...
-   cout << "call add" << endl;
+   // DONE
+   TaskNode d;
+   for (size_t i = 0, n = nMachines; i < n; ++i) {
+      d = TaskNode();
+      if (!_taskHash.insert(d)) {
+         _taskHeap.delData(d.getLoad()); --i;
+      } else {
+         _taskHeap.insert(d);
+      }
+   }
 }
 
 // return true TaskNode is successfully inserted
@@ -64,8 +73,14 @@ bool
 TaskMgr::add(const string& s, size_t l)
 {
    // TODO...
-   cout << "call add return" << endl;
-   return false;
+   // DONE
+   TaskNode d = TaskNode(s, l);
+   if (_taskHash.insert(d)) {
+      _taskHeap.insert(d);
+      return true;
+   } else {
+      return false;
+   }
 }
 
 // Assign the min task node with 'l' extra load.
@@ -78,7 +93,15 @@ bool
 TaskMgr::assign(size_t l)
 {
    // TODO...
-   cout << "call assign" << endl;
+   if (size() == 0) return false;
+
+   TaskNode d = _taskHeap.min();
+   d = TaskNode(d.getName(), d.getLoad() + l);
+
+   _taskHeap.delMin();
+   _taskHeap.insert(d);
+   _taskHash.update(d);
+
    return true;
 }
 
@@ -86,7 +109,6 @@ TaskMgr::assign(size_t l)
 void
 TaskMgr::printAll() const 
 {
-   cout << "call printall" << endl;
    HashSet<TaskNode>::iterator hi = _taskHash.begin();
    for (; hi != _taskHash.end(); ++hi)
       cout << *hi << endl;

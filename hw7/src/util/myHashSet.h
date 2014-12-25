@@ -55,8 +55,20 @@ public:
          colIdx = 0;
 
          vector<Data> bucket = hs->_buckets[rowIdx];
-         for (; bucket[colIdx] == *d; ++colIdx);
+
+         for (typename vector<Data>::const_iterator i = bucket.begin();
+            i != bucket.end(); ++i, ++colIdx) {
+            if (*i == *d) {
+               break;
+            }
+         }
       }
+
+      iterator(int rowIdx, int colIdx, const HashSet<Data>* hs= 0)
+         : rowIdx(rowIdx), colIdx(colIdx), hs(hs) {}
+
+      iterator(const iterator& i)
+         : rowIdx(i.rowIdx), colIdx(i.colIdx), hs(i.hs) {}
 
       ~iterator() {} // Should NOT delete _node
 
@@ -65,12 +77,28 @@ public:
       Data& operator * () { return hs->_buckets[rowIdx][colIdx]; }
 
       // prefix ++
+      // We have two dummy possition:
+      // row:0, col:-1 -> REAL POSITION -> row:_numBuckets, col: 0
       iterator& operator ++ () {
-         if (colIdx < hs->_buckets[rowIdx].size()) {
+         if (colIdx + 1 < hs->_buckets[rowIdx].size()) {
             ++colIdx;
          } else {
             colIdx = 0;
-            while(hs->_buckets[rowIdx++].size() == 0);
+            while(1) {
+               ++rowIdx;
+
+               if (rowIdx >= hs->_numBuckets) {
+                  // dummy position
+                  rowIdx = hs->_numBuckets;
+                  colIdx = 0;
+                  break;
+               }
+
+               if (hs->_buckets[rowIdx].size() != 0) {
+                  break;
+               }
+
+            }
          }
 
          return (*this);
@@ -87,7 +115,19 @@ public:
          if (colIdx > 0) {
             --colIdx;
          } else {
-            while(hs->_buckets[rowIdx--].size() == 0);
+            while(1) {
+               --rowIdx;
+
+               if (rowIdx < 0) {
+                  // dummy position
+                  rowIdx = 0;
+                  colIdx = -1;
+                  break;
+               }
+
+               if (hs->_buckets[rowIdx].size() != 0)
+                  break;
+            }
             colIdx = hs->_buckets[rowIdx].size() - 1;
          }
 
@@ -103,11 +143,11 @@ public:
       }
 
       bool operator != (const iterator& i) const {
-         return (i.colIdx == colIdx) && (i.rowIdx == rowIdx);
+         return (i.colIdx != colIdx) || (i.rowIdx != rowIdx);
       }
 
       bool operator == (const iterator& i) const {
-         return (i.colIdx != colIdx) || (i.rowIdx != rowIdx);
+         return (i.colIdx == colIdx) && (i.rowIdx == rowIdx);
       }
    private:
       size_t rowIdx;
@@ -145,19 +185,9 @@ public:
    }
    // Pass the end
    iterator end() const {
-      size_t bucketIdx = _numBuckets-1;
-      Data *d = NULL;
-      while(_buckets[bucketIdx].size() == 0) {
-         if (bucketIdx == 0) {
-            return iterator();
-         }
-
-         --bucketIdx;
-      }
-      d = &(_buckets[bucketIdx].back());
-
-      return iterator(d, this);
+      return iterator(_numBuckets, 0, this);
    }
+
    // return true if no valid data
    bool empty() const {
       return (begin().hs == 0);

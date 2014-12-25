@@ -35,7 +35,7 @@ public:
    // TODO
    const Data& min() const { return _data[0]; }
    void insert(const Data& d) {
-      _data.push_bask(d);
+      _data.push_back(d);
 
       int idx = _data.size();
       bool flag = true;
@@ -50,43 +50,45 @@ public:
       }
    }
 
+   void siftDown(int nodeIndex) {
+      int leftChildIndex, rightChildIndex, minIndex;
+      Data tmp;
+      leftChildIndex = nodeIndex * 2;
+      rightChildIndex = nodeIndex * 2 + 1;
+
+      if (rightChildIndex >= _data.size()) {
+         if (leftChildIndex >= _data.size())
+            return;
+         else
+            minIndex = leftChildIndex;
+      } else {
+         if (_data[leftChildIndex] < _data[rightChildIndex])
+            minIndex = leftChildIndex;
+         else
+            minIndex = rightChildIndex;
+      }
+
+      if (_data[minIndex] < _data[nodeIndex]) {
+         tmp = _data[minIndex];
+         _data[minIndex] = _data[nodeIndex];
+         _data[nodeIndex] = tmp;
+         siftDown(minIndex);
+      }
+   }
+
    void delMin() {
+      for (typename std::vector<Data>::const_iterator i = _data.begin(); i != _data.end(); ++i) {
+         std::cout << *i << std::endl;
+      }
+
+      if (_data.size() == 0)
+         return;
+
       _data[0] = _data.back();
       _data.pop_back();
 
-      int idx = 0;
-
-      Data minVal;
-      int minIdx;
-
-      while (idx * 2 < _data.size()) {
-         if (idx * 2 + 1 < _data.size()) {
-            // Has two children
-            if (_data[idx*2] < _data[idx] || _data[idx*2+1] < _data[idx]) {
-               // Order break
-               minVal = _data[idx];
-               minIdx = idx;
-
-               if (_data[idx*2] < minVal) {
-                  minVal = _data[idx*2];
-                  minIdx = idx*2;
-               }
-
-               if (_data[idx*2+1] < minVal) {
-                  minVal = _data[idx*2+1];
-                  minIdx = idx*2+1;
-               }
-
-               iter_swap(_data.begin() + idx, _data.begin() + minIdx);
-               idx = minIdx;
-            }
-         } else {
-            // Has one child
-            if (_data[idx*2] < _data[idx]) {
-               iter_swap(_data.begin() + idx, _data.begin() + idx*2);
-               idx = idx*2;
-            }
-         }
+      if (_data.size() > 0) {
+         siftDown(0);
       }
    }
 
