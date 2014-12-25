@@ -34,20 +34,26 @@ public:
 
    // TODO
    const Data& min() const { return _data[0]; }
+
+   void siftUp(int nodeIndex) {
+      int parentIndex;
+      Data tmp;
+      if (nodeIndex != 0) {
+         parentIndex = nodeIndex / 2;
+
+         if (_data[nodeIndex] < _data[parentIndex]) {
+            tmp = _data[parentIndex];
+            _data[parentIndex] = _data[nodeIndex];
+            _data[nodeIndex] = tmp;
+            siftUp(parentIndex);
+         }
+
+      }
+   }
+
    void insert(const Data& d) {
       _data.push_back(d);
-
-      int idx = _data.size();
-      bool flag = true;
-
-      while (flag && idx > 0) {
-         if (_data[idx/2] < _data[idx]) {
-            flag = false;
-         } else {
-            iter_swap(_data.begin() + idx, _data.begin() + idx/2);
-            idx = idx/2;
-         }
-      }
+      siftUp(_data.size() - 1);
    }
 
    void siftDown(int nodeIndex) {
@@ -77,10 +83,6 @@ public:
    }
 
    void delMin() {
-      for (typename std::vector<Data>::const_iterator i = _data.begin(); i != _data.end(); ++i) {
-         std::cout << *i << std::endl;
-      }
-
       if (_data.size() == 0)
          return;
 
