@@ -1,0 +1,4 @@
+_fraig/include/
+_fraig/Makefile
+_fraig/src/util/myHashMap.h
+_fraig/src/cir/

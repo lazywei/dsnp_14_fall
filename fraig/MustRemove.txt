@@ -1,0 +1,11 @@
+_fraig/bin/
+_fraig/FraigProject.*
+_fraig/fraig-linux*.tgz
+_fraig/lib/
+_fraig/ref/
+_fraig/src/cir/cir*.o
+_fraig/src/cmd/
+_fraig/src/main/
+_fraig/src/sat/
+_fraig/src/util/*.o
+_fraig/tests.fraig/
