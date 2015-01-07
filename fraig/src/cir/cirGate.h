@@ -15,34 +15,174 @@
 #include "cirDef.h"
 #include "sat.h"
 
+#include <map>
+
 using namespace std;
 
-// TODO: Feel free to define your own classes, variables, or functions.
+typedef pair<int, bool> GateIdInv;
 
 class CirGate;
 
 //------------------------------------------------------------------------
 //   Define classes
 //------------------------------------------------------------------------
+// TODO: Define your own data members and member functions, or classes
 class CirGate
 {
 public:
-   CirGate() {}
+   CirGate(int id, int lineNo, int colNo) :
+      _ref(0), _reportRef(0),
+      _id(id), _lineNo(lineNo), _colNo(colNo)
+   {}
    virtual ~CirGate() {}
 
    // Basic access methods
-   string getTypeStr() const { return ""; }
-   unsigned getLineNo() const { return 0; }
+   string getTypeStr() const { return _typeStr; }
+   unsigned getLineNo() const { return _lineNo; }
+   unsigned getId() const { return _id; }
 
    // Printing functions
    virtual void printGate() const = 0;
    void reportGate() const;
    void reportFanin(int level) const;
    void reportFanout(int level) const;
+   void reportFaninWithSpace(int level, int numSpace, bool prtInv, bool prtStar) const;
+   void reportFanoutWithSpace(int level, int numSpace, bool prtInv, bool prtStar) const;
+
+   // My helper functions
+   void addFanin(CirGate*, bool);
+   bool isFloating() const;
+
+   vector<GateIdInv> getFaninList() const { return _faninList; }
+   vector<GateIdInv> getFanoutList() const { return _fanoutList; }
+
+   // Traversal
+   bool isGlobalRef() const { return _ref == _globalRef; }
+   void setToGlobalRef() { _ref = _globalRef; }
+   static void setGlobalRef() { ++_globalRef; }
+   void dfsTraversal(vector<int>&) const;
+
+   // Report
+   bool isGlobalReportRef() const { return _reportRef == _globalRef; }
+   void setReportToGlobalRef() { _reportRef = _globalRef; }
+
+
+   // Dirty symbol
+   string symbol;
 
 private:
+   static unsigned _globalRef;
+   mutable unsigned _ref;
+
+   // For reporting fanin/fanout
+   mutable unsigned _reportRef;
 
 protected:
+   string   _typeStr;
+
+   int      _id;
+   int      _lineNo;
+   int      _colNo;
+
+   vector<GateIdInv> _faninList;
+   vector<GateIdInv> _fanoutList;
+};
+
+class CirPiGate : public CirGate {
+public:
+   CirPiGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "PI";
+      }
+   void printGate() const {
+      cout << "PI  " << _id;
+
+      if (symbol.size() > 0) {
+         cout << " (" << symbol << ")";
+      }
+
+      cout << endl;
+   };
+};
+
+class CirPoGate : public CirGate {
+public:
+   CirPoGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "PO";
+         _tmpFaninId = -1;
+         _tmpFaninInverted = false;
+      }
+   void printGate() const;
+
+   void addTmpFanin(int id, bool isInverted) {
+      _tmpFaninId = id;
+      _tmpFaninInverted = isInverted;
+   }
+
+   void getTmpFanin(int& id, bool& isInverted) {
+      id = _tmpFaninId;
+      isInverted = _tmpFaninInverted;
+   }
+private:
+   int  _tmpFaninId;
+   bool _tmpFaninInverted;
+};
+
+class CirAndGate : public CirGate {
+public:
+   CirAndGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "AIG";
+         _tmpFaninId_1 = -1;
+         _tmpFaninId_2 = -1;
+         _tmpFaninInverted_1 = false;
+         _tmpFaninInverted_2 = false;
+      }
+   void printGate() const;
+
+   void addTmpFanin(int id_1, bool isInverted_1, int id_2, bool isInverted_2) {
+      _tmpFaninId_1 = id_1;
+      _tmpFaninInverted_1 = isInverted_1;
+
+      _tmpFaninId_2 = id_2;
+      _tmpFaninInverted_2 = isInverted_2;
+   }
+
+   void getTmpFanin(int& id_1, bool& isInverted_1, int& id_2, bool& isInverted_2) {
+      id_1 = _tmpFaninId_1;
+      isInverted_1 = _tmpFaninInverted_1;
+
+      id_2 = _tmpFaninId_2;
+      isInverted_2 = _tmpFaninInverted_2;
+   }
+
+private:
+   int  _tmpFaninId_1;
+   bool _tmpFaninInverted_1;
+
+   int  _tmpFaninId_2;
+   bool _tmpFaninInverted_2;
+};
+
+class CirUndefGate : public CirGate {
+public:
+   CirUndefGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "UNDEF";
+      }
+   void printGate() const {};
+};
+
+class CirConstGate : public CirGate {
+public:
+   CirConstGate(int id, int lineNo, int colNo) :
+      CirGate(id, lineNo, colNo) {
+         _typeStr = "CONST";
+      }
+   void printGate() const {
+      cout << "CONST0" << endl;
+   };
 };
 
 #endif // CIR_GATE_H
