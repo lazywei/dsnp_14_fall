@@ -30,6 +30,38 @@ using namespace std;
 void
 CirMgr::sweep()
 {
+  for (map<int, CirGate*>::iterator iter = _all.begin(); iter != _all.end();) {
+
+    CirGate* gate = iter->second;
+    if (find(_dfsOrder.begin(), _dfsOrder.end(), gate) == _dfsOrder.end()) {
+
+      if (gate->getTypeStr() == "PI") {
+
+        ++iter;
+        _flFanout.push_back(gate->getId());
+
+      } else {
+
+        cout << "Sweeping " << gate->getTypeStr() <<
+          "(" << gate->getId() << ") removed ..." << endl;
+
+        // Ref: http://stackoverflow.com/a/3385251/1371471
+        // Update _aigs, _flFanin, _flFanout
+        _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
+        _flFanin.erase(remove(_flFanin.begin(), _flFanin.end(), gate->getId()), _flFanin.end());
+        _flFanout.erase(remove(_flFanout.begin(), _flFanout.end(), gate->getId()), _flFanout.end());
+
+        _all.erase(iter++);
+
+        delete gate;
+
+      }
+    } else {
+
+      ++iter;
+
+    }
+  }
 }
 
 void

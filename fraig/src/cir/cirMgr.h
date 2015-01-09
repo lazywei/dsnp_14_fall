@@ -35,10 +35,10 @@ public:
 
    // Access functions
    // return '0' if "gid" corresponds to an undefined gate.
-   CirGate* getGate(unsigned gid) const { 
-      map<int,CirGate*>::const_iterator li = _all.find(gid); 
-      if (li == _all.end()) return 0; 
-      return li->second; 
+   CirGate* getGate(unsigned gid) const {
+      map<int,CirGate*>::const_iterator li = _all.find(gid);
+      if (li == _all.end()) return 0;
+      return li->second;
    }
 
    // Member functions about circuit construction
@@ -82,7 +82,7 @@ public:
    void printFloatGates() const;
    void writeAag(ostream&) const;
    void topoSort();
-   void dfs(CirGate*); 
+   void dfs(CirGate*);
    void printFECPairs() const;
 
 private:
@@ -90,9 +90,11 @@ private:
    vector<PI*>        _pis;
    vector<PO*>        _pos;
    vector<Aig*>       _aigs;
+
    ofstream           *_simLog;
 
    vector <CirGate*> _dfsOrder;
+
    mutable vector <int> _flFanin;
    mutable vector <int> _flFanout;
    int _maxVarNum;

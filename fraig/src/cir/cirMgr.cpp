@@ -202,7 +202,7 @@ CirMgr::readCircuit(const string& fileName)
       for (bool comment = false; (lineNo < aag.size()) && !comment; ++ lineNo){
          if (!parseSymbol(aag[lineNo], comment)) return false;
       }
-     
+
       checkFlFanout();
       topoSort();
       return true;
@@ -234,7 +234,7 @@ CirMgr::parseHeader(const string& s, int* number)
       return parseError(MISSING_NUM);
    }
    for (int i = 0; i < 5; ++i)
-      if (!storeNum(s, i, number)) 
+      if (!storeNum(s, i, number))
          return false;
    if (s[colNo] != '\0')
       return parseError(MISSING_NEWLINE);
@@ -261,8 +261,8 @@ CirMgr::parsePi(const string& s, const int& i)
    colNo = 0;
    if (!isNum(s, piId, PI_GATE)) return false;
    if (!checkId(piId, PI_GATE)) return false;
-   // correct   
-   _pis[i] = new PI(piId/2, lineNo+1);  
+   // correct
+   _pis[i] = new PI(piId/2, lineNo+1);
    _all.insert(pair<int, CirGate*>(piId/2, _pis[i]));
    colNo = 0;
    return true;
@@ -276,7 +276,7 @@ CirMgr::parsePo(const string& s, const int& i)
    colNo = 0;
    if (!isNum(s,poIn, PO_GATE)) return false;
    // correct
-   _pos[i] = new PO(_maxVarNum + 1 + i, lineNo+1, poIn);  
+   _pos[i] = new PO(_maxVarNum + 1 + i, lineNo+1, poIn);
    _all.insert(pair<int, CirGate*>(_maxVarNum + 1 + i, _pos[i]));
    colNo = 0;
    return true;
@@ -293,7 +293,7 @@ CirMgr::parseAig(const string& s, const int& i)
    if (!isNum(temp, aigId, AIG_GATE)) return false;
    if (!checkId(aigId, AIG_GATE)) return false;
    // aig first input
-   if (!checkSpace(s.substr(++colNo), 4)) return false; 
+   if (!checkSpace(s.substr(++colNo), 4)) return false;
    colNo = n = myStrGetTok(s, temp, n);
    if (!isNum(temp, in1, 4)) return false;
    if (in1 > (2*_maxVarNum) + 1){
@@ -309,7 +309,7 @@ CirMgr::parseAig(const string& s, const int& i)
       return parseError(MAX_LIT_ID);
    }
    // correct
-   CirGate* aig = new Aig(aigId/2, in1, in2, lineNo+1);   
+   CirGate* aig = new Aig(aigId/2, in1, in2, lineNo+1);
    _all.insert(pair<int, CirGate*>(aigId/2, aig));
    _aigs.push_back((Aig*)aig);
    colNo = 0;
@@ -327,7 +327,7 @@ CirMgr::parseSymbol(const string& s, bool& comment)
    else if (s[0] == 'c'){
       if (s[++colNo] == '\0')
          comment = true;
-      else 
+      else
          return parseError(MISSING_NEWLINE);
    }
    else{
@@ -388,7 +388,7 @@ CirMgr::pSymbol(const string& s, const int& type)
       _pis[idx]->setSymbol(s.substr(m + 1));
    else if (type == PO_GATE)
       _pos[idx]->setSymbol(s.substr(m + 1));
-   
+
    colNo = 0;
    return true;
 }
@@ -411,10 +411,10 @@ CirMgr::getTypeStr(const int& type) const
    return "";
 }
 
-// return false if 
+// return false if
 // check whether char c is space or white space
-// return true if yes 
-bool 
+// return true if yes
+bool
 CirMgr::isSpWs(const char& c)
 {
    if (c == ' ')
@@ -453,7 +453,7 @@ CirMgr::checkSpace(const string& s, const int& type)
 
 // convert string s to int n
 // if s is not valid, return false
-bool 
+bool
 CirMgr::isNum(const string& s, int& n, const int& type)
 {
    if (!myStr2Int(s, n) || n < 0){
@@ -465,7 +465,7 @@ CirMgr::isNum(const string& s, int& n, const int& type)
 
 // check whether id is valid, return false if
 // (1) id is larger than max var num
-// (2) id is redefined 
+// (2) id is redefined
 // (3) id is inverted (for Pi& Aig)
 bool
 CirMgr::checkId(const int& id, const int& type) const
@@ -483,7 +483,7 @@ CirMgr::checkId(const int& id, const int& type) const
       return parseError(CANNOT_INVERTED);
    return true;
 }
- 
+
 // called in parseHeader
 // parse MILOA  n = 0~4
 // store in numer[0~4]
@@ -509,8 +509,8 @@ CirMgr::storeNum(const string& s, const int& n, int* number)
       return parseError(MISSING_NUM);
    }
    for (; s[colNo] != ' '; ++colNo){
-      if (s[colNo] == '\0'){ 
-         if (n != 4) --colNo; 
+      if (s[colNo] == '\0'){
+         if (n != 4) --colNo;
          break;
       }
       if (isspace(s[colNo])){
@@ -534,7 +534,7 @@ CirMgr::storeNum(const string& s, const int& n, int* number)
 // set fanin of p
 // set fanout which is p
 // also handle Undefined Gate
-void 
+void
 CirMgr::setAigFan(Aig* p)
 {
    bool inFlFaninList = false;
@@ -565,7 +565,7 @@ CirMgr::setAigFan(Aig* p)
 // set fanin of p
 // set fanout which is p
 // also handle Undefined Gate
-void 
+void
 CirMgr::setPoFan(PO* p)
 {
    int poIn = p->getIn();
@@ -576,15 +576,15 @@ CirMgr::setPoFan(PO* p)
       _flFanin.push_back(p->getId());
    }
    else if (g->isUndef()) _flFanin.push_back(p->getId());
-   AigGateV poFanin(g, poIn % 2), aigFanout(p, poIn % 2);   
-   p->addFanin(poFanin); 
+   AigGateV poFanin(g, poIn % 2), aigFanout(p, poIn % 2);
+   p->addFanin(poFanin);
    g->addFanout(aigFanout);
 
 }
 
 // called after construct ckt
 // record gates with floating fanout in _flFanout
-void 
+void
 CirMgr::checkFlFanout()
 {
    for (size_t i = 0; i < _pis.size(); ++i){
@@ -685,14 +685,14 @@ CirMgr::writeAag(ostream& outfile) const
          aigInDfs.push_back((Aig*)_dfsOrder[i]);
 
    outfile << "aag " << _maxVarNum << " "  << _pis.size() << " 0 "
-           << _pos.size() << " "<< aigInDfs.size() << endl; 
+           << _pos.size() << " "<< aigInDfs.size() << endl;
    for (size_t i = 0; i < _pis.size(); ++i)
       outfile << 2*(_pis[i]->getId()) << endl;
    for (size_t i = 0; i < _pos.size(); ++i)
       outfile << ((PO*)_pos[i])->getIn() << endl;
    for (size_t i = 0; i < aigInDfs.size(); ++i)
-      outfile << 2*(aigInDfs[i]->getId()) << " " 
-              << aigInDfs[i]->getIn(0) << " " 
+      outfile << 2*(aigInDfs[i]->getId()) << " "
+              << aigInDfs[i]->getIn(0) << " "
               << aigInDfs[i]->getIn(1) << endl;
    // print symbol
    for (size_t i = 0; i < _pis.size(); ++i)
@@ -718,7 +718,7 @@ CirMgr::topoSort()
 // called in topoSort
 // put gate in _dfsOrder by postorder
 void
-CirMgr::dfs(CirGate* g) 
+CirMgr::dfs(CirGate* g)
 {
    if (g->isMark()) return;
    g->mark();
