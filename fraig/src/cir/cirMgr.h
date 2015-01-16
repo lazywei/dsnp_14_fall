@@ -23,6 +23,7 @@ using namespace std;
 class Aig;
 class PO;
 class PI;
+class AigGateV;
 
 extern CirMgr *cirMgr;
 
@@ -85,6 +86,8 @@ public:
    void dfs(CirGate*);
    void printFECPairs() const;
 
+   // Private function for optimize
+
 private:
    map<int, CirGate*> _all;
    vector<PI*>        _pis;
@@ -95,8 +98,8 @@ private:
 
    vector <CirGate*> _dfsOrder;
 
-   mutable vector <int> _flFanin;
-   mutable vector <int> _flFanout;
+   mutable vector <int> _flFanin; // not defined
+   mutable vector <int> _flFanout; // not used
    int _maxVarNum;
 };
 

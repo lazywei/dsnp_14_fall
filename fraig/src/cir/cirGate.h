@@ -43,7 +43,20 @@ class CirGate
 {
 public:
    CirGate() {}
-   virtual ~CirGate() { _faninList.clear(); _fanoutList.clear(); _dfsFlag = 0;}
+   virtual ~CirGate() {
+
+      for (vector<AigGateV>::const_iterator i = _faninList.begin(); i != _faninList.end(); ++i) {
+         (*i).gate()->removeFromList("fanout", this, (*i).isInv());
+      }
+
+      for (vector<AigGateV>::const_iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
+         (*i).gate()->removeFromList("fanin", this, (*i).isInv());
+      }
+
+      _faninList.clear();
+      _fanoutList.clear();
+      _dfsFlag = 0;
+   }
 
    // Basic access methods
    virtual string getTypeStr() const { return "0"; }
@@ -72,6 +85,41 @@ public:
    void addFanin(const AigGateV& in){ _faninList.push_back(in); }
    void addFanout(const AigGateV& out){ _fanoutList.push_back(out); }
    void dfsFan(const int&, const int&, const string&) const;
+
+   void removeFromList(string listName, CirGate* gate, bool isInv) {
+      /* cout << listName << " " << gate->getId() << " " << isInv << endl; */
+
+      if (listName == "fanin") {
+         for (vector<AigGateV>::iterator i = _faninList.begin(); i != _faninList.end();) {
+            /* cout << (*i).gate()->getId() << " " << (*i).isInv() << endl; */
+            if (((*i).gate() == gate) && ((*i).isInv() == isInv)) {
+               /* cout << "Erase " << listName << " " << (*i).gate()->getId() << " from " << getId() << endl; */
+               i = _faninList.erase(i);
+            } else {
+               ++i;
+            }
+         }
+
+      } else {
+         for (vector<AigGateV>::iterator i = _fanoutList.begin(); i != _fanoutList.end();) {
+            if (((*i).gate() == gate) && ((*i).isInv() == isInv)) {
+               i = _fanoutList.erase(i);
+            } else {
+               ++i;
+            }
+         }
+
+      }
+   }
+
+   void connectFaninToEachFanout(AigGateV from) {
+      for (vector<AigGateV>::iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
+         (*i).gate()->addFanin(from);
+
+         AigGateV to((*i).gate(), from.isInv());
+         from.gate()->addFanout(to);
+      }
+   }
 
 private:
    int _id;
