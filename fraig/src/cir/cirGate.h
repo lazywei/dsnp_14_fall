@@ -112,8 +112,10 @@ public:
       }
    }
 
-   void connectFaninToEachFanout(AigGateV from) {
+   void connectFaninToEachFanout(AigGateV fanin) {
       for (vector<AigGateV>::iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
+
+         AigGateV from(fanin.gate(), fanin.isInv() ^ (*i).isInv());
          (*i).gate()->addFanin(from);
 
          AigGateV to((*i).gate(), from.isInv());
