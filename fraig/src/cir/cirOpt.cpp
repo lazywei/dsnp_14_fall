@@ -68,15 +68,15 @@ CirMgr::sweep()
 void
 CirMgr::optimize()
 {
-  for (vector<CirGate*>::iterator iter = _dfsOrder.begin(); iter  != _dfsOrder.end(); ) {
-    CirGate* gate = *iter;
+  for (size_t i = 0, dfsSize = _dfsOrder.size(); i < dfsSize; ++i) {
+    CirGate* gate = _dfsOrder.at(i);
+    cout << "Visiting: " << gate->getId() << "..." << endl;
 
     if (gate->getTypeStr() == "PI" ||
         gate->getTypeStr() == "PO" ||
         gate->getTypeStr() == "CONST" ||
         gate->getTypeStr() == "UNDEF" ||
         gate->getInListSize() != 2) {
-      ++iter;
       continue;
     }
 
@@ -105,8 +105,6 @@ CirMgr::optimize()
         }
       }
 
-      _dfsOrder.erase(iter++);
-
     } else if (fanin2.gate()->getTypeStr() == "CONST") {
 
       cout << "Simplifying: " << gate->getId() << "..." << endl;
@@ -125,8 +123,6 @@ CirMgr::optimize()
         }
       }
 
-      _dfsOrder.erase(iter++);
-
     } else if (fanin1.gate() == fanin2.gate()) {
 
       cout << "Simplifying: " << gate->getId() << "..." << endl;
@@ -144,11 +140,6 @@ CirMgr::optimize()
       }
 
       deleteAndCleanUpGate(gate);
-
-      _dfsOrder.erase(iter++);
-
-    } else {
-      ++iter;
     }
 
   }
