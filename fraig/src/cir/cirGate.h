@@ -70,6 +70,7 @@ public:
    size_t getInListSize() const { return _faninList.size(); }
    size_t getOutListSize() const { return _fanoutList.size(); }
    AigGateV getFanin(const size_t& idx) { return _faninList[idx];}
+   AigGateV getFanout(const size_t& idx) { return _fanoutList[idx];}
 
    // Printing functions
    virtual void printGate() const = 0; // called in dfsFan (class CirGate)

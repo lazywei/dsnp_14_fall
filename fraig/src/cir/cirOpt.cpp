@@ -33,9 +33,12 @@ CirMgr::sweep()
   for (map<int, CirGate*>::iterator iter = _all.begin(); iter != _all.end();) {
 
     CirGate* gate = iter->second;
+
     if (find(_dfsOrder.begin(), _dfsOrder.end(), gate) == _dfsOrder.end()) {
 
-      if (gate->getTypeStr() == "PI") {
+      if (gate->getTypeStr() == "PI" ||
+          gate->getTypeStr() == "CONST" ||
+          (gate->getOutListSize() > 0 && gate->getFanout(0).gate()->getTypeStr() == "PO")) {
 
         ++iter;
         _flFanout.push_back(gate->getId());

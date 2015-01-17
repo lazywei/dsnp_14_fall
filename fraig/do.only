@@ -1,0 +1,2135 @@
+cirr ./tests.err/good.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok01.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok02.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok03.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok04.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok05.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok06.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok07.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok08.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok09.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok10.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok11.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt01.aag -replace
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt01.aag -replace
+cirp -n
+cirp -s
+cirp -fl
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt02.aag -replace
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt02.aag -replace
+cirp -n
+cirp -s
+cirp -fl
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt03.aag -replace
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt03.aag -replace
+cirp -n
+cirp -s
+cirp -fl
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt04.aag -replace
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt04.aag -replace
+cirp -n
+cirp -s
+cirp -fl
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt05.aag -replace
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt05.aag -replace
+cirp -n
+cirp -s
+cirp -fl
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt06.aag -replace
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt06.aag -replace
+cirp -n
+cirp -s
+cirp -fl
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt07.aag -replace
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/flt07.aag -replace
+cirp -n
+cirp -s
+cirp -fl
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C17.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C432.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C432_r.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C499.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C499_r.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C880.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C1355.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C1908.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C3540.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C5315.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C6288.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C7552.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt01.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt02.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt03.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt04.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt05.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt06.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim01.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim02.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim03.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim04.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim05.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim06.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim07.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim08.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim09.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim10.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim11.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim12.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim13.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim14.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim15.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash01.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash02.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash03.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash04.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash05.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash06.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash07.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash08.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash09.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash10.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/test1.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/test2.aag -r
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+
+ciropt
+cirsw
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/good.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok01.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok02.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok03.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok04.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok05.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok06.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok07.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok08.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok09.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok10.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.err/ok11.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C17.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C432.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C432_r.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C499.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C499_r.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C880.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C1355.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C1908.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C3540.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C5315.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C6288.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/ISCAS85/C7552.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt01.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt02.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt03.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt04.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt05.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/opt06.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim01.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim02.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim03.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim04.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim05.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim06.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim07.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim08.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim09.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim10.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim11.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim12.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim13.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim14.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/sim15.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash01.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash02.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash03.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash04.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash05.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash06.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash07.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash08.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash09.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/strash10.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/test1.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+cirr ./tests.fraig/test2.aag -r
+cirsw
+
+ciropt
+
+
+cirsw
+ciropt
+
+cirsw
+ciropt
+cirp -s
+cirp -n
+cirp -pi
+cirp -po
+cirp -fl
+cirw
+usage
+q -f
