@@ -70,7 +70,7 @@ CirMgr::optimize()
 {
   for (size_t i = 0, dfsSize = _dfsOrder.size(); i < dfsSize; ++i) {
     CirGate* gate = _dfsOrder.at(i);
-    cout << "Visiting: " << gate->getId() << "..." << endl;
+    /* cout << "Visiting: " << gate->getId() << "..." << endl; */
 
     if (gate->getTypeStr() == "PI" ||
         gate->getTypeStr() == "PO" ||
@@ -98,6 +98,8 @@ CirMgr::optimize()
         gate->connectFaninToEachFanout(fanin1);
         deleteAndCleanUpGate(gate);
 
+        // If the another fanin isn't used anymore, add
+        // it into flFanout
         if (fanin2.gate()->getOutListSize() == 0) {
           if (fanin2.gate()->getTypeStr() == "PI" || fanin2.gate()->getTypeStr() == "AIG") {
             _flFanout.push_back(fanin2.gate()->getId());
@@ -131,15 +133,23 @@ CirMgr::optimize()
         // Two fanins are the same
         // Remove and replace by fanin1
         gate->connectFaninToEachFanout(fanin1);
+        deleteAndCleanUpGate(gate);
 
       } else {
         // One is inverse of the other
         // Remove and replace by 0
 
-        gate->connectFaninToEachFanout(fanin1);
-      }
+        AigGateV constGate(_all.at(0), 0);
+        gate->connectFaninToEachFanout(constGate);
+        deleteAndCleanUpGate(gate);
 
-      deleteAndCleanUpGate(gate);
+        if (fanin1.gate()->getOutListSize() == 0) {
+          if (fanin1.gate()->getTypeStr() == "PI" || fanin1.gate()->getTypeStr() == "AIG") {
+            _flFanout.push_back(fanin1.gate()->getId());
+          }
+        }
+
+      }
     }
 
   }
