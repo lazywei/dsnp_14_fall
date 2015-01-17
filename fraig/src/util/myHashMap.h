@@ -39,7 +39,7 @@ class HashMap
 typedef pair<HashKey, HashData> HashNode;
 
 public:
-   HashMap() : _numBuckets(0), _buckets(0) {}
+   HashMap() : _numBuckets(0), _buckets(0) { init(9111); }
    HashMap(size_t b) : _numBuckets(0), _buckets(0) { init(b); }
    ~HashMap() { reset(); }
 
@@ -84,6 +84,34 @@ public:
    bool empty() const { return true; }
    // number of valid data
    size_t size() const { size_t s = 0; return s; }
+
+   // check if k is in the hash...
+   // if yes, return true and update d;
+   // else return false;
+   bool check(const HashKey& k, const HashNode& d) const {
+      size_t idx = bucketNum(k);
+
+      for (size_t i = 0, bSize = _buckets[idx].size(); i < bSize; ++i) {
+         if (_buckets[idx][i].first == k) {
+            d = _buckets[idx][i].second;
+            return true;
+         }
+      }
+      return false;
+   }
+
+   // return true if inserted successfully (i.e. k is not in the hash)
+   // return false is k if already in the hash ==> will not insert
+   bool insert(const HashKey& k, const HashData& d) {
+      size_t idx = bucketNum(k);
+      for (size_t i = 0, bSize = _buckets[idx].size(); i < bSize; ++i) {
+         if (_buckets[idx][i].first == k) {
+            return false;
+         }
+      }
+      _buckets[idx].push_back(HashNode(k, d));
+      return true;
+   }
 
 private:
    // Do not add any extra data member
