@@ -88,7 +88,7 @@ public:
    // check if k is in the hash...
    // if yes, return true and update d;
    // else return false;
-   bool check(const HashKey& k, const HashNode& d) const {
+   bool check(const HashKey& k, HashData& d) const {
       size_t idx = bucketNum(k);
 
       for (size_t i = 0, bSize = _buckets[idx].size(); i < bSize; ++i) {

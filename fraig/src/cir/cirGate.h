@@ -87,6 +87,27 @@ public:
    void addFanout(const AigGateV& out){ _fanoutList.push_back(out); }
    void dfsFan(const int&, const int&, const string&) const;
 
+   void connectFaninToEachFanout(AigGateV fanin) {
+      for (vector<AigGateV>::iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
+
+         AigGateV from(fanin.gate(), fanin.isInv() ^ (*i).isInv());
+         (*i).gate()->addFanin(from);
+
+         AigGateV to((*i).gate(), from.isInv());
+         from.gate()->addFanout(to);
+      }
+   }
+
+private:
+   int _id;
+   unsigned _lineNo;
+   mutable unsigned _dfsFlag;
+   string _symbol;
+
+protected:
+   vector<AigGateV> _faninList;
+   vector<AigGateV> _fanoutList;
+
    void removeFromList(string listName, CirGate* gate, bool isInv) {
       /* cout << listName << " " << gate->getId() << " " << isInv << endl; */
 
@@ -112,29 +133,6 @@ public:
 
       }
    }
-
-   void connectFaninToEachFanout(AigGateV fanin) {
-      for (vector<AigGateV>::iterator i = _fanoutList.begin(); i != _fanoutList.end(); ++i) {
-
-         AigGateV from(fanin.gate(), fanin.isInv() ^ (*i).isInv());
-         (*i).gate()->addFanin(from);
-
-         AigGateV to((*i).gate(), from.isInv());
-         from.gate()->addFanout(to);
-      }
-   }
-
-private:
-   int _id;
-   unsigned _lineNo;
-   mutable unsigned _dfsFlag;
-   string _symbol;
-protected:
-   vector<AigGateV> _faninList;
-
-
-   vector<AigGateV> _fanoutList;
-
 };
 
 class Aig: public CirGate
