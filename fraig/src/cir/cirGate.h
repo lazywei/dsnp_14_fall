@@ -21,6 +21,7 @@ using namespace std;
 
 class AigGateV;
 class CirGate;
+class PO;
 extern unsigned long long dfsFlag;
 
 //------------------------------------------------------------------------

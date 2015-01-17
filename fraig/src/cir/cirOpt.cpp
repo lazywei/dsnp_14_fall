@@ -48,11 +48,9 @@ CirMgr::sweep()
         cout << "Sweeping: " << gate->getTypeStr() <<
           "(" << gate->getId() << ") removed ..." << endl;
 
-        // Ref: http://stackoverflow.com/a/3385251/1371471
-        // Update _aigs, _flFanin, _flFanout
-        _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
-        _flFanin.erase(remove(_flFanin.begin(), _flFanin.end(), gate->getId()), _flFanin.end());
-        _flFanout.erase(remove(_flFanout.begin(), _flFanout.end(), gate->getId()), _flFanout.end());
+        removeFromAigs(gate);
+        removeFromFlFanin(gate->getId());
+        removeFromFlFanout(gate->getId());
 
         _all.erase(iter++);
 
@@ -93,14 +91,12 @@ CirMgr::optimize()
         // One of the fanin is 1 (TRUE)
         // Remove and replace by otherFanin
         gate->connectFaninToEachFanout(fanin2);
-        _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
-        delete gate;
+        deleteAndCleanUpGate(gate);
       } else {
         // One of the fanin is 0 (FALSE)
         // Remove and replace by 0 (itself)
         gate->connectFaninToEachFanout(fanin1);
-        _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
-        delete gate;
+        deleteAndCleanUpGate(gate);
 
         if (fanin2.gate()->getOutListSize() == 0) {
           if (fanin2.gate()->getTypeStr() == "PI" || fanin2.gate()->getTypeStr() == "AIG") {
@@ -117,12 +113,10 @@ CirMgr::optimize()
 
       if (fanin2.isInv()) {
         gate->connectFaninToEachFanout(fanin1);
-        _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
-        delete gate;
+        deleteAndCleanUpGate(gate);
       } else {
         gate->connectFaninToEachFanout(fanin2);
-        _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
-        delete gate;
+        deleteAndCleanUpGate(gate);
 
         if (fanin1.gate()->getOutListSize() == 0) {
           if (fanin1.gate()->getTypeStr() == "PI" || fanin1.gate()->getTypeStr() == "AIG") {
@@ -149,8 +143,7 @@ CirMgr::optimize()
         gate->connectFaninToEachFanout(fanin1);
       }
 
-      _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
-      delete gate;
+      deleteAndCleanUpGate(gate);
 
       _dfsOrder.erase(iter++);
 
@@ -167,3 +160,14 @@ CirMgr::optimize()
 /***************************************************/
 /*   Private member functions about optimization   */
 /***************************************************/
+
+
+// Update _aigs, _flFanin, _flFanout
+void
+CirMgr::deleteAndCleanUpGate(CirGate* gate) {
+  _all.erase(gate->getId());
+  removeFromAigs(gate);
+  removeFromFlFanin(gate->getId());
+  removeFromFlFanout(gate->getId());
+  delete gate;
+}

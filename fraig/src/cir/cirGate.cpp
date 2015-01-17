@@ -115,7 +115,7 @@ PO::pGateNet() const
 {
    cout << left << setw(4) << "PO" << getId() << " "; 
    if (_faninList[0].gate()->isUndef()) cout << "*";
-   if (_in%2) cout << "!";
-   cout << _in/2;
+   if (_faninList[0].isInv()) cout << "!";
+   cout << _faninList[0].gate()->getId();
    if (getSymbol() != "") cout << " (" << getSymbol() << ")";
 }

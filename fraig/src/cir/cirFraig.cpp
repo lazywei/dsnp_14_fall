@@ -80,12 +80,12 @@ CirMgr::strash()
 
       AigGateV newFanin(existedGate, 0);
       gate->connectFaninToEachFanout(newFanin);
-      _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
 
-      _dfsOrder.erase(_dfsOrder.begin() + i);
-      --i, --dfsSize;
+      // clean up
+      deleteAndCleanUpGate(gate);
 
-      delete gate;
+      /* _dfsOrder.erase(_dfsOrder.begin() + i); */
+      /* --i, --dfsSize; */
     } else {
       myHash.insert(key, gate);
     }

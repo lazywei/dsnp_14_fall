@@ -88,6 +88,21 @@ public:
 
    // Private function for optimize
 
+   // Ref: http://stackoverflow.com/a/3385251/1371471
+   void removeFromAigs(CirGate* gate) {
+      _aigs.erase(remove(_aigs.begin(), _aigs.end(), gate), _aigs.end());
+   }
+
+   void removeFromFlFanin(int id) {
+      _flFanin.erase(remove(_flFanin.begin(), _flFanin.end(), id), _flFanin.end());
+   }
+
+   void removeFromFlFanout(int id) {
+      _flFanout.erase(remove(_flFanout.begin(), _flFanout.end(), id), _flFanout.end());
+   }
+
+   void deleteAndCleanUpGate(CirGate*);
+
 private:
    map<int, CirGate*> _all;
    vector<PI*>        _pis;
