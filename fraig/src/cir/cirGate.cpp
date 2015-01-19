@@ -43,8 +43,42 @@ CirGate::reportGate() const
         << "= " << getTypeStr() << "(" << getId() << ")";
    if (numSymbol != 0) cout << "\"" << getSymbol() << "\"";
    cout << ", line " << setw(9) << left << _lineNo 
-        << setw(30 - numstr - numId - numSymbol) << right << "=" << endl
-        << "==================================================" << endl;
+        << setw(30 - numstr - numId - numSymbol) << right << "=" << endl;
+
+
+   cout << "= FECs:";
+
+   if (_fecGrpIdx >= 0) {
+      IdList* grp = cirMgr->getFecGrps().at(_fecGrpIdx);
+
+      for (IdList::const_iterator id = grp->begin(); id != grp->end(); ++id) {
+         if ((*id) / 2 != _id) {
+            cout << " ";
+            if ((*id) % 2) { cout << "!"; }
+            cout << (*id) / 2;
+         }
+      }
+   }
+
+   cout << endl;
+
+
+
+
+   cout << "= Value: ";
+
+   for (size_t pos = 0; pos < 32; ++pos) {
+      cout << cirMgr->getBit(getSimResult(), pos);
+      if (pos % 4 == 3 && pos != 31) {
+         cout << "_";
+      }
+   }
+
+   cout << endl;
+
+
+
+   cout << "==================================================" << endl;
 }
 
 void

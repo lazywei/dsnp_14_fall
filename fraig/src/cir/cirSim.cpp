@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <cassert>
+#include <set>
 #include "cirMgr.h"
 #include "cirGate.h"
 #include "util.h"
@@ -19,6 +20,26 @@ using namespace std;
 
 // TODO: Keep "CirMgr::randimSim()" and "CirMgr::fileSim()" for cir cmd.
 //       Feel free to define your own variables or functions
+
+class mySimValKey
+{
+public:
+  mySimValKey(unsigned simVal) {
+    _simVal = simVal;
+  }
+
+  // Ref: http://stackoverflow.com/a/919661/1371471
+  size_t operator() () const {
+    return (_simVal % 1119) * (~_simVal % 1119);
+  }
+
+  bool operator == (const mySimValKey& k) const {
+    return (_simVal == k._simVal) || (~_simVal == k._simVal);
+  }
+
+private:
+  unsigned _simVal;
+};
 
 /*******************************/
 /*   Global variable and enum  */
@@ -48,16 +69,15 @@ CirMgr::randomSim()
       unsigned tmp = rnGen(1 << 31);
       PI* pi = _pis.at(i);
       pi->setSimResult(tmp);
-      cout << "PI#1: " << tmp << endl;
       inputs.push_back(tmp);
     }
 
     for (size_t i = 0, sizeDfs = _dfsOrder.size(); i < sizeDfs; ++i) {
       CirGate* gate = _dfsOrder.at(i);
       gate->simulate();
+      gate->setFecGrpIdx(-1);
 
       if (gate->getTypeStr() == "PO") {
-        cout << "PO#1: " << gate->getSimResult() << endl;
         outputs.push_back(gate->getSimResult());
       }
     }
@@ -80,6 +100,13 @@ CirMgr::randomSim()
 
       }
 
+    }
+
+    // Handle FEC groups
+    if (_fecGrps.size() > 0) {
+      checkFEC();
+    } else {
+      initFEC();
     }
   }
 }
@@ -119,6 +146,7 @@ CirMgr::fileSim(ifstream& patternFile)
     for (size_t j = 0, sizeDfs = _dfsOrder.size(); j < sizeDfs; ++j) {
       CirGate* gate = _dfsOrder.at(j);
       gate->simulate();
+      gate->setFecGrpIdx(-1);
 
       if (gate->getTypeStr() == "PO") {
         outputs.push_back(gate->getSimResult());
@@ -135,7 +163,6 @@ CirMgr::fileSim(ifstream& patternFile)
       *_simLog << endl;
     }
   }
-
 }
 
 /*************************************************/
@@ -146,4 +173,112 @@ size_t
 CirMgr::getBit(unsigned x, size_t pos) {
   unsigned mask = 1 << pos;
   return ((x & mask) >> pos);
+}
+
+
+void
+CirMgr::initFEC() {
+  HashMap<mySimValKey, IdList*> fecHash;
+  set<IdList*> validFECGrp;
+
+  for (size_t i = 0, sizeDfs = _dfsOrder.size(); i < sizeDfs; ++i) {
+    CirGate* gate = _dfsOrder.at(i);
+
+    if (gate->getTypeStr() != "AIG" && gate->getTypeStr() != "CONST") {
+      // only AIG and CONST 0 can be included in FEC pairs
+      continue;
+    }
+
+    mySimValKey key(gate->getSimResult());
+    IdList* grp;
+
+    if (fecHash.check(key, grp)) {
+      int inv = 0;
+
+      if (getGate(grp->front() / 2)->getSimResult() == key()) {
+        inv = 0;
+      } else {
+        inv = 1;
+      }
+
+      grp->push_back(gate->getId() * 2 + inv);
+      if (grp->size() > 1) {
+        validFECGrp.insert(grp);
+      }
+    } else {
+      grp = new IdList();
+      grp->push_back(gate->getId() * 2);
+      fecHash.insert(key, grp);
+    }
+
+  }
+
+  for (set<IdList*>::const_iterator iter = validFECGrp.begin(); iter != validFECGrp.end(); ++iter) {
+    IdList* idList = *iter;
+    _fecGrps.push_back(idList);
+
+    for (size_t i = 0, sizeIdList = idList->size(); i < sizeIdList; ++i) {
+      CirGate* gate = getGate(idList->at(i) / 2);
+      gate->setFecGrpIdx(_fecGrps.size() - 1);
+    }
+  }
+}
+
+void
+CirMgr::checkFEC() {
+  vector<IdList*> newGrps;
+  set<IdList*> validFECGrp;
+
+  for (size_t i = 0, sizeGrps = _fecGrps.size(); i < sizeGrps; ++i) {
+    IdList* idList = _fecGrps.at(i);
+
+    HashMap<mySimValKey, IdList*> *fecHash = new HashMap<mySimValKey, IdList*>;
+
+    for (size_t j = 0, sizeIdList = idList->size(); j < sizeIdList; ++j) {
+      CirGate* gate = getGate(idList->at(j) / 2);
+
+      if (gate->getTypeStr() != "AIG" && gate->getTypeStr() != "CONST") {
+        // only AIG and CONST 0 can be included in FEC pairs
+        continue;
+      }
+
+      mySimValKey key(gate->getSimResult());
+      IdList* grp;
+
+      if (fecHash->check(key, grp)) {
+        int inv = 0;
+
+        /* cout << gate->getId() << ": " << gate->getSimResult() << " ~" << ~gate->getSimResult() << endl; */
+        if (getGate(grp->front() / 2)->getSimResult() == key()) {
+          inv = 0;
+        } else {
+          inv = 1;
+        }
+
+        grp->push_back(gate->getId() * 2 + inv);
+        if (grp->size() > 1) {
+          validFECGrp.insert(grp);
+        }
+      } else {
+        grp = new IdList();
+        grp->push_back(gate->getId() * 2);
+        fecHash->insert(key, grp);
+      }
+    }
+
+    delete fecHash;
+  }
+
+
+  for (set<IdList*>::const_iterator iter = validFECGrp.begin(); iter != validFECGrp.end(); ++iter) {
+    IdList* idList = *iter;
+    newGrps.push_back(idList);
+
+    for (size_t i = 0, sizeIdList = idList->size(); i < sizeIdList; ++i) {
+      CirGate* gate = getGate(idList->at(i) / 2);
+      gate->setFecGrpIdx(_fecGrps.size() - 1);
+    }
+  }
+
+  _fecGrps.swap(newGrps);
 }

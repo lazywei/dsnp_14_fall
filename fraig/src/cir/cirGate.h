@@ -104,6 +104,9 @@ public:
    unsigned getSimResult() const { return _simResult; }
    void setSimResult(unsigned val) { _simResult = val; }
 
+   int getFecGrpIdx() const { return _fecGrpIdx; }
+   void setFecGrpIdx(size_t idx) { _fecGrpIdx = idx; }
+
 private:
    int _id;
    unsigned _lineNo;
@@ -111,6 +114,8 @@ private:
    string _symbol;
 
    unsigned _simResult;
+
+   int _fecGrpIdx = -1;
 
 protected:
    vector<AigGateV> _faninList;
@@ -184,7 +189,11 @@ public:
    virtual void printGate() const { cout << getTypeStr() << " " << getId();  }
    virtual void pGateNet() const;
 
-   virtual void simulate() {}
+   virtual void simulate() {
+      if (getTypeStr() == "CONST") {
+         setSimResult(0);
+      }
+   }
 
 private:
 };

@@ -15,10 +15,10 @@
 
 using namespace std;
 
-class myHashKey
+class myStrashKey
 {
 public:
-  myHashKey(CirGate* g) {
+  myStrashKey(CirGate* g) {
     _fanin1 = g->getFanin(0);
     _fanin2 = g->getFanin(1);
   }
@@ -31,7 +31,7 @@ public:
     return  res;
   }
 
-  bool operator == (const myHashKey& k) const {
+  bool operator == (const myStrashKey& k) const {
     return (isSameAGV(k._fanin1, _fanin1) && isSameAGV(k._fanin2, _fanin2)) ||
             (isSameAGV(k._fanin1, _fanin2) && isSameAGV(k._fanin2, _fanin1));
   }
@@ -62,7 +62,7 @@ private:
 void
 CirMgr::strash()
 {
-  HashMap<myHashKey, CirGate*> myHash;
+  HashMap<myStrashKey, CirGate*> myHash;
 
   for (size_t i = 0, dfsSize = _dfsOrder.size(); i < dfsSize; ++i)
   {
@@ -73,7 +73,7 @@ CirMgr::strash()
     }
 
     CirGate* existedGate = new Aig();
-    myHashKey key(gate);
+    myStrashKey key(gate);
 
     if (myHash.check(key, existedGate)) {
       cout << "Strashing: " << existedGate->getId() << " merging " << gate->getId() << "..." << endl;

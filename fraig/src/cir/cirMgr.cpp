@@ -673,6 +673,22 @@ CirMgr::printFloatGates() const
 void
 CirMgr::printFECPairs() const
 {
+   for (size_t i = 0, sizeGrps = _fecGrps.size(); i < sizeGrps; ++i) {
+      IdList* idList = _fecGrps.at(i);
+
+      cout << "[" << i <<  "]";
+      for (size_t j = 0, sizeIdList = idList->size(); j < sizeIdList; ++j) {
+         int id = idList->at(j) / 2;
+         int inv = idList->at(j) % 2;
+
+         cout << " ";
+
+         if (inv) { cout << "!"; }
+
+         cout << id;
+      }
+      cout << endl;
+   }
 }
 
 void

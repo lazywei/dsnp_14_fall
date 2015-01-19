@@ -27,9 +27,12 @@ class AigGateV;
 
 extern CirMgr *cirMgr;
 
+
 // TODO: Define your own data members and member functions
 class CirMgr
 {
+typedef vector<unsigned> IdList;
+
 public:
    CirMgr(){}
    ~CirMgr() { clear(); }
@@ -105,6 +108,10 @@ public:
 
    // Helper functions for simulations
    size_t getBit(unsigned, size_t);
+   void initFEC();
+   void checkFEC();
+
+   vector<IdList*> getFecGrps() { return _fecGrps; }
 
 private:
    map<int, CirGate*> _all;
@@ -119,6 +126,8 @@ private:
    mutable vector <int> _flFanin; // not defined
    mutable vector <int> _flFanout; // not used
    int _maxVarNum;
+
+   vector<IdList*> _fecGrps;
 };
 
 #endif // CIR_MGR_H
