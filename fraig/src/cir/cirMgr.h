@@ -103,6 +103,9 @@ public:
 
    void deleteAndCleanUpGate(CirGate*);
 
+   // Helper functions for simulations
+   size_t getBit(unsigned, size_t);
+
 private:
    map<int, CirGate*> _all;
    vector<PI*>        _pis;

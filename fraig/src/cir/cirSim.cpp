@@ -64,17 +64,16 @@ CirMgr::randomSim()
 
     if (_simLog) {
 
-      for (size_t i = 0; i < 32; ++i) {
-        unsigned mask = 1 << i;
+      for (size_t pos = 0; pos < 32; ++pos) {
 
-        for (size_t j = 0; j < sizePi; ++j) {
-          *_simLog << ((inputs.at(j) & mask) >> i);
+        for (size_t i = 0; i < sizePi; ++i) {
+          *_simLog << getBit(inputs.at(i), pos);
         }
 
         *_simLog << " ";
 
-        for (size_t j = 0; j < sizePo; ++j) {
-          *_simLog << ((outputs.at(j) & mask) >> i);
+        for (size_t i = 0; i < sizePo; ++i) {
+          *_simLog << getBit(outputs.at(i), pos);
         }
 
         *_simLog << endl;
@@ -88,9 +87,63 @@ CirMgr::randomSim()
 void
 CirMgr::fileSim(ifstream& patternFile)
 {
+  size_t sizePi = _pis.size();
+  string temp;
+  vector <string> lines;
+  while (getline(patternFile,temp)) {
+    if (temp.size() != sizePi) {
+      cerr << "Pattern(" << temp << ") length(" << temp.size() << ") does not match "
+        "the number of inputs(" << sizePi << ") in a circuit!!"<< endl;
+      cout << "0 patterns simulated." << endl;
+      return;
+    } else if (temp.find_first_not_of("01") != string::npos) {
+      cerr << "Pattern(" << temp << ") contains a non-0/1 character" << endl;
+      cout << "0 patterns simulated." << endl;
+      return;
+    }
+
+    lines.push_back(temp);
+  }
+  patternFile.close();
+
+
+  for (size_t i = 0; i < lines.size(); ++i) {
+
+    string line = lines.at(i);
+    vector<int> outputs;
+
+    for (size_t j = 0; j < line.size(); ++j) {
+      _pis.at(j)->setSimResult(line.at(j) - '0');
+    }
+
+    for (size_t j = 0, sizeDfs = _dfsOrder.size(); j < sizeDfs; ++j) {
+      CirGate* gate = _dfsOrder.at(j);
+      gate->simulate();
+
+      if (gate->getTypeStr() == "PO") {
+        outputs.push_back(gate->getSimResult());
+      }
+    }
+
+    if (_simLog) {
+      *_simLog << lines.at(i) << " ";
+
+      for (size_t j = 0; j < _pos.size(); ++j) {
+        *_simLog << outputs.at(j);
+      }
+
+      *_simLog << endl;
+    }
+  }
+
 }
 
 /*************************************************/
 /*   Private member functions about Simulation   */
 /*************************************************/
 
+size_t
+CirMgr::getBit(unsigned x, size_t pos) {
+  unsigned mask = 1 << pos;
+  return ((x & mask) >> pos);
+}
