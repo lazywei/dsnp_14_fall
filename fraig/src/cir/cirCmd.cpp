@@ -151,14 +151,14 @@ CirPrintCmd::exec(const string& option)
 
 void
 CirPrintCmd::usage(ostream& os) const
-{  
+{
    os << "Usage: CIRPrint [-Summary | -Netlist | -PI | -PO | -FLoating "
       << "| -FECpairs]" << endl;
 }
 
 void
 CirPrintCmd::help() const
-{  
+{
    cout << setw(15) << left << "CIRPrint: " << "print circuit\n";
 }
 
@@ -434,7 +434,7 @@ CirSimCmd::exec(const string& option)
       cirMgr->fileSim(patternFile);
    cirMgr->setSimLog(0);
    curCmd = CIRSIMULATE;
-   
+
    return CMD_EXEC_DONE;
 }
 

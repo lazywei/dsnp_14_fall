@@ -99,11 +99,18 @@ public:
       }
    }
 
+   // For simulation
+   virtual void simulate() = 0;
+   unsigned getSimResult() const { return _simResult; }
+   void setSimResult(unsigned val) { _simResult = val; }
+
 private:
    int _id;
    unsigned _lineNo;
    mutable unsigned _dfsFlag;
    string _symbol;
+
+   unsigned _simResult;
 
 protected:
    vector<AigGateV> _faninList;
@@ -151,6 +158,19 @@ public:
    virtual void printGate() const { cout << getTypeStr() << " " << getId(); }
    virtual void pGateNet() const;
    int getIn(const int& n) const { if (n < 2) return _in[n]; return 0;}
+
+   virtual void simulate() {
+      unsigned val1 = getFanin(0).gate()->getSimResult();
+      unsigned val2 = getFanin(1).gate()->getSimResult();
+
+      bool inv1 = getFanin(0).isInv();
+      bool inv2 = getFanin(1).isInv();
+
+      if (inv1) val1 = ~val1;
+      if (inv2) val2 = ~val2;
+
+       setSimResult(val1 & val2);
+   }
 private:
    int _in[2];
 };
@@ -163,6 +183,9 @@ public:
    virtual string getTypeStr() const { if(!getId()) return "CONST"; return "PI"; }
    virtual void printGate() const { cout << getTypeStr() << " " << getId();  }
    virtual void pGateNet() const;
+
+   virtual void simulate() {}
+
 private:
 };
 
@@ -175,6 +198,16 @@ public:
    virtual void printGate() const { cout << getTypeStr() << " " << getId(); }
    virtual void pGateNet() const;
    int getIn() const { return _in; }
+
+   virtual void simulate() {
+      unsigned val = getFanin(0).gate()->getSimResult();
+      bool inv = getFanin(0).isInv();
+
+      if (inv) val = ~val;
+
+      setSimResult(val);
+   }
+
 private:
    int _in;
 };
@@ -187,6 +220,7 @@ public:
    virtual string getTypeStr() const { return "UNDEF"; }
    virtual void printGate() const { cout << getTypeStr() << " " << getId();}
    virtual void pGateNet() const {};
+   virtual void simulate() {}
 private:
 };
 
