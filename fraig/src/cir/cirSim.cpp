@@ -34,7 +34,7 @@ public:
   }
 
   bool operator == (const mySimValKey& k) const {
-    return (_simVal == k._simVal) || (~_simVal == k._simVal);
+    return (_simVal == k._simVal) || ((~_simVal) == k._simVal);
   }
 
 private:
@@ -87,13 +87,13 @@ CirMgr::randomSim()
       for (size_t pos = 0; pos < 32; ++pos) {
 
         for (size_t i = 0; i < sizePi; ++i) {
-          *_simLog << getBit(inputs.at(i), pos);
+          *_simLog << getBit(inputs.at(i), 32-pos);
         }
 
         *_simLog << " ";
 
         for (size_t i = 0; i < sizePo; ++i) {
-          *_simLog << getBit(outputs.at(i), pos);
+          *_simLog << getBit(outputs.at(i), 32-pos);
         }
 
         *_simLog << endl;
@@ -162,6 +162,13 @@ CirMgr::fileSim(ifstream& patternFile)
 
       *_simLog << endl;
     }
+
+    // Handle FEC groups
+    if (_fecGrps.size() > 0) {
+      checkFEC();
+    } else {
+      initFEC();
+    }
   }
 }
 
@@ -195,7 +202,7 @@ CirMgr::initFEC() {
     if (fecHash.check(key, grp)) {
       int inv = 0;
 
-      if (getGate(grp->front() / 2)->getSimResult() == key()) {
+      if (getGate(grp->front() / 2)->getSimResult() == gate->getSimResult()) {
         inv = 0;
       } else {
         inv = 1;
@@ -249,7 +256,10 @@ CirMgr::checkFEC() {
         int inv = 0;
 
         /* cout << gate->getId() << ": " << gate->getSimResult() << " ~" << ~gate->getSimResult() << endl; */
-        if (getGate(grp->front() / 2)->getSimResult() == key()) {
+        /* cout << gate->getId() << ": " << gate->getSimResult() << endl; */
+        /* cout << grp->front() / 2 << ": " << getGate(grp->front() / 2)->getSimResult() << endl; */
+        /* cout << grp->front() / 2 << ": " << ~(getGate(grp->front() / 2)->getSimResult()) << endl; */
+        if (getGate(grp->front() / 2)->getSimResult() == gate->getSimResult()) {
           inv = 0;
         } else {
           inv = 1;
@@ -276,7 +286,7 @@ CirMgr::checkFEC() {
 
     for (size_t i = 0, sizeIdList = idList->size(); i < sizeIdList; ++i) {
       CirGate* gate = getGate(idList->at(i) / 2);
-      gate->setFecGrpIdx(_fecGrps.size() - 1);
+      gate->setFecGrpIdx(newGrps.size() - 1);
     }
   }
 
