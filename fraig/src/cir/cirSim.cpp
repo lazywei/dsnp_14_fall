@@ -56,14 +56,11 @@ void
 CirMgr::randomSim()
 {
   size_t sizePi = _pis.size();
-  size_t sizePo = _pos.size();
 
   vector<unsigned> inputs;
-  vector<unsigned> outputs;
 
   for (size_t round = 0; round < sizePi; ++round) {
     inputs.clear();
-    outputs.clear();
 
     for (size_t i = 0; i < sizePi; ++i) {
       unsigned tmp = rnGen(1 << 31);
@@ -72,42 +69,7 @@ CirMgr::randomSim()
       inputs.push_back(tmp);
     }
 
-    for (size_t i = 0, sizeDfs = _dfsOrder.size(); i < sizeDfs; ++i) {
-      CirGate* gate = _dfsOrder.at(i);
-      gate->simulate();
-      gate->setFecGrpIdx(-1);
-
-      if (gate->getTypeStr() == "PO") {
-        outputs.push_back(gate->getSimResult());
-      }
-    }
-
-    if (_simLog) {
-
-      for (size_t pos = 0; pos < 32; ++pos) {
-
-        for (size_t i = 0; i < sizePi; ++i) {
-          *_simLog << getBit(inputs.at(i), 32-pos);
-        }
-
-        *_simLog << " ";
-
-        for (size_t i = 0; i < sizePo; ++i) {
-          *_simLog << getBit(outputs.at(i), 32-pos);
-        }
-
-        *_simLog << endl;
-
-      }
-
-    }
-
-    // Handle FEC groups
-    if (_fecGrps.size() > 0) {
-      checkFEC();
-    } else {
-      initFEC();
-    }
+    simLogFec(inputs);
   }
 }
 
@@ -133,42 +95,24 @@ CirMgr::fileSim(ifstream& patternFile)
   }
   patternFile.close();
 
+  for (size_t noLine = 0; noLine < lines.size(); noLine += 32) {
+    vector<unsigned> inputs(sizePi, 0);
 
-  for (size_t i = 0; i < lines.size(); ++i) {
+    for (size_t bit = 0; bit < 32; ++bit) {
 
-    string line = lines.at(i);
-    vector<int> outputs;
-
-    for (size_t j = 0; j < line.size(); ++j) {
-      _pis.at(j)->setSimResult(line.at(j) - '0');
-    }
-
-    for (size_t j = 0, sizeDfs = _dfsOrder.size(); j < sizeDfs; ++j) {
-      CirGate* gate = _dfsOrder.at(j);
-      gate->simulate();
-      gate->setFecGrpIdx(-1);
-
-      if (gate->getTypeStr() == "PO") {
-        outputs.push_back(gate->getSimResult());
-      }
-    }
-
-    if (_simLog) {
-      *_simLog << lines.at(i) << " ";
-
-      for (size_t j = 0; j < _pos.size(); ++j) {
-        *_simLog << outputs.at(j);
+      if (bit+noLine < lines.size()) {
+        for (size_t i = 0; i < sizePi; ++i) {
+          inputs[i] += (lines[bit+noLine].at(i) - '0') << (31 - bit);
+        }
+      } else {
+        for (size_t i = 0; i < sizePi; ++i) {
+          inputs[i] = inputs[i] >> 1;
+        }
       }
 
-      *_simLog << endl;
     }
 
-    // Handle FEC groups
-    if (_fecGrps.size() > 0) {
-      checkFEC();
-    } else {
-      initFEC();
-    }
+    simLogFec(inputs);
   }
 }
 
@@ -291,4 +235,50 @@ CirMgr::checkFEC() {
   }
 
   _fecGrps.swap(newGrps);
+}
+
+void
+CirMgr::simLogFec(vector<unsigned> inputs)
+{
+  size_t sizePi = _pis.size();
+  size_t sizePo = _pos.size();
+  vector<unsigned> outputs;
+
+  for (size_t i = 0, sizeDfs = _dfsOrder.size(); i < sizeDfs; ++i) {
+    CirGate* gate = _dfsOrder.at(i);
+    gate->simulate();
+    gate->setFecGrpIdx(-1);
+
+    if (gate->getTypeStr() == "PO") {
+      outputs.push_back(gate->getSimResult());
+    }
+  }
+
+  if (_simLog) {
+
+    for (size_t pos = 0; pos < 32; ++pos) {
+
+      for (size_t i = 0; i < sizePi; ++i) {
+        *_simLog << getBit(inputs.at(i), 32-pos);
+      }
+
+      *_simLog << " ";
+
+      for (size_t i = 0; i < sizePo; ++i) {
+        *_simLog << getBit(outputs.at(i), 32-pos);
+      }
+
+      *_simLog << endl;
+
+    }
+
+  }
+
+  // Handle FEC groups
+  if (_fecGrps.size() > 0) {
+    checkFEC();
+  } else {
+    initFEC();
+  }
+
 }

@@ -111,6 +111,8 @@ public:
    void initFEC();
    void checkFEC();
 
+   void simLogFec(vector<unsigned>);
+
    vector<IdList*> getFecGrps() { return _fecGrps; }
 
 private:
